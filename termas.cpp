@@ -1,12 +1,13 @@
 #include "freeglut.h"
-
+#include "tablero.h"
+#include "coordenadas.h"
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
-
+Tablero t;
 int main(int argc,char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
@@ -15,7 +16,9 @@ int main(int argc,char* argv[])
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("MiJuego");
-
+		glClearColor(0.5,0.5, 0.0, 0.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	//habilitar luces y definir perspectiva
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
@@ -38,18 +41,18 @@ void OnDraw(void)
 {
 	//Borrado de la pantalla	
    	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+	glColor3f(1.0, 0.0, 0.0);
 	//Para definir el punto de vista
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	gluLookAt(0.0, 10, 20,  // posicion del ojo
-		0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+	gluLookAt(5.0, 5.0, 20.0,  // posicion del ojo
+		5.0, 5.0, 0.0,      // hacia que punto mira  (0,0,0) 
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
 
 	//aqui es donde hay que poner el código de dibujo
-	glutWireCube(5);
-
+	
+	t.pintarTablero();
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }

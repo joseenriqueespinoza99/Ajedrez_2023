@@ -140,7 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="coordenadas.cpp" />
+    <ClCompile Include="tablero.cpp" />
     <ClCompile Include="termas.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="coordenadas.h" />
+    <ClInclude Include="tablero.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
