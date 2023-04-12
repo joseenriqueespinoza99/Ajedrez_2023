@@ -5,4 +5,4 @@
 Coordenadas::Coordenadas(int ix, int iy) {
 	x = ix;
 	y = iy;
-}
+};
