@@ -1,0 +1,10 @@
+﻿  Coordenadas.cpp
+  Mundo.cpp
+C:\Users\alval\Downloads\tema4inicial_VS19x64\tema4inicial_VS19x64\src\Mundo.cpp(7,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\Downloads\tema4inicial_VS19x64\tema4inicial_VS19x64\src\Mundo.cpp(8,11): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\Downloads\tema4inicial_VS19x64\tema4inicial_VS19x64\src\Mundo.cpp(10,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\Downloads\tema4inicial_VS19x64\tema4inicial_VS19x64\src\Mundo.cpp(11,12): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  ajedrez.cpp
+  Tablero.cpp
+  Generando código...
+  Pang.vcxproj -> C:\Users\alval\Downloads\tema4inicial_VS19x64\tema4inicial_VS19x64\bin\AJEDREZ.exe
