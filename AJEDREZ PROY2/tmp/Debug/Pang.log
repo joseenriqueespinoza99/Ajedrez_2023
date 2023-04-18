@@ -1,6 +1,4 @@
-﻿  Mundo.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(9,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(10,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(12,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(13,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  Tablero.cpp
+  Vector2D.cpp
+  Generando código...
   Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
