@@ -1,7 +1,10 @@
-
+#pragma once
+#include "freeglut.h"
+#include "Tablero.h"
 class Mundo
 {
-public: 
+public:
+	Tablero t;
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();
@@ -12,3 +15,4 @@ public:
 	float y_ojo;
 	float z_ojo;
 };
+

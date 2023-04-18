@@ -19,15 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Coordenadas.cpp" />
+    <ClCompile Include="src\Coordenadas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
-    <ClCompile Include="Tablero.cpp" />
+    <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Coordenadas.h" />
+    <ClInclude Include="src\Coordenadas.h" />
     <ClInclude Include="src\Mundo.h" />
-    <ClInclude Include="Tablero.h" />
+    <ClInclude Include="src\Tablero.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

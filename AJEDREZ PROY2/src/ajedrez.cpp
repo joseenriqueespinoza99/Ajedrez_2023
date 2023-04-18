@@ -18,7 +18,9 @@ int main(int argc,char* argv[])
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("MiJuego");
-
+	glClearColor(0.5, 0.5, 0.0, 0.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	//habilitar luces y definir perspectiva
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
@@ -44,6 +46,7 @@ void OnDraw(void)
 {
 	//Borrado de la pantalla	
    	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glColor3f(1.0, 0.0, 0.0);
 
 	//Para definir el punto de vista
 	glMatrixMode(GL_MODELVIEW);	

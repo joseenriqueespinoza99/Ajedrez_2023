@@ -1,2 +1,7 @@
 ﻿  coordenadas.cpp
-  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\x64\Debug\termas_de_logrono.exe
+c1xx : fatal  error C1083: No se puede abrir el archivo origen: 'coordenadas.cpp': No such file or directory
+  tablero.cpp
+c1xx : fatal  error C1083: No se puede abrir el archivo origen: 'tablero.cpp': No such file or directory
+  termas.cpp
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\termas.cpp(2,10): fatal  error C1083: No se puede abrir el archivo incluir: 'tablero.h': No such file or directory
+  Generando código...
