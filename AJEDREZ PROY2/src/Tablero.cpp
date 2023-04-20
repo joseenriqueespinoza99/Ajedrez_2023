@@ -1,12 +1,11 @@
 #include "freeglut.h"
 #include "Tablero.h"
-#include "Vector2D.h"
 #include "Alfil.h"
 
 void Tablero::dibuja() {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			Vector2D v { i + 1, j + 1 };
+			posicion p { i + 1, j + 1 };
 			int indices = i + j;
 			if ((indices % 2) == 0) {
 				glBegin(GL_POLYGON);
