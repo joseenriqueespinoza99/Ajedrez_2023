@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="caballo.cpp" />
     <ClCompile Include="src\Alfil.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="caballo.h" />
     <ClInclude Include="src\Alfil.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Tablero.h" />

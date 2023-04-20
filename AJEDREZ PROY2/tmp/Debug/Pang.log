@@ -1,4 +1,13 @@
-﻿  Tablero.cpp
+﻿  caballo.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\caballo.cpp(17,18): error C2064: el término no se evalúa como una función con 2 argumentos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\caballo.cpp(23,2): error C2143: error de sintaxis: falta ';' delante de '}'
+  Alfil.cpp
+  Mundo.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(8,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(9,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(11,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(12,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  ajedrez.cpp
+  Tablero.cpp
   Vector2D.cpp
   Generando código...
-  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

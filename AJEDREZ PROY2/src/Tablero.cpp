@@ -2,6 +2,7 @@
 #include "Tablero.h"
 #include "Vector2D.h"
 #include "Alfil.h"
+
 void Tablero::dibuja() {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
