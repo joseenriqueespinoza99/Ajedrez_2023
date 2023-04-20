@@ -2,23 +2,42 @@
 #include "caballo.h"
 #include "Tablero.h"
 
-//cada jugador tiene 2 caballos
 caballo caballo1;
-caballo caballo2;
+using namespace std;
 
-
-
-int caballo::mueveCab(char casilla) {
+void caballo::mueveCab() {
+	caballo posAct[2]{ fila, columna };
 	//caballo se mueve en L, avanza 2 y luego 1, nunca nada vertical
+	int k; //incrementos de posicion
+	
+	switch (k) {
+	case 1:
+		if (movH = 'd') {
+			if (movV = 'r') {
+				caballo posSig[2]{ posAct[fila + 1, columna + 2] };
+			}
+		else if(movV = 'a') caballo posSig[2]{ posAct[fila + 2, columna + 1] };
+			else cout << "Movimiento erroneo";
+		}
+		else cout << "Movimiento erroneo";
+		break;
 
-	int i; //iteracion 
-	for (i = 0; i <= 8; i++) {
-	caballo:: posAct[2](fila[i], columna[i]) {
-		//vector2D.
+	case 2:
+		if (movH = 'i') {
+			if (movV = 'r') {
+				caballo posSig[2]{ posAct[fila + 2, columna - 1] };
+			}
+			else if (movV = 'a') caballo posSig[2]{ posAct[fila + 1, columna - 2] };
+			else cout << "Movimiento erroneo";
+		}
+		else cout << "Movimiento erroneo";
+		break;
 	}
 
-	//caballo posAct[2] = { fila[1], columna[2]};
 
 	}
-}
+
+
+	
+
 
