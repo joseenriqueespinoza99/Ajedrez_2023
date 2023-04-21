@@ -1,5 +1,6 @@
 #pragma once
-
+#include "ListaPiezas.h"
+#include "freeglut.h"
 struct posicion{
 	int posx;
 	int posy;
@@ -9,8 +10,8 @@ class Tablero
 private:
 	bool casilla_destino;
 	bool casilla_origen;
-	posicion origen;
-	posicion destino;
+	posicion origen;//sirve para determinar la posición origen
+	posicion destino;//sirve para determinar la posicion de destino
 	public:
 		//definición de constructor
 		unsigned char rojo;

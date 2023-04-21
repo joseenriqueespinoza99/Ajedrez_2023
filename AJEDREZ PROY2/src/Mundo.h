@@ -3,6 +3,8 @@
 #include "Tablero.h"
 class Mundo
 {
+private:
+	//ListaPiezas fichas;
 public:
 	Tablero t;
 	void tecla(unsigned char key);
