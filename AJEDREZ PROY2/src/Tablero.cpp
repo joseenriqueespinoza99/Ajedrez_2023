@@ -1,8 +1,11 @@
 #include "freeglut.h"
 #include "Tablero.h"
 #include "Alfil.h"
-
+#include "dibuja.h"
+dibuja pieza;
 void Tablero::dibuja() {
+	pieza.pintarblancas();
+	pieza.pintarnegras();
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
 			posicion p { i + 1, j + 1 };
