@@ -12,7 +12,7 @@ void Tablero::dibuja() {
 			int indices = i + j;
 			if ((indices % 2) == 0) {
 				glBegin(GL_POLYGON);
-				glColor3f(0, 0, 0);
+				glColor3f(0, 0.5, 0.5);
 				glVertex2i(i + 1, j + 1);
 				glVertex2i(i + 1, j);
 				glVertex2i(i, j);
