@@ -16,7 +16,8 @@ private:
 		unsigned char rojo;
 		unsigned char verde;
 		unsigned char azul;
-		void setX_origen(int x) { origen.posx = x; }
+		//void setX_origen(int x) { origen.posx = x; } ESTOY HACIENDO PRUEBAS
+		void setX_origen(int x);
 		void setY_origen(int y) { origen.posy = y; }
 		void setX_destino(int x) { destino.posx = x; }
 		void setY_destino(int y) { destino.posy = y; }

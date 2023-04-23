@@ -1,5 +1,6 @@
 #pragma once
-#include "tablero.h"
+
+
 
 class caballo
 {
@@ -13,6 +14,7 @@ public:
 	char movV;
 	char movH[2];
 	void mueveCab();
+	bool comprobacion(int x, int y);
 	
 };
 
