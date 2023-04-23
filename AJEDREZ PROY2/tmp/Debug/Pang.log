@@ -1,12 +1,4 @@
 ﻿  caballo.cpp
-  Alfil.cpp
-  Mundo.cpp
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(8,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(9,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(11,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(12,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-  ajedrez.cpp
-  Tablero.cpp
-  Generando código...
 C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\caballo.cpp(13): warning C4700: se utilizó la variable local 'k' sin inicializar
+  LINK : no se encontró C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Pang.vcxproj -> C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
