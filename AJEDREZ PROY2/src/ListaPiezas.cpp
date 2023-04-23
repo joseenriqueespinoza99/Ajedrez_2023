@@ -1,6 +1,4 @@
-#include"ListaPiezas.h"
-#include "freeglut.h"
-#include "Pieza.h"
+#include "ListaPiezas.h"
 ListaPiezas::ListaPiezas()
 {
 	numero = 0;
@@ -8,7 +6,7 @@ ListaPiezas::ListaPiezas()
 		piezas[i] = 0;
 }
 
-bool ListaPiezas::agregar(Pieza *p) {
+bool ListaPiezas::agregar(Pieza* p) {
 	if (numero < MAX_PIEZAS) {
 		piezas[numero++] = p;
 		return true;
@@ -16,8 +14,8 @@ bool ListaPiezas::agregar(Pieza *p) {
 	else
 		return false;
 }
- 
- void ListaPiezas::dibuja()
+
+void ListaPiezas::dibuja()
 {
 	for (int i = 0; i < numero; i++)
 		piezas[i]->dibuja();
@@ -28,7 +26,7 @@ bool ListaPiezas::agregar(Pieza *p) {
 		piezas[i]->mueve(f);
 }*/
 
-void ListaPiezas::eliminar(Pieza *p)
+void ListaPiezas::eliminar(Pieza* p)
 {
 	for (int i = 0; i < numero; i++)
 		if (piezas[i] == p)

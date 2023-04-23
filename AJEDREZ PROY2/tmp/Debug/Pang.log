@@ -1,17 +1,1 @@
-﻿  Alfil.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(10,15): error C2061: error de sintaxis: identificador 'Pieza'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(11,16): error C2061: error de sintaxis: identificador 'Pieza'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,7): error C2143: error de sintaxis: falta ';' delante de '*'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,7): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,27): error C2238: símbolos (token) inesperados delante de ';'
-  ListaPiezas.cpp
-  Mundo.cpp
-  Pieza.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.h(3,28): error C2504: 'Pieza': clase base sin definir
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(10,15): error C2061: error de sintaxis: identificador 'Pieza'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(11,16): error C2061: error de sintaxis: identificador 'Pieza'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,7): error C2143: error de sintaxis: falta ';' delante de '*'
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,7): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.h(18,27): error C2238: símbolos (token) inesperados delante de ';'
-  Tablero.cpp
-  Generando código...
+﻿  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

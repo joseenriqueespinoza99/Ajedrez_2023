@@ -35,11 +35,7 @@ void Mundo::mueve()
 void Mundo::inicializa()
 {
 
-	/* for (int i = 0; i < 8; i++)
-	{
-		Pieza* aux = new Pieza(1,3,true);
-		fichas.agregar(aux);
-	}*/
+
 	x_ojo = 4.0;
 	y_ojo = 4.0;
 	z_ojo = 14.0;

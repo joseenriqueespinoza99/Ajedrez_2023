@@ -1,19 +1,20 @@
 #pragma once
-#include "Tablero.h"
-#include <iostream>
-#include "freeglut.h"
-#include "ListaPiezas.h"
 
-class Pieza
-{
-protected:
-	int x;
-	int y;
-	bool  color;//para diferenciar de que tipo de piezas se trata
-	enum enum_piezas { TORRE = 1, CABALLO = 2, ALFIL = 3, DAMA = 4, REY = 5, PEON = 6 };
-public:
-	void setpos(int i, int j);
-	//void mueve();
-	virtual void dibuja();
-};
+	class Pieza{
+    protected:
+        bool color;
+        int posx;
+        int posy;
+	public:
+       
+        virtual ~Pieza() {}
+        virtual void dibuja() const = 0;
+        virtual void mover() = 0;
+        bool getColor() const {  return color;}
+        int getX() const { return posx; }
+        int getY() const { return posy; }
+        void setX(int x) {this->posx = x; }
+        void setY(int y) {   this->posy = y; }
+       
+	};
 
