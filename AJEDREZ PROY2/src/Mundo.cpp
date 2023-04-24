@@ -18,7 +18,8 @@ void Mundo::dibuja()
 {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
+	tor.dibuja();
 	al.dibuja();
 	t.dibuja();
    //fichas.dibuja();
@@ -47,4 +48,5 @@ void Mundo::inicializa()
 void Mundo::tecla(unsigned char key)
 {
 	al.mueve(key);
+	tor.mueve(key);
 }
