@@ -1,4 +1,5 @@
 #include "Pieza.h"
+#include "ETSIDI.h"
 Pieza pieza;
 void Pieza::dibujar(const char foto[], int x1, int y1)
 {
@@ -21,12 +22,12 @@ void Pieza::pintar(const char foto1[], const char foto2[], const char foto3[], c
     for (int j = 0; j <9; j++) {//bucle que va de 0 a 9 y suma 1
         for (int i = 0; i < 9; i++) {//bucle mas rapido que va de 0 a 9 y suma 1
             if (x1 == j && y1 == i) { //si i y j son iguales a x e y
-                if (j % 2 == 1) {//Bucle para las coordenadas y, 
-                    if (i % 2 == 1) {//Bucle para las coordenadas x
+                if (j % 2 == 0) {//Bucle para las coordenadas y, 
+                    if (i % 2 == 0) {//Bucle para las coordenadas x
                         if (color==true)
-                            pieza.dibujar(foto4, j,i);
-                        else
                             pieza.dibujar(foto2, j,i);
+                        else
+                            pieza.dibujar(foto4, j,i);
                     }
                     else
                     {
@@ -49,9 +50,9 @@ void Pieza::pintar(const char foto1[], const char foto2[], const char foto3[], c
                     else
                     {
                         if (color == true)
-                            pieza.dibujar(foto3, j, i);
-                        else
                             pieza.dibujar(foto1, j, i);
+                        else
+                            pieza.dibujar(foto3, j, i);
                     }
                 }
             }

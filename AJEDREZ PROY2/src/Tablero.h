@@ -8,25 +8,21 @@ struct posicion{
 class Tablero
 {
 private:
-	bool casilla_destino;
-	bool casilla_origen;
 	posicion origen;//sirve para determinar la posición origen
 	posicion destino;//sirve para determinar la posicion de destino
 	public:
-		//definición de constructor
-		unsigned char rojo;
-		unsigned char verde;
-		unsigned char azul;
+	//	Tablero() {};
 		void setX_origen(int x) { origen.posx = x; }
 		void setY_origen(int y) { origen.posy = y; }
 		void setX_destino(int x) { destino.posx = x; }
 		void setY_destino(int y) { destino.posy = y; }
-		bool getCasilla_origen() { return casilla_origen; }
-		bool getCasilla_destino() { return casilla_destino; }
+		void getX_origen(int x) { origen.posx = x; }
+		void getY_origen(int y) { origen.posy = y; }
+		void getX_destino(int x) { destino.posx = x; }
+		void getY_destino(int y) { destino.posy = y; }
 		void dibuja();
-		
+		void inicializa();
 //Definición del destructor
-
 	};
 
 

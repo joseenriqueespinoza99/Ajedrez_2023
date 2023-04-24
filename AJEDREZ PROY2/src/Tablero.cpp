@@ -2,25 +2,27 @@
 #include "Tablero.h"
 #include "Alfil.h"
 #include "Pieza.h"
+#include "ListaPiezas.h"
 int numero_reyes=2;
 int numero_damas=2;
 int numero_torres = 2;
 int numero_caballos = 2;
 int numero_alfiles = 2;
 int numero_peones = 8;
-
 Pieza reyes[2];
 Pieza damas[2];
 Pieza torres[2];
 Pieza caballos[2];
 Pieza alfiles[2];
 Pieza Peones[8];
+//Pieza* p[32];
 void Tablero::dibuja() {
-	int j = 0;
+	
+	/* int j = 0;
 	int k = 0;
 	int l = 0;
 	int m = 0;
-	Peones->setColor(true);//variable imprime blancas cuando es true y negras cuando es false
+	Peones->setColor(false);//variable imprime blancas cuando es true y negras cuando es false
 	for (int i = 0; i < numero_reyes; i++)
 	{
 		if (Peones->getColor() == true)
@@ -67,7 +69,7 @@ void Tablero::dibuja() {
 		else
 		Peones[i].pintar("imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", 0 + j, 7);
 		j++;
-	}
+	}*/
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
 			posicion p { i + 1, j + 1 };
@@ -94,3 +96,10 @@ void Tablero::dibuja() {
 	}
 
 }
+/* void inicializa() {
+	
+	p[0] = new Alfil(0, 3, false);
+	p[1] = new Alfil(0, 6, false);
+	p[2] = new Alfil(8, 3, true);
+	p[3] = new Alfil(8, 6, true);
+}*/

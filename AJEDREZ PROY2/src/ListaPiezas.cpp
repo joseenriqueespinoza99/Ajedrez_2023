@@ -15,17 +15,6 @@ bool ListaPiezas::agregar(Pieza* p) {
 		return false;
 }
 
-void ListaPiezas::dibuja()
-{
-	for (int i = 0; i < numero; i++)
-		piezas[i]->dibuja();
-}
-/* void ListaPiezas::mueve(float f)
-{
-	for (int i = 0; i < numero; i++)
-		piezas[i]->mueve(f);
-}*/
-
 void ListaPiezas::eliminar(Pieza* p)
 {
 	for (int i = 0; i < numero; i++)

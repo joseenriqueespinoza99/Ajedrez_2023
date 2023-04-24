@@ -1,6 +1,7 @@
 #pragma once
 #include "freeglut.h"
 #include "Tablero.h"
+#include "Alfil.h"
 class Mundo
 {
 private:

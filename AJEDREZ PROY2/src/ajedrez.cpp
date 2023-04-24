@@ -1,6 +1,6 @@
 #include "Mundo.h"
 #include "freeglut.h"
-
+#include "ETSIDI.h"
 Mundo mundo;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -73,4 +73,8 @@ void OnTimer(int value)
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
 	glutPostRedisplay();
+}
+void raton() {
+
+
 }
