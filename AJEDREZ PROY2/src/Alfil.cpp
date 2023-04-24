@@ -17,20 +17,20 @@ void Alfil::mueve(unsigned char key) {
 	int m = getX();
 	int n = getY();
 	if(m<7 && n<7){ 
-	if(key=='a')
+	if(key=='c')
 {
 		m++;
 		n++;
 	}
-	if (key == 'd') {
+	if (key == 'q') {
 		m--;
 		n--;
 	}
-	if (key == 'w') {
+	if (key == 'e') {
 		m++;
 		n--;
 	}
-	if (key == 's') {
+	if (key == 'z') {
 		m--;
 		n++;
 	}
@@ -55,7 +55,7 @@ bool Alfil::movimientoValido(int x_Destino, int y_Destino) const {
 void Alfil::dibuja() {
 	alf.setColor(true);
 	if (alf.getColor() == true)
-		alf.pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX(), getY()+1);
+		alf.pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX()+2, getY()+1);
 	else
-		alf.pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX(), getY()+1);
+		alf.pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX()+2, getY()+1);
 }
