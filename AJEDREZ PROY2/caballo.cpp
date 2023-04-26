@@ -1,10 +1,31 @@
 #include <iostream>
+#include "freeglut.h"
 #include "caballo.h"
-#include "Tablero.h"
+
 
 using namespace std;
 
-void caballo::mueveCab() {
+
+
+caballo::~caballo() {
+
+}
+
+void caballo::mueveCab(char p[2], char z) {
+
+	if (p == "rd") {
+
+	}
+	else if (p == "ri") {
+
+	}
+	else if (p == "nd") {
+
+	}
+	else if (p == "ni") {
+
+	}
+	/*
 	caballo posAct[2]{ fila, columna };
 	//caballo se mueve en L, avanza 2 y luego 1
 	//incrementos de posicion
@@ -13,7 +34,7 @@ void caballo::mueveCab() {
 	case 1:
 		//si va hacia la derecha y solo cambia 1 fila y 2 columnas
 		if (movH == "rd") {
-			if (movV = 'a') caballo posSig[2]{ posAct[fila + 1, columna + 2] };
+			if (movV = 'a')  posSig[2]{ posAct[fila + 1, columna + 2] };
 			else if (movV = 'd') caballo posSig[2]{ posAct[fila - 1, columna + 2] };
 			else cout << "Movimiento erroneo";
 		}
@@ -45,8 +66,9 @@ void caballo::mueveCab() {
 			else cout << "Movimiento erroneo";
 		}
 		else cout << "Movimiento erroneo";
+		*/
 	}
-}
+
 		bool caballo::comprobacion(int x, int y) {
 			//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
 			//x =  posSig[0];
