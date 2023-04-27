@@ -1,13 +1,19 @@
 #include "Torre.h"
 
-//Torre::Torre()
-//{
+Torre::Torre()
+{
 
-//}
+}
+Torre::Torre(int x, int y, bool color) {
+	this->posx = x;
+	this->posy = y;
+	this->color = color;
+
+}
 void Torre::mueve(unsigned char key)
 {
-	int i = getx();
-	int j = gety();
+	int i = getX();
+	int j = getY();
 	if (key == 'a')
 	{
 		i--;
@@ -24,19 +30,19 @@ void Torre::mueve(unsigned char key)
 	{
 		j--;
 	}
-	setx(i);
-	sety(j);
+	setX(i);
+	setY(j);
 	glutPostRedisplay;
 }
 
 void Torre::dibuja() {
-	torre.setColor(true);
-			if (torre.getColor() == true) {
-				torre.pintar("imagenes/torrenegra.png", "imagenes/torreblanca.png", "imagenes/torrenblanca.png", "imagenes/torrennegra.png", getx(), gety()+1);
+	setColor(true);
+			if (getColor() == true) {
+				pintar("imagenes/torrenegra.png", "imagenes/torreblanca.png", "imagenes/torrenblanca.png", "imagenes/torrennegra.png", getX(), getY()+1);
 				casilla_torre = true;
 			}
 			else {
-				torre.pintar("imagenes/torreblanca.png", "imagenes/torrenegra.png", "imagenes/torrennegra.png", "imagenes/torrenblanca.png", getx(), gety()+1);
+				pintar("imagenes/torreblanca.png", "imagenes/torrenegra.png", "imagenes/torrennegra.png", "imagenes/torrenblanca.png", getX(), getY()+1);
 				casilla_torre = true;
 			}
 }

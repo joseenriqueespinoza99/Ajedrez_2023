@@ -7,8 +7,6 @@
 #include "Alfil.h"
 #include "Caballo.h"
 
-Alfil al;
-
 
 void Mundo::rotarOjo()
 {
@@ -23,10 +21,11 @@ void Mundo::dibuja()
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
-	tor.dibuja();
-	al.dibuja();
+	torres->dibuja();
+	alfiles->dibuja();
+	caballos->dibujaCab();
 	t.dibuja();
-	cb.dibujaCab();
+
     //fichas.dibuja();
    
 	//aqui es donde hay que poner el codigo de dibujo
@@ -52,7 +51,8 @@ void Mundo::inicializa()
 
 void Mundo::tecla(unsigned char key)
 {
-	al.mueve(key);
-	tor.mueve(key);
+	alfiles->mueve(key);
+	torres->mueve(key);
+
 	//cb.mueveCab(p[2], z);
 }

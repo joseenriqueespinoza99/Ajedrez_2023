@@ -5,7 +5,7 @@
 #include "Pieza.h"
 #include "ListaPiezas.h"
 
-class Caballo
+class Caballo:public Pieza
 {
 	
 	private:

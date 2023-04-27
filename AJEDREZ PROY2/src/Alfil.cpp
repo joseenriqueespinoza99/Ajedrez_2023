@@ -3,8 +3,7 @@
 #include "Tablero.h"
 #include "freeglut.h"
 #include <iostream>
-Tablero t;
-Pieza p;
+
 Alfil :: Alfil(int x, int y, bool color) {
 	this->posx = x;
 	this->posy = y;
@@ -53,9 +52,9 @@ bool Alfil::movimientoValido(int x_Destino, int y_Destino) const {
 	return (distanciaFilas == distanciaColumnas);
 }
 void Alfil::dibuja() {
-	alf.setColor(true);
-	if (alf.getColor() == true)
-		alf.pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX()+2, getY()+1);
+	setColor(true);
+	if (getColor() == true)
+		pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX()+2, getY()+1);
 	else
-		alf.pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX()+2, getY()+1);
+		pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX()+2, getY()+1);
 }

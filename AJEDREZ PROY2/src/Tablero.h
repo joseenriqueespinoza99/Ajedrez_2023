@@ -21,7 +21,6 @@ private:
 		void getX_destino(int x) { destino.posx = x; }
 		void getY_destino(int y) { destino.posy = y; }
 		void dibuja();
-		void inicializa();
 //Definición del destructor
 	};
 

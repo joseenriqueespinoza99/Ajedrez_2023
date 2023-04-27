@@ -3,8 +3,8 @@
 	class Pieza{
     protected:
         bool color;
-        int posx=2;
-        int posy=2;
+        int posx;
+        int posy;
 	public:
         virtual ~Pieza() {}
         void dibujar(const char foto[], int x1, int y2);
