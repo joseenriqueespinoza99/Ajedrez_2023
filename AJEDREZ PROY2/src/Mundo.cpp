@@ -5,7 +5,11 @@
 #include <math.h>
 #include "Pieza.h"
 #include "Alfil.h"
+#include "Caballo.h"
+
 Alfil al;
+
+
 void Mundo::rotarOjo()
 {
 	float dist = sqrt(x_ojo * x_ojo + z_ojo * z_ojo);
@@ -22,7 +26,8 @@ void Mundo::dibuja()
 	tor.dibuja();
 	al.dibuja();
 	t.dibuja();
-   //fichas.dibuja();
+	cb.dibujaCab();
+    //fichas.dibuja();
    
 	//aqui es donde hay que poner el codigo de dibujo
 	//dibujo del suelo
@@ -49,4 +54,5 @@ void Mundo::tecla(unsigned char key)
 {
 	al.mueve(key);
 	tor.mueve(key);
+	//cb.mueveCab(p[2], z);
 }

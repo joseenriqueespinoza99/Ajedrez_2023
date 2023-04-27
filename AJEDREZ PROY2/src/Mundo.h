@@ -2,6 +2,8 @@
 #include "freeglut.h"
 #include "Tablero.h"
 #include "Torre.h"
+#include "Caballo.h"
+
 class Mundo
 {
 private:
@@ -9,6 +11,7 @@ private:
 public:
 	Tablero t;
 	Torre tor;
+	Caballo cb;
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();

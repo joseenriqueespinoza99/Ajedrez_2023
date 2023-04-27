@@ -1,1 +1,11 @@
-﻿  Pang.vcxproj -> C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+﻿  Mundo.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(15,13): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(16,12): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(18,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(19,15): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  ajedrez.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\ajedrez.cpp(5,7): error C2280: 'Mundo::Mundo(void)': se está intentando hacer referencia a una función eliminada.
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.h(24,1): message : el compilador generó 'Mundo::Mundo' aquí
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.h(24,1): message : "Mundo::Mundo(void)": la función se eliminó implícitamente porque un objeto "Mundo::cb" miembro de datos no tiene ningún elemento constructor predeterminado adecuado o la resolución de sobrecarga era ambigua.
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.h(14,10): message : vea la declaración de 'Mundo::cb'
+  Generando código...

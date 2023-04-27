@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "freeglut.h"
 #include "ETSIDI.h"
+
 Mundo mundo;
 
 //los callback, funciones que seran llamadas automaticamente por la glut

@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="caballo.cpp" />
     <ClCompile Include="src\Alfil.cpp" />
+    <ClCompile Include="src\Caballo.cpp" />
     <ClCompile Include="src\ListaPiezas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
@@ -29,8 +29,8 @@
     <ClCompile Include="src\Torre.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="caballo.h" />
     <ClInclude Include="src\Alfil.h" />
+    <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\ListaPiezas.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pieza.h" />
