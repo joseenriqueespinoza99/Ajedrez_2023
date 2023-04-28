@@ -32,3 +32,11 @@ void ListaPiezas::destruirContenido()
 		delete piezas[i];
 	numero = 0; // inicializa lista 
 }
+/* Pieza* ListaPiezas::getPieza(int fila, int columna) {
+	for (int i = 0; i < numero; i++) {
+		if (piezas[i]->getX() == fila && piezas[i]->getY() == columna) {
+			return piezas[i];
+		}
+	}
+	return nullptr;
+}*/

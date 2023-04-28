@@ -10,6 +10,8 @@ class Tablero
 private:
 	posicion origen;//sirve para determinar la posición origen
 	posicion destino;//sirve para determinar la posicion de destino
+	
+	ListaPiezas listapiezas;
 	public:
 	//	Tablero() {};
 		void setX_origen(int x) { origen.posx = x; }
@@ -21,6 +23,8 @@ private:
 		void getX_destino(int x) { destino.posx = x; }
 		void getY_destino(int y) { destino.posy = y; }
 		void dibuja();
+		void inicializa();
+		void mueve(unsigned char key);
 //Definición del destructor
 	};
 

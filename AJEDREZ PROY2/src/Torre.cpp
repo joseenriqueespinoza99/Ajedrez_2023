@@ -10,7 +10,7 @@ Torre::Torre(int x, int y, bool color) {
 	this->color = color;
 
 }
-void Torre::mueve(unsigned char key)
+void Torre::mueve(unsigned char key) 
 {
 	int i = getX();
 	int j = getY();

@@ -4,15 +4,13 @@
 #include "Torre.h"
 #include "Caballo.h"
 #include "Alfil.h"
+#include "Pieza.h"
+
 class Mundo
 {
 private:
-	//ListaPiezas fichas;
 public:
 	Tablero t;
-	Alfil* alfiles = new Alfil(3, 0, true);
-	Torre* torres = new Torre(0, 0, false);
-	Caballo* caballos = new Caballo(4, 0, false);
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();

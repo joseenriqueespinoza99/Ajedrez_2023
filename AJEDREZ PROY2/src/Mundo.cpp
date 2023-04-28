@@ -6,8 +6,7 @@
 #include "Pieza.h"
 #include "Alfil.h"
 #include "Caballo.h"
-
-
+ListaPiezas p;
 void Mundo::rotarOjo()
 {
 	float dist = sqrt(x_ojo * x_ojo + z_ojo * z_ojo);
@@ -21,13 +20,11 @@ void Mundo::dibuja()
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
-	torres->dibuja();
-	alfiles->dibuja();
-	caballos->dibujaCab();
-	t.dibuja();
 
-    //fichas.dibuja();
-   
+
+	t.dibuja();
+ 
+	
 	//aqui es donde hay que poner el codigo de dibujo
 	//dibujo del suelo
 	glDisable(GL_LIGHTING);
@@ -37,22 +34,21 @@ void Mundo::dibuja()
 
 void Mundo::mueve()
 {
-	//fichas.mueve();
+
 }
 
 void Mundo::inicializa()
 {
 
-
+	
 	x_ojo = 4.0;
 	y_ojo = 4.0;
 	z_ojo = 14.0;
+	t.inicializa();
 }
 
 void Mundo::tecla(unsigned char key)
 {
-	alfiles->mueve(key);
-	torres->mueve(key);
 
-	//cb.mueveCab(p[2], z);
+	t.mueve(key);
 }
