@@ -29,6 +29,7 @@ enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
            posx = x_destino;
            posy = y_destino;
         }
-       
+       Pieza* muv[27];
+       Tablero* t;
 	};
 
