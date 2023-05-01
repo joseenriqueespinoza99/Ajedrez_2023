@@ -46,3 +46,10 @@ void Torre::dibuja() {
 				casilla_torre = true;
 			}
 }
+
+void Torre::mover(int x, int y)
+{
+	setX(x);
+	setY(y);
+	glutPostRedisplay;
+}
