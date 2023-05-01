@@ -2,39 +2,21 @@
 #include "Tablero.h"
 #include "Alfil.h"
 #include "Torre.h"
-#include "caballo.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
-
-Tablero::Tablero()
-{
-	if (turno)
-		final = false;
-	turno = true;
-}
-Pieza* p[32];
+//Pieza* p[32];
 ListaPiezas listapiezas;
 void Tablero::inicializa() {
+
+	Pieza* alfil1(new Alfil(3, 0, true));
+	listapiezas.agregar(alfil1);
+	Pieza* alfil2(new Alfil(6, 0, true));
+	listapiezas.agregar(alfil2);
+	Pieza* alfil3(new Alfil(6, 7, false));
+	listapiezas.agregar(alfil3);
+	Pieza* alfil4(new Alfil(3, 7, false));
+	listapiezas.agregar(alfil4);
 	
-
-	p[0] = new Torre(0, 7, false);
-	p[1] = new Torre(7, 7, false);
-	p[2] = new Torre(0, 0, true);
-	p[3] = new Torre(7, 0, true);
-
-	p[4] = new Alfil(5, 0,true);
-	p[5]= new Alfil(2, 0, true);
-	p[6]= new Alfil(5, 7, false);
-	p[7]= new Alfil(2, 7, false);
-
-	p[8] = new Caballo(1, 0, true);
-	p[9] = new Caballo(6, 0, true);
-	p[10] = new Caballo(1, 7, false);
-	p[11] = new Caballo(6, 7, false);
-
-
-	for(int j=0;j<12;j++)
-	listapiezas.agregar(p[j]);
 }
 void Tablero::dibuja() {
 	for (int i = 0; i < listapiezas.size(); i++) {
@@ -65,49 +47,18 @@ void Tablero::dibuja() {
 			}
 		}
 	}
-	
-
 
 }
 void Tablero::mueve(unsigned char key) {
 
-	p[0]->mueve(key);
-	p[1]->mueve(key);
-	p[2]->mueve(key);
-	p[3]->mueve(key);
+	Pieza* alfil1 = listapiezas.getPiezas(0);
+	alfil1->mueve(key);
+	Pieza* alfil2 = listapiezas.getPiezas(1);
+	alfil2->mueve(key);
+	Pieza* alfil3 = listapiezas.getPiezas(2);
+	alfil3->mueve(key);
+	Pieza* alfil4 = listapiezas.getPiezas(3);
+	alfil4->mueve(key);
+	
 
-
-}
-
-bool Tablero::EspacioBlancas(Pieza* c) {
-	for (int i = 0; i < 16; i++) {
-		
-		if (casillaOcupaBlanca[i]->getX() == c->getX() && casillaOcupaBlanca[i]->getY() == c->getY())
-			return true;     
-	}
-	return false;		
-}
-
-bool Tablero::EspacioNegras(Pieza* c) {
-	for (int i = 0; i < 16; i++) {
-		
-		if (casillaOcupaNegra[i]->getX() == c->getX() && casillaOcupaNegra[i]->getY() == c->getY())
-			return true;     
-	}
-	return false;		
-}
-
-bool Tablero::EspacioCasilla(Pieza* p) {
-	if (EspacioBlancas(p) || EspacioNegras(p)) {
-		return true;
-	}
-	else
-		return false;
-}
-
-void Tablero::cambiarTurno() {
-	if (turno)
-		turno = false;
-	else
-		turno = true;
 }
