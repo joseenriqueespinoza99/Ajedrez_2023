@@ -4,16 +4,14 @@
 #include "freeglut.h"
 class Torre:public Pieza
 {
-private:
-
 public:
-	bool casilla_torre;
-	Torre();
+	//bool casilla_torre;
 	//virtual bool getPrimerMovimiento() { return primer_movimiento; }
 	void dibuja() override;
-	void mueve(unsigned char key) override;
+	void mueve(unsigned char key);
 
 	Torre(int x, int y, bool color);
 	//nt getValor() { return valor; };
+	
+	void movimientos()
 };
-
