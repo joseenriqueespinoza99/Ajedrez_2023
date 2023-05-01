@@ -45,18 +45,18 @@ void Alfil::mueve(unsigned char key) {
 
 	}
 
-// MÈtodo para comprobar si el movimiento del alfil es v·lido
+// M√©todo para comprobar si el movimiento del alfil es v√°lido
 bool Alfil::esmovimientoValido(int x_Destino, int y_Destino) const {
-	// Un alfil se mueve en diagonal, por lo que el movimiento es v·lido si la distancia en filas y columnas es la misma
+	// Un alfil se mueve en diagonal, por lo que el movimiento es v√°lido si la distancia en filas y columnas es la misma
 	int distanciaFilas = abs(x_Destino - posx);
 	int distanciaColumnas = abs(y_Destino -posy);
 	return (distanciaFilas == distanciaColumnas);
 }
-void Alfil::mover(int x_destino, int y_destino) {
+/*void Alfil::mover(int x_destino, int y_destino) {
 	if (esmovimientoValido(x_destino, y_destino)) {
 		setPosicion(x_destino, y_destino);
 	}
-}
+}*/
 void Alfil::dibuja() {
 	setColor(true);
 	if (getColor() == true)
@@ -65,7 +65,11 @@ void Alfil::dibuja() {
 		pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX()-1, getY()+1);
 }
 
-
+void Alfil::mover(int x, int y)
+{
+	setX(x);
+	setY(y);
+}
 /*void Alfil::capturar(int x, int y, ListaPiezas& listaPiezas) {
 	// comprobar si hay una pieza en la casilla destino
 	Pieza* piezaDestino = listaPiezas.getPieza(x, y);
