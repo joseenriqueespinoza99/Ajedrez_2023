@@ -4,24 +4,19 @@
 #include "Torre.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
+#include "Mundo.h"
 Pieza* p[32];
 ListaPiezas listapiezas;
+Pieza* piezaSeleccionada = nullptr;
+
 void Tablero::inicializa() {
 
-	Pieza* alfil1(new Alfil(3, 0, true));
-	listapiezas.agregar(alfil1);
-	Pieza* alfil2(new Alfil(6, 0, true));
-	listapiezas.agregar(alfil2);
-	Pieza* alfil3(new Alfil(6, 7, false));
-	listapiezas.agregar(alfil3);
-	Pieza* alfil4(new Alfil(3, 7, false));
-	listapiezas.agregar(alfil4);
-	
+
 	//ALFILES
-	p[0] = new Alfil(3, 0, true);
-	p[1] = new Alfil(6, 0, true);
-	p[2] = new Alfil(6, 7, false);
-	p[3] = new Alfil(3, 7, false);
+	p[0] = new Alfil(2, 0, true);
+	p[1] = new Alfil(5, 0, true);
+	p[2] = new Alfil(5, 7, false);
+	p[3] = new Alfil(2, 7, false);
 
 	//TORRES	
 	p[4] = new Torre(0, 0, true);
@@ -79,5 +74,20 @@ void Tablero::mueve(unsigned char key) {
 }
 void Tablero::mover(int x, int y)
 {
-	p[4]->mover(x, y);
+	
+	for (int i = 0; i < listapiezas.size(); i++) {
+		listapiezas.getPiezas(i)->mover(x,y);
+	}
+}
+
+Tablero:: Tablero() {
+	inicializa();
+}
+
+void Tablero:: seleccionar_pieza(int x, int y) {
+
+	Pieza* nueva_Pieza_Seleccionada = listapiezas.getPieza(x, y);
+	if (piezaSeleccionada != nueva_Pieza_Seleccionada) {
+		piezaSeleccionada = nueva_Pieza_Seleccionada;
+	}
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "ListaPiezas.h"
 #include "freeglut.h"
+#include "Posicion.h"
+#include "Pieza.h"
 struct posicion{
 	int posx;
 	int posy;
@@ -10,9 +12,9 @@ class Tablero
 private:
 	posicion origen;//sirve para determinar la posición origen
 	posicion destino;//sirve para determinar la posicion de destino
-	ListaPiezas listapiezas;
+	
 	public:
-	//	Tablero() {};
+		Tablero();
 		void setX_origen(int x) { origen.posx = x; }
 		void setY_origen(int y) { origen.posy = y; }
 		void setX_destino(int x) { destino.posx = x; }
@@ -25,5 +27,6 @@ private:
 		void inicializa();
 		void mueve(unsigned char key);
 		void mover(int x, int y);
+		void seleccionar_pieza(int x, int y);
 //Definición del destructor
 	};

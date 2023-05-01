@@ -22,6 +22,9 @@ class ListaPiezas
 			}
 			return piezas[ind]; // retornar el puntero a la pieza en el índice dado
 		}
+		void getClass() {
+
+		}
 		void destruirContenido();
 		int size() {
 			return numero;

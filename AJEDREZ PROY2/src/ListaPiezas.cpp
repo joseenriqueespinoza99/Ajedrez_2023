@@ -40,3 +40,4 @@ void ListaPiezas::destruirContenido()
 	}
 	return nullptr;
 }
+ 

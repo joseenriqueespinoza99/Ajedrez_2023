@@ -6,7 +6,7 @@
 #include "Alfil.h"
 #include "Pieza.h"
 #include "Posicion.h"
-
+#include "Pieza.h"
 class Mundo {
 private:
 public:
@@ -15,17 +15,15 @@ public:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
-
 	Posicion celda; //celda seleccionada por el raton
-
 //Metodos
-
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();
 	void mueve();
 	void dibuja();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
+
 
 };
 

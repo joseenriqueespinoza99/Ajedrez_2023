@@ -2,17 +2,18 @@
 #include "string.h"
 #include <iostream>
 
-enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	class Pieza{
         private:
-       TipoPieza piez;
+ 
+      int jugador_actual;
     protected:
      
         bool color;
         int posx;
         int posy;
+
 	public:
-    
+        enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
         virtual ~Pieza() {}
         void dibujar(const char foto[], int x1, int y2);
         void pintar(const char foto1[], const char foto2[], const char foto3[], const char foto4[], int x1, int y2);
@@ -30,6 +31,6 @@ enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
            posy = y_destino;
         }
 	virtual void mover(int x, int y)=0;
-       
+    virtual TipoPieza getClass() const = 0;
 	};
 

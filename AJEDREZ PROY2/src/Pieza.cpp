@@ -1,6 +1,6 @@
 #include "Pieza.h"
 #include "ETSIDI.h"
-
+#include "Tablero.h"
 void Pieza::dibujar(const char foto[], int x1, int y1)
 {
     glEnable(GL_TEXTURE_2D);
@@ -60,8 +60,6 @@ void Pieza::pintar(const char foto1[], const char foto2[], const char foto3[], c
     }
     
 }
-
-
 
 void Pieza::setColor(bool c)
 {

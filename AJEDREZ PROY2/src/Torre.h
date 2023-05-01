@@ -15,4 +15,5 @@ public:
 	void mover(int x, int y) override;
 	Torre(int x, int y, bool color);
 	//nt getValor() { return valor; };
+	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
 };
