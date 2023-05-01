@@ -4,7 +4,7 @@
 #include "Torre.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
-//Pieza* p[32];
+Pieza* p[32];
 ListaPiezas listapiezas;
 void Tablero::inicializa() {
 
@@ -16,6 +16,21 @@ void Tablero::inicializa() {
 	listapiezas.agregar(alfil3);
 	Pieza* alfil4(new Alfil(3, 7, false));
 	listapiezas.agregar(alfil4);
+	
+	//ALFILES
+	p[0] = new Alfil(3, 0, true);
+	p[1] = new Alfil(6, 0, true);
+	p[2] = new Alfil(6, 7, false);
+	p[3] = new Alfil(3, 7, false);
+
+	//TORRES	
+	p[4] = new Torre(0, 0, true);
+	p[5] = new Torre(7, 0, true);
+	p[6] = new Torre(0, 7, false);
+	p[7] = new Torre(7, 7, false);
+
+	for (int i = 0; i < 8; i++)
+		listapiezas.agregar(p[i]);
 	
 }
 void Tablero::dibuja() {
@@ -61,4 +76,8 @@ void Tablero::mueve(unsigned char key) {
 	alfil4->mueve(key);
 	
 
+}
+void Tablero::mover(int x, int y)
+{
+	p[4]->mover(x, y);
 }
