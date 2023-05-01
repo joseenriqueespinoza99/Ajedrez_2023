@@ -62,7 +62,7 @@ void Mundo::coord_a_celda(int x, int y)
 
 	if ((x < 163 || x > 637 || y < 61 || y > 535))
 		celda = { 0, 0 }; // si se selecciona fuera del tablero
-	
+	t.mover(celda.x-1, celda.y-1);
 	//Comprobacion auxiliar (borrar)
 //	std::cout << "(" << x << "," << y << ")" << std::endl;
 //	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
