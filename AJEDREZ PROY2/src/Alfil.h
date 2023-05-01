@@ -11,6 +11,7 @@ public:
 	//bool esmovimientoValido(int x_origen, int y_origen,int x_destino,int y_destino) const override;
 	void mueve(unsigned char key)override;
 	void dibuja() override;
-
+	bool esmovimientoValido(int x_Destino, int y_Destino) const;
+	void mover(int x_destino, int y_destino);
 
 };

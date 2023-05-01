@@ -8,22 +8,15 @@
 ListaPiezas listapiezas;
 void Tablero::inicializa() {
 
-	Pieza* alfil1(new Alfil(1, 3, true));
+	Pieza* alfil1(new Alfil(3, 0, true));
 	listapiezas.agregar(alfil1);
-	Pieza* alfil2(new Alfil(1, 4, true));
+	Pieza* alfil2(new Alfil(6, 0, true));
 	listapiezas.agregar(alfil2);
-	Pieza* alfil3(new Alfil(1, 6, true));
+	Pieza* alfil3(new Alfil(6, 7, false));
 	listapiezas.agregar(alfil3);
-	Pieza* alfil4(new Alfil(1, 7, true));
+	Pieza* alfil4(new Alfil(3, 7, false));
 	listapiezas.agregar(alfil4);
-	Pieza*torre1(new Torre(2, 3, true));
-	listapiezas.agregar(torre1);
-	Pieza* torre2(new Torre(2, 4, true));
-	listapiezas.agregar(torre2);
-	Pieza* torre3(new Torre(2, 6, true));
-	listapiezas.agregar(torre3);
-	Pieza* torre4(new Torre(2, 7, true));
-	listapiezas.agregar(torre4);
+	
 }
 void Tablero::dibuja() {
 	for (int i = 0; i < listapiezas.size(); i++) {

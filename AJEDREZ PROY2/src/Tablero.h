@@ -10,7 +10,6 @@ class Tablero
 private:
 	posicion origen;//sirve para determinar la posición origen
 	posicion destino;//sirve para determinar la posicion de destino
-	
 	ListaPiezas listapiezas;
 	public:
 	//	Tablero() {};

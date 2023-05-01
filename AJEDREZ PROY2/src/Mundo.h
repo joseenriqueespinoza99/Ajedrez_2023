@@ -19,13 +19,12 @@ public:
 	Posicion celda; //celda seleccionada por el raton
 
 //Metodos
-	
+
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();
 	void mueve();
 	void dibuja();
-
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 
 };

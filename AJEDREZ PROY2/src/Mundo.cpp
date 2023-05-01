@@ -7,8 +7,6 @@
 #include "Alfil.h"
 #include "Caballo.h"
 
-ListaPiezas p;
-
 
 void Mundo::rotarOjo()
 {

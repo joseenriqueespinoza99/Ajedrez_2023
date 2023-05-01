@@ -1,6 +1,5 @@
-﻿  Mundo.cpp
-C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(61,30): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(62,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  ajedrez.cpp
+﻿  Alfil.cpp
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(44,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Tablero.cpp
   Generando código...
-  Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

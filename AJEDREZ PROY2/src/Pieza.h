@@ -23,8 +23,12 @@ enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
         bool getColor(){  return color;}
         int getX()  { return posx; }
         int getY()  { return posy; }
-        int setX(int x) { this->posx = x; return x; }
-        int setY(int y) { this->posy = y; return y; }
+        void setX(int x) { this->posx = x; }
+        void setY(int y) { this->posy = y; }
+       void setPosicion(int x_destino, int y_destino) {
+           posx = x_destino;
+           posy = y_destino;
+        }
        
 	};
 
