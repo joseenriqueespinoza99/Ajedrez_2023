@@ -6,7 +6,10 @@
 #include "Pieza.h"
 #include "Alfil.h"
 #include "Caballo.h"
+
 ListaPiezas p;
+
+
 void Mundo::rotarOjo()
 {
 	float dist = sqrt(x_ojo * x_ojo + z_ojo * z_ojo);
@@ -52,3 +55,20 @@ void Mundo::tecla(unsigned char key)
 
 	t.mueve(key);
 }
+
+void Mundo::coord_a_celda(int x, int y)
+{
+	celda.x=(((x - 163) / 59.5) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (163) y 59.5 el ancho de celda aproximado
+	celda.y=(9-((y- 61) / 59.5)); // Pos en y del raton, la separacion por arriba desde que empieza la ventana hasta que empieza el tablero (61) y 59.5 el ancho de celda aproximado
+
+
+	if ((x < 163 || x > 637 || y < 61 || y > 535))
+		celda = { 0, 0 }; // si se selecciona fuera del tablero
+	
+	//Comprobacion auxiliar (borrar)
+//	std::cout << "(" << x << "," << y << ")" << std::endl;
+//	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
+
+}
+
+
