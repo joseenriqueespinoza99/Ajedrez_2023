@@ -29,6 +29,7 @@ enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
            posx = x_destino;
            posy = y_destino;
         }
+	virtual void mover(int x, int y)=0;
        
 	};
 
