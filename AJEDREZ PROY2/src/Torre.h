@@ -12,7 +12,7 @@ public:
 	//virtual bool getPrimerMovimiento() { return primer_movimiento; }
 	void dibuja() override;
 	void mueve(unsigned char key) override;
-
+	void mover(int x, int y) override;
 	Torre(int x, int y, bool color);
 	//nt getValor() { return valor; };
 };
