@@ -1,6 +1,8 @@
 #pragma once
+#define MAX_PIEZAS 32
 #include "ListaPiezas.h"
 #include "freeglut.h"
+#include "ETSIDI.h"
 struct posicion{
 	int posx;
 	int posy;
@@ -8,11 +10,15 @@ struct posicion{
 class Tablero
 {
 private:
-	posicion origen;//sirve para determinar la posición origen
+	posicion origen;//sirve para determinar la posiciÃ³n origen
 	posicion destino;//sirve para determinar la posicion de destino
+	bool turno;
+	bool final;
 	ListaPiezas listapiezas;
 	public:
-	//	Tablero() {};
+	Tablero();
+	Pieza* casillaOcupaBlanca[MAX_PIEZAS / 2];
+	Pieza* casillaOcupaNegra[MAX_PIEZAS / 2];
 		void setX_origen(int x) { origen.posx = x; }
 		void setY_origen(int y) { origen.posy = y; }
 		void setX_destino(int x) { destino.posx = x; }
@@ -24,7 +30,9 @@ private:
 		void dibuja();
 		void inicializa();
 		void mueve(unsigned char key);
-//Definición del destructor
+		bool EspacioBlancas(Pieza* c);
+		bool EspacioNegras(Pieza* c);
+		bool EspacioCasilla(Pieza* p);
+		void cambiarTurno();
+//DefiniciÃ³n del destructor
 	};
-
-
