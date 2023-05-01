@@ -1,3 +1,4 @@
+#include "Torre.h"
 Torre::Torre(int x, int y, bool color) {
 	this->posx = x;
 	this->posy = y;
