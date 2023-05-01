@@ -58,15 +58,16 @@ void Mundo::tecla(unsigned char key)
 
 void Mundo::coord_a_celda(int x, int y)
 {
-	celda.x=(((x - 190) / 55) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (190) y 55 el ancho de casilla
-	celda.y=9-(((y- 100) / 55) + 1); // Pos en y del raton, la separacion a abajo desde que empieza la ventana hasta que empieza el tablero (100) y 55 el ancho de casilla
+	celda.x=(((x - 163) / 59.5) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (163) y 59.5 el ancho de celda aproximado
+	celda.y=(9-((y- 61) / 59.5)); // Pos en y del raton, la separacion por arriba desde que empieza la ventana hasta que empieza el tablero (61) y 59.5 el ancho de celda aproximado
 
 
-	if ((celda.x < 1 || celda.y > 8 || celda.x > 8 || celda.y < 1))
-		celda = { -1, -1 }; // si se selecciona fuera del tablero
+	if ((x < 163 || x > 637 || y < 61 || y > 535))
+		celda = { 0, 0 }; // si se selecciona fuera del tablero
 	
-	//Comprobacion auxiliar
-	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test realizado para comprobar por consola que la celda seleccionada es la correcta
+	//Comprobacion auxiliar (borrar)
+//	std::cout << "(" << x << "," << y << ")" << std::endl;
+//	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
 
 }
 

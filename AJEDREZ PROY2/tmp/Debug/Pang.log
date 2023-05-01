@@ -1,2 +1,6 @@
 ﻿  Mundo.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(61,30): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(62,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  ajedrez.cpp
+  Generando código...
   Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
