@@ -1,7 +1,7 @@
 #pragma once
 #include "string.h"
 #include <iostream>
-
+#include "Tablero.h"
 enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	class Pieza{
         private:
