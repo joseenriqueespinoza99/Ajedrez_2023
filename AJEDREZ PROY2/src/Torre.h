@@ -13,5 +13,5 @@ public:
 	Torre(int x, int y, bool color);
 	//nt getValor() { return valor; };
 	
-	void movimientos()
+	void movimientos();
 };
