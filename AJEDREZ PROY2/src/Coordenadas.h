@@ -1,4 +1,5 @@
 #pragma once
+
 class Coordenadas
 {
 protected:
@@ -14,6 +15,7 @@ public:
 	int setY() { return y; }
 	int getX(int xi) { this->x = xi; return x; }
 	int getY(int yi) { this->y = yi; return y; }
-	int cambioPos(int x1[2], int x2[2]) { this->posAct[2] = x1[2]; this->posSig[2] = x2[2]; }
+	int getXY(int xx, int yy) { return x; return y; };
+	int cambioPos(int x1[2], int x2[2]);
 };
 

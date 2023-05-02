@@ -1,21 +1,15 @@
-﻿  Alfil.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(44,2): warning C4551: la llamada a la función no tiene lista de argumentos
-  Caballo.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Caballo.cpp(62,3): warning C4551: la llamada a la función no tiene lista de argumentos
+﻿  Coordenadas.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.cpp(14,18): error C2084: la función 'int Coordenadas::setY(void)' ya tiene un cuerpo
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.h(15,6): message : vea la definición anterior de 'setY'
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.cpp(19,18): error C2084: la función 'int Coordenadas::setX(void)' ya tiene un cuerpo
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.h(14,6): message : vea la definición anterior de 'setX'
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.cpp(24,19): error C2084: la función 'int Coordenadas::getX(int)' ya tiene un cuerpo
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.h(16,6): message : vea la definición anterior de 'getX'
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.cpp(29,18): error C2084: la función 'int Coordenadas::getY(int)' ya tiene un cuerpo
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.h(17,6): message : vea la definición anterior de 'getY'
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.cpp(34,18): error C2084: la función 'int Coordenadas::getXY(int,int)' ya tiene un cuerpo
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Coordenadas.h(18,6): message : vea la definición anterior de 'getXY'
   ListaPiezas.cpp
-  Mundo.cpp
-  Pieza.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(11,43): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(11,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(12,45): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(12,41): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(13,47): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(13,41): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(14,45): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(14,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-  Tablero.cpp
   Torre.cpp
-C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(35,2): warning C4551: la llamada a la función no tiene lista de argumentos
-  ajedrez.cpp
+C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(35,2): warning C4551: la llamada a la función no tiene lista de argumentos
   Generando código...
-  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
