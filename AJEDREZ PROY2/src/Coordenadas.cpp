@@ -41,9 +41,11 @@ int Coordenadas::getXY(int xx, int yy) {
 	return y;
 }
 
-int Coordenadas::cambioPos(int x1[2], int x2[2]) {
+int Coordenadas::cambioPos(int x1[1], int x2[1]) {
 
-	 this->posAct[2] = x1[2];
-	 this->posSig[2] = x2[2]; 
+	 this->posAct[1] = x1[1];
+	 this->posSig[1] = x2[1]; 
+	 return posSig[1];
+	 return posAct[1];
 }
 
