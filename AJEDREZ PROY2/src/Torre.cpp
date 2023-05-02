@@ -36,8 +36,7 @@ void Torre::mueve(unsigned char key)
 }
 
 void Torre::dibuja() {
-	setColor(true);
-			if (getColor() == true) {
+			if (color == true) {
 				pintar("imagenes/torrenegra.png", "imagenes/torreblanca.png", "imagenes/torrenblanca.png", "imagenes/torrennegra.png", getX(), getY()+1);
 				casilla_torre = true;
 			}
@@ -49,7 +48,16 @@ void Torre::dibuja() {
 
 void Torre::mover(int x, int y)
 {
-	setX(x);
-	setY(y);
+	if (esmovimientoValido(x, y)) {
+		// Actualizar la posición del alfil a la celda de destino
+		setX(x);
+		setY(y);
+	}
 	glutPostRedisplay;
+}
+
+bool Torre::esmovimientoValido(int x_Destino, int y_Destino) {
+	if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
+		return true;
+	return false;
 }

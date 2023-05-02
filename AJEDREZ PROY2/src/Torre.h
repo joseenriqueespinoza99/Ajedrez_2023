@@ -16,7 +16,6 @@ public:
 	Torre(int x, int y, bool color);
 	//nt getValor() { return valor; };
 	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
-	 bool esmovimientoValido(int x_Destino, int y_Destino) {
-		 return true;
-	};
+
+	 bool esmovimientoValido(int x_Destino, int y_Destino);
 };
