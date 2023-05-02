@@ -26,7 +26,7 @@ private:
 		void dibuja();
 		void inicializa();
 		void mueve(unsigned char key);
-		void mover(int x, int y);
 		void seleccionar_pieza(int x, int y);
+		void mover(int x, int y);
 //Definición del destructor
 	};

@@ -1,4 +1,5 @@
 #include "ListaPiezas.h"
+ListaPiezas lista;
 ListaPiezas::ListaPiezas()
 {
 	numero = 0;

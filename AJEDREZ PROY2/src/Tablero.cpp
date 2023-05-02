@@ -5,9 +5,10 @@
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
+
 Pieza* p[32];
 ListaPiezas listapiezas;
-Pieza* piezaSeleccionada = nullptr;
+Pieza* piezaSelecc=nullptr;
 
 void Tablero::inicializa() {
 
@@ -28,6 +29,11 @@ void Tablero::inicializa() {
 		listapiezas.agregar(p[i]);
 	
 }
+Tablero::Tablero() {
+	inicializa();
+}
+
+
 void Tablero::dibuja() {
 	for (int i = 0; i < listapiezas.size(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
@@ -61,33 +67,29 @@ void Tablero::dibuja() {
 }
 void Tablero::mueve(unsigned char key) {
 
-	Pieza* alfil1 = listapiezas.getPiezas(0);
-	alfil1->mueve(key);
-	Pieza* alfil2 = listapiezas.getPiezas(1);
-	alfil2->mueve(key);
-	Pieza* alfil3 = listapiezas.getPiezas(2);
-	alfil3->mueve(key);
-	Pieza* alfil4 = listapiezas.getPiezas(3);
-	alfil4->mueve(key);
-	
-
-}
-void Tablero::mover(int x, int y)
-{
-	
 	for (int i = 0; i < listapiezas.size(); i++) {
-		listapiezas.getPiezas(i)->mover(x,y);
+		listapiezas.getPiezas(i)->mueve(key);
 	}
+
 }
-
-Tablero:: Tablero() {
-	inicializa();
-}
-
-void Tablero:: seleccionar_pieza(int x, int y) {
-
+void Tablero::seleccionar_pieza(int x, int y) {
 	Pieza* nueva_Pieza_Seleccionada = listapiezas.getPieza(x, y);
-	if (piezaSeleccionada != nueva_Pieza_Seleccionada) {
-		piezaSeleccionada = nueva_Pieza_Seleccionada;
+	if (nueva_Pieza_Seleccionada != nullptr) {
+		// Se ha seleccionado una pieza, actualizar el estado del tablero
+		piezaSelecc = nueva_Pieza_Seleccionada;
+		std::cout << "pieza seleccionada";
+		glutPostRedisplay;
 	}
+
 }
+ void Tablero::mover(int x, int y) {
+	if (piezaSelecc!=nullptr) {
+		// Intentar mover la pieza a la nueva posición
+		piezaSelecc->mover(x, y);
+		std::cout << "pieza movida" << std::endl;
+		glutPostRedisplay;
+	}
+	}
+
+	
+		

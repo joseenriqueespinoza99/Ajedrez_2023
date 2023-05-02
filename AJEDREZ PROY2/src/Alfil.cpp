@@ -56,17 +56,17 @@ bool Alfil::esmovimientoValido(int x_Destino, int y_Destino) {
 }
 
 void Alfil::dibuja() {
-	setColor(true);
-	if (getColor() == true)
+	if (color == true)
 		pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX(), getY()+1);
 	else
 		pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX(), getY()+1);
 }
 
 void Alfil::mover(int x, int y) {
-
+	getX();
+	getY();
 	// Comprobar si el movimiento es válido para el alfil
-	if (esmovimientoValido(x, y)) {
+	if(esmovimientoValido(x,y)){
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);

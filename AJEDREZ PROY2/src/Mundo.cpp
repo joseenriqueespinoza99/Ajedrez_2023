@@ -60,9 +60,14 @@ void Mundo::coord_a_celda(int x, int y)
 	celda.y=(9-((y- 61) / 59.5)); // Pos en y del raton, la separacion por arriba desde que empieza la ventana hasta que empieza el tablero (61) y 59.5 el ancho de celda aproximado
 
 
-	if ((x < 163 || x > 637 || y < 61 || y > 535))
+	if ((x < 163 || x > 637 || y < 61 || y > 535)) {
 		celda = { 0, 0 }; // si se selecciona fuera del tablero
+	}
+	t.seleccionar_pieza(celda.x - 1, celda.y - 1);
+	t.setX_destino(x);
+	t.setY_destino(y);
 	t.mover(celda.x-1, celda.y-1);
+	
 	//Comprobacion auxiliar (borrar)
 //	std::cout << "(" << x << "," << y << ")" << std::endl;
 //	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta

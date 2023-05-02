@@ -1,6 +1,7 @@
 #include "Pieza.h"
 #include "ETSIDI.h"
 #include "Tablero.h"
+
 void Pieza::dibujar(const char foto[], int x1, int y1)
 {
     glEnable(GL_TEXTURE_2D);

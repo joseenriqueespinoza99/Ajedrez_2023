@@ -1,2 +1,4 @@
-﻿  Tablero.cpp
+﻿  Mundo.cpp
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(59,30): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(60,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
