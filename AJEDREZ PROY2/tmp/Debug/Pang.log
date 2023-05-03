@@ -1,1 +1,10 @@
-﻿  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+﻿  Tablero.cpp
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(42,52): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(42,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(43,56): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(43,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(44,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(44,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(45,55): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(45,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+  Pang.vcxproj -> D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

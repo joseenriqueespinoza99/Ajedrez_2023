@@ -35,6 +35,16 @@ Tablero::Tablero() {
 
 
 void Tablero::dibuja() {
+	if (piezaSelecc != nullptr) {//dibujar 
+		glLineWidth(4.0);
+		glColor3f(1.0, 0.0, 0.0);
+		glBegin(GL_LINE_LOOP);
+		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY());
+		glVertex2f(piezaSelecc->getX() + 1, piezaSelecc->getY());
+		glVertex2f(piezaSelecc->getX() + 1, piezaSelecc->getY() + 1);
+		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY() + 1);
+		glEnd();
+	}
 	for (int i = 0; i < listapiezas.size(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
@@ -123,11 +133,13 @@ void Tablero::mover(int x, int y) {
 				std::cout << "Se esta eliminando la pieza";
 				piezaSelecc->mover(x, y);
 				piezaSelecc = nullptr;
+				ETSIDI::play("sonidos/comer.wav");
 			}
 		}
 		else {	
 			piezaSelecc->mover(x, y);
 			piezaSelecc = nullptr;
+			ETSIDI::play("sonidos/mover.wav");
 		}
 
 		}
