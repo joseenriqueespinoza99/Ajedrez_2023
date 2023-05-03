@@ -24,10 +24,8 @@ void Mundo::dibuja()
 
 
 	t.dibuja();
- 
-	
 	//aqui es donde hay que poner el codigo de dibujo
-	//dibujo del suelo
+
 	glDisable(GL_LIGHTING);
 
 	glEnable(GL_LIGHTING);
@@ -66,8 +64,9 @@ void Mundo::coord_a_celda(int x, int y)
 	t.seleccionar_pieza(celda.x - 1, celda.y - 1);
 	t.setX_destino(x);
 	t.setY_destino(y);
-	t.mover(celda.x-1, celda.y-1);
+		t.mover(celda.x - 1, celda.y - 1);
 	
+
 	//Comprobacion auxiliar (borrar)
 //	std::cout << "(" << x << "," << y << ")" << std::endl;
 //	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta

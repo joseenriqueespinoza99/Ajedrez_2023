@@ -75,11 +75,4 @@ void Alfil::mover(int x, int y) {
 }
 
 
-/*void Alfil::capturar(int x, int y, ListaPiezas& listaPiezas) {
-	// comprobar si hay una pieza en la casilla destino
-	Pieza* piezaDestino = listaPiezas.getPieza(x, y);
-	if (piezaDestino != nullptr && piezaDestino->getColor() != getColor()) {
-		// eliminar la pieza de la lista
-		listaPiezas.eliminar(piezaDestino);
-	}
-};*/
+

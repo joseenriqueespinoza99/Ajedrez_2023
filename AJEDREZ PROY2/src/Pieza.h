@@ -6,16 +6,15 @@
         private:
  
       int jugador_actual;
+
     protected:
      
         bool color;
         int posx;
         int posy;
-
 	public:
-        bool seleccionada = false;
-        enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
         virtual ~Pieza() {}
+        enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
         void dibujar(const char foto[], int x1, int y2);
         void pintar(const char foto1[], const char foto2[], const char foto3[], const char foto4[], int x1, int y2);
         virtual void mueve(unsigned char key) = 0;
@@ -34,5 +33,6 @@
         }
 	virtual void mover(int x, int y)=0;
     virtual TipoPieza getClass() const = 0;
+ 
 	};
 

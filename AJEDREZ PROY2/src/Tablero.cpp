@@ -75,21 +75,65 @@ void Tablero::mueve(unsigned char key) {
 void Tablero::seleccionar_pieza(int x, int y) {
 	Pieza* nueva_Pieza_Seleccionada = listapiezas.getPieza(x, y);
 	if (nueva_Pieza_Seleccionada != nullptr) {
-		// Se ha seleccionado una pieza, actualizar el estado del tablero
-		piezaSelecc = nueva_Pieza_Seleccionada;
-		std::cout << "pieza seleccionada";
-		glutPostRedisplay;
-	}
-
-}
- void Tablero::mover(int x, int y) {
-	if (piezaSelecc!=nullptr) {
-		// Intentar mover la pieza a la nueva posición
-		piezaSelecc->mover(x, y);
-		std::cout << "pieza movida" << std::endl;
-		glutPostRedisplay;
-	}
-	}
-
-	
+		// mueva a una nueva casilla estando seleccioanda la pieza
+		if (piezaSelecc != nullptr) {
+			if (listapiezas.getPieza(x, y) != nullptr) {
+				// Si la casilla seleccionada está ocupada, mueve la pieza seleccionada encima de la pieza allí 
+				//dentro de la funcion mover se elimina la esa pieza que esta debajo de la lista
+				mover( x, y);
+				piezaSelecc = nullptr;
+			}
+			else {
+				// mueve la pieza si la casilla seleccionada esta vacia
+				mover( x, y);
+				piezaSelecc = nullptr;
+			}
+		}
+		else {
+			// No hay ninguna pieza seleccionada, selecciona la pieza en la nueva casilla
+			piezaSelecc = nueva_Pieza_Seleccionada;
+		}
 		
+		glutPostRedisplay();
+
+	}
+
+	}
+bool Tablero::casillaOcupada(int x, int y) {
+	Pieza* piezaEnCasilla = listapiezas.getPieza(x, y);
+	if (piezaEnCasilla == nullptr) {
+		return false; // Casilla vacía
+	}
+	else {
+		std::cout << "Esta ocupada";
+		return true; // Casilla ocupada
+	
+	}
+}
+
+void Tablero::mover(int x, int y) {
+	Pieza* piezaDestino = listapiezas.getPieza(x, y);
+	if (piezaSelecc != nullptr) {
+		// Intentar mover la pieza a la nueva posición
+		if (casillaOcupada(x, y)) {
+			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) {
+				// La casilla seleccionada contiene una pieza del equipo contrario
+				// Eliminar la pieza del equipo contrario y mover la pieza seleccionada a esa casilla
+				listapiezas.eliminar(piezaDestino);
+				std::cout << "Se esta eliminando la pieza";
+				piezaSelecc->mover(x, y);
+				piezaSelecc = nullptr;
+			}
+		}
+		else {	
+			piezaSelecc->mover(x, y);
+			piezaSelecc = nullptr;
+		}
+
+		}
+		glutPostRedisplay();
+	}
+
+
+
+

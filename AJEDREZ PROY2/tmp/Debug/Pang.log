@@ -1,17 +1,1 @@
-﻿  Alfil.cpp
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(13,12): warning C4101: 'ALFIL': variable local sin referencia
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(46,2): warning C4551: la llamada a la función no tiene lista de argumentos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(74,2): warning C4551: la llamada a la función no tiene lista de argumentos
-  Mundo.cpp
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(59,30): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Mundo.cpp(60,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-  Tablero.cpp
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(81,3): warning C4551: la llamada a la función no tiene lista de argumentos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(90,3): warning C4551: la llamada a la función no tiene lista de argumentos
-  Torre.cpp
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(11,12): warning C4101: 'TORRE': variable local sin referencia
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(35,2): warning C4551: la llamada a la función no tiene lista de argumentos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(56,2): warning C4551: la llamada a la función no tiene lista de argumentos
-  ajedrez.cpp
-  Generando código...
-  Pang.vcxproj -> D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+﻿  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

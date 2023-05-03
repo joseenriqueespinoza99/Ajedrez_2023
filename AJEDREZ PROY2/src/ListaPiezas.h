@@ -21,11 +21,9 @@ class ListaPiezas
 			}
 			return piezas[ind]; // retornar el puntero a la pieza en el índice dado
 		}
-		bool buscarPieza(Pieza* pieza) const;
 		void getClass() {
 
 		}
-	
 
 		void destruirContenido();
 		int size() {
