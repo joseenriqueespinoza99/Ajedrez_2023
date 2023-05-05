@@ -11,12 +11,27 @@ Caballo::Caballo(int x, int y, bool color) {
 
 }
 
+void Caballo::mover(int x, int y) {
+	getX();
+	getY();
+	// Comprobar si el movimiento es válido para el alfil
+	if (esmovimientoValido(x, y)) {
+		// Actualizar la posición del alfil a la celda de destino
+		setX(x);
+		setY(y);
+	}
+	glutPostRedisplay;
+}
+
+void Caballo::mueve(unsigned char key) {
+
+}
 
 Caballo::~Caballo() {
 
 }
 
-void Caballo::mover(char p[2], char z) {
+void Caballo::movaje(char p[2], char z) {
 	int k = getX();
 	int l = getY();
 	if (p == "rd") {
