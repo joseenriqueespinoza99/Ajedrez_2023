@@ -26,6 +26,7 @@
     <ClCompile Include="src\ListaPiezas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
+    <ClCompile Include="src\Peon.cpp" />
     <ClCompile Include="src\Pieza.cpp" />
     <ClCompile Include="src\Posicion.cpp" />
     <ClCompile Include="src\Rey.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="src\Dama.h" />
     <ClInclude Include="src\ListaPiezas.h" />
     <ClInclude Include="src\Mundo.h" />
+    <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Posicion.h" />
     <ClInclude Include="src\Rey.h" />
