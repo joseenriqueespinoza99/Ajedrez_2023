@@ -2,6 +2,7 @@
 #include "Tablero.h"
 #include "Alfil.h"
 #include "Torre.h"
+#include "Rey.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
