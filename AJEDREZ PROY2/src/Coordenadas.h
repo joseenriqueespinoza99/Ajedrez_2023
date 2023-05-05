@@ -15,6 +15,6 @@ public:
 	int getX(int xi);// { this->x = xi; return x; }
 	int getY(int yi);// { this->y = yi; return y; }
 	int getXY(int xx, int yy);// { return x; return y; };
-	int cambioPos(int x1[1], int x2[1]);
+	int cambioPos(int x1[2], int x2[2]);
 };
 
