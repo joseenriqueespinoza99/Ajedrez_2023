@@ -11,7 +11,7 @@ void Rey::mueve(unsigned char key) {}
 
 // Método para comprobar si el movimiento del rey es válido
 bool Rey::esmovimientoValido(int x_Destino, int y_Destino) {
-	// Le rey se puede mover 1 casilla a su alrededor
+	// El rey se puede mover 1 casilla a su alrededor
 	if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
 		return 1;
 	else if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 1)

@@ -4,8 +4,7 @@
 #include "freeglut.h"
 #include <math.h>
 #include "Pieza.h"
-#include "Alfil.h"
-#include "Caballo.h"
+
 
 
 void Mundo::rotarOjo()

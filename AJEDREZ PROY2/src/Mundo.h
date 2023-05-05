@@ -5,6 +5,7 @@
 #include "Caballo.h"
 #include "Alfil.h"
 #include "Rey.h"
+#include "Peon.h"
 #include "Pieza.h"
 #include "Posicion.h"
 #include "Pieza.h"
