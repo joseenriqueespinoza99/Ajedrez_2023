@@ -22,6 +22,7 @@
     <ClCompile Include="src\Alfil.cpp" />
     <ClCompile Include="src\Caballo.cpp" />
     <ClCompile Include="src\Coordenadas.cpp" />
+    <ClCompile Include="src\Dama.cpp" />
     <ClCompile Include="src\ListaPiezas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\ajedrez.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="src\Alfil.h" />
     <ClInclude Include="src\Caballo.h" />
     <ClInclude Include="src\Coordenadas.h" />
+    <ClInclude Include="src\Dama.h" />
     <ClInclude Include="src\ListaPiezas.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pieza.h" />

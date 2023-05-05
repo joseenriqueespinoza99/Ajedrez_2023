@@ -7,6 +7,7 @@
 #include "ListaPiezas.h"
 #include "Mundo.h"
 #include "Caballo.h"
+#include "Dama.h"
 
 Pieza* p[32];
 ListaPiezas listapiezas;
@@ -33,9 +34,12 @@ void Tablero::inicializa() {
 	p[11] = new Caballo(6, 7, false);
 
 	p[12] = new Rey(4, 0, true);
-	p[13] = new Rey(3, 7, false);
+	p[13] = new Rey(4, 7, false);
 
-	for (int i = 0; i < 14; i++)
+	p[14] = new Dama(3, 0, true);
+	p[15] = new Dama(3, 7, false);
+
+	for (int i = 0; i < 16; i++)
 		listapiezas.agregar(p[i]);
 	
 }
