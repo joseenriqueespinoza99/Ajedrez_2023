@@ -6,6 +6,7 @@
 #include "Pieza.h"
 #include "Alfil.h"
 #include "Caballo.h"
+#include "Rey.h"
 
 
 void Mundo::rotarOjo()

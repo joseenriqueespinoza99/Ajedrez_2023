@@ -49,9 +49,15 @@ void Alfil::mueve(unsigned char key) {
 
 // Método para comprobar si el movimiento del alfil es válido
 bool Alfil::esmovimientoValido(int x_Destino, int y_Destino) {
-	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
+	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma	
 	int distanciaX = abs(x_Destino - posx);
 	int distanciaY = abs(y_Destino - posy);
+
+	//TEST
+	std::cout << std::endl << "x_Destino" << x_Destino << std::endl;
+	std::cout << "posx" << posx << std::endl;
+	std::cout << "distanciaX" << distanciaX << std::endl;
+
 	return (distanciaX == distanciaY);
 }
 

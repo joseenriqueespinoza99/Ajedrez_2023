@@ -4,6 +4,7 @@
 #include "Posicion.h"
 #include "Pieza.h"
 #include "ETSIDI.h"
+
 struct posicion{
 	int posx;
 	int posy;

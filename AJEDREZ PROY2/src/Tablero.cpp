@@ -2,6 +2,7 @@
 #include "Tablero.h"
 #include "Alfil.h"
 #include "Torre.h"
+#include "Rey.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
@@ -24,6 +25,11 @@ void Tablero::inicializa() {
 	p[5] = new Torre(7, 0, true);
 	p[6] = new Torre(0, 7, false);
 	p[7] = new Torre(7, 7, false);
+
+	//REY	
+	p[8] = new Rey(4, 0, true);
+	p[9] = new Rey(3, 7, false);
+
 
 	for (int i = 0; i < 8; i++)
 		listapiezas.agregar(p[i]);
