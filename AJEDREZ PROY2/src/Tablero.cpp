@@ -32,8 +32,10 @@ void Tablero::inicializa() {
 	p[10] = new Caballo(1, 7, false);
 	p[11] = new Caballo(6, 7, false);
 
+	p[12] = new Rey(4, 0, true);
+	p[13] = new Rey(3, 7, false);
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 14; i++)
 		listapiezas.agregar(p[i]);
 	
 }

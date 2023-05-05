@@ -2,8 +2,8 @@
 
 
 Rey::Rey(int x, int y, bool color) {
-	this->posx = x;
-	this->posy = y;
+	this->setX(x);
+	this->setY(y);
 	this->color = color;
 	TipoPieza REY;
 }
@@ -12,9 +12,15 @@ void Rey::mueve(unsigned char key) {}
 // Método para comprobar si el movimiento del rey es válido
 bool Rey::esmovimientoValido(int x_Destino, int y_Destino) {
 	// Le rey se puede mover 1 casilla a su alrededor
-	if (abs(x_Destino - posx) == 1 || abs(y_Destino - posy) == 1)
+	if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
 		return 1;
-	else { return 0; }
+	else if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 1)
+		return 1;
+	else if (abs(x_Destino - getX()) == 0 && abs(y_Destino - getY()) == 1)
+		return 1;
+	else { 
+		return 0;
+	}
 }
 
 void Rey::dibuja() {
