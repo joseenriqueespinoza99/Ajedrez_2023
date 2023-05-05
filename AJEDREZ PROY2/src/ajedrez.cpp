@@ -56,7 +56,8 @@ void OnDraw(void)
 	//Para definir el punto de vista
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
-	
+
+	//poner aqui el código de dibujo
 	mundo.dibuja();
 
 	//no borrar esta linea ni poner nada despues
@@ -72,7 +73,7 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 void OnTimer(int value)
 {
-//poner aqui el código de animacion
+	//poner aqui el código de animacion
 	mundo.mueve();
 
 	//no borrar estas lineas
