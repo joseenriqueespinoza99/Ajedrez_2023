@@ -5,6 +5,7 @@
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
+#include "Caballo.h"
 
 Pieza* p[32];
 ListaPiezas listapiezas;
@@ -25,7 +26,13 @@ void Tablero::inicializa() {
 	p[6] = new Torre(0, 7, false);
 	p[7] = new Torre(7, 7, false);
 
-	for (int i = 0; i < 8; i++)
+	p[8] = new Caballo(1,0 ,true);
+	p[9] = new Caballo(6, 0, true);
+	p[10] = new Caballo(1, 7, false);
+	p[11] = new Caballo(6, 7, false);
+
+
+	for (int i = 0; i < 12; i++)
 		listapiezas.agregar(p[i]);
 	
 }
