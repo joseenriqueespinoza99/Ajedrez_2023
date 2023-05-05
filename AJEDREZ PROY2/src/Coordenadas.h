@@ -2,19 +2,19 @@
 class Coordenadas
 {
 private:
+
 	int x;
 	int y;
-	int posAct[2];
-	int posSig[2];
-
+	
 public:
-	Coordenadas(int xAct, int yAct);
+
 	virtual ~Coordenadas();
-	int setX();//{ return x; }
-	int setY();// { return y; }
-	int getX(int xi);// { this->x = xi; return x; }
-	int getY(int yi);// { this->y = yi; return y; }
+	int setX(int xi);//{ return x; }
+	int setY(int yi);// { return y; }
+	int getX();// { this->x = xi; return x; }
+	int getY();// { this->y = yi; return y; }
 	int getXY(int xx, int yy);// { return x; return y; };
-	int cambioPos(int x1[2], int x2[2]);
+	//las hacemos amigas para que puedan acceder a los atributo privados de la otra
+	friend class Pieza;
 };
 

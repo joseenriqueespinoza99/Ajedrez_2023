@@ -2,13 +2,13 @@
 #include "Pieza.h"
 #include "Tablero.h"
 #include "freeglut.h"
-class Torre:public Pieza
-{
-private:
+#include "Coordenadas.h"
+
+class Torre:public Pieza {
 
 public:
 	bool casilla_torre;
-	Torre();
+	
 	//virtual bool getPrimerMovimiento() { return primer_movimiento; }
 	void dibuja() override;
 	void mueve(unsigned char key) override;
@@ -17,5 +17,5 @@ public:
 	//nt getValor() { return valor; };
 	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
 
-	 bool esmovimientoValido(int x_Destino, int y_Destino);
+	bool esmovimientoValido(int x_Destino, int y_Destino);
 };

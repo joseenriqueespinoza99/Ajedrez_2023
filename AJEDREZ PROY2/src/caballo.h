@@ -1,18 +1,15 @@
 #pragma once
 #include "Tablero.h"
-
+#include "Coordenadas.h"
 #include "Pieza.h"
 
 
 class Caballo:public Pieza
 {
 	
-	private:
-	
-
 	public:
 
-		Caballo(int xc, int yc, bool color);
+		Caballo(int x, int y, bool color);
 		virtual ~Caballo();
 		void mover(char p[2], char z) ;
 		bool comprobacion(int x, int y);

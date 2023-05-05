@@ -1,15 +1,14 @@
 #include "Torre.h"
 
-Torre::Torre()
-{
 
-}
 Torre::Torre(int x, int y, bool color) {
-	this->posx = x;
-	this->posy = y;
+	this->setX(x);
+	this->setY(y);
 	this->color = color;
 	TipoPieza TORRE;
 }
+
+
 void Torre::mueve(unsigned char key) 
 {
 	int i = getX();

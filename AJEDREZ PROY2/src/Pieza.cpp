@@ -1,6 +1,9 @@
 #include "Pieza.h"
 #include "ETSIDI.h"
 #include "Tablero.h"
+#include "Coordenadas.h"
+
+
 
 void Pieza::dibujar(const char foto[], int x1, int y1)
 {

@@ -3,15 +3,12 @@
 #include "caballo.h"
 #include <math.h>
 
+Caballo::Caballo(int x, int y, bool color) {
+	this->setX(x);
+	this->setY(y);
+	this->color = color;
+	TipoPieza CABALLO;
 
-using namespace std;
-
-
-
-Caballo::Caballo(int xc, int yc, bool color) {
-	posx=xc ;
-	posy=yc ;
-	color=color ;
 }
 
 
@@ -66,11 +63,11 @@ void Caballo::mover(char p[2], char z) {
 
 	bool Caballo::comprobacion(int x, int y) {
 		//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
-		if (fabs(x - posx) == 1 && (fabs(y - posy) == 2)) {
+		if (fabs(x - getX()) == 1 && (fabs(y - getY()) == 2)) {
 			return true;
 		}
 		//si hay 2 casillas de diferencia entre fila inicial y final y 1 entre las columnas sera correcto
-		else if (fabs(x - posx) == 2 && (fabs(y - posy) == 1)) {
+		else if (fabs(x - getX()) == 2 && (fabs(y - getY()) == 1)) {
 			return true;
 		}
 		else return false;

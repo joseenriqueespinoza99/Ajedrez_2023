@@ -7,8 +7,8 @@
 #include "Mundo.h"
 
 Alfil :: Alfil(int x, int y, bool color) {
-	this->posx = x;
-	this->posy = y;
+	this->setX(x);
+	this->setY(y);
 	this->color = color;
 	TipoPieza ALFIL;
 }
@@ -50,8 +50,8 @@ void Alfil::mueve(unsigned char key) {
 // Método para comprobar si el movimiento del alfil es válido
 bool Alfil::esmovimientoValido(int x_Destino, int y_Destino) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
-	int distanciaX = abs(x_Destino - posx);
-	int distanciaY = abs(y_Destino - posy);
+	int distanciaX = abs(x_Destino - getX());
+	int distanciaY = abs(y_Destino - getY());
 	return (distanciaX == distanciaY);
 }
 
