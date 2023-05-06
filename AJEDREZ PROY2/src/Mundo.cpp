@@ -63,7 +63,7 @@ void Mundo::coord_a_celda(int x, int y)
 	t.seleccionar_pieza(celda.x - 1, celda.y - 1);
 	t.setX_destino(x);
 	t.setY_destino(y);
-		t.mover(celda.x - 1, celda.y - 1);
+	t.mover(celda.x - 1, celda.y - 1, 0);
 	
 
 	//Comprobacion auxiliar (borrar)

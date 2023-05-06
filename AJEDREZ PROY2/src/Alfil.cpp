@@ -42,7 +42,7 @@ void Alfil::mueve(unsigned char key) {
 	}
 
 // Método para comprobar si el movimiento del alfil es válido
-bool Alfil::esmovimientoValido(int x_Destino, int y_Destino) {
+bool Alfil::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
 	int distanciaX = abs(x_Destino - getX());
 	int distanciaY = abs(y_Destino - getY());
@@ -56,11 +56,11 @@ void Alfil::dibuja() {
 		pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX(), getY()+1);
 }
 
-void Alfil::mover(int x, int y) {
+void Alfil::mover(int x, int y, bool comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido para el alfil
-	if(esmovimientoValido(x,y)){
+	if(esmovimientoValido(x,y, comer)){
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);

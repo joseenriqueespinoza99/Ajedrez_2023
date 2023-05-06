@@ -10,9 +10,9 @@ public:
 	Caballo(int x, int y, bool color);
 	Caballo() {};
 	void dibuja() override;
-	void mover(int x, int y) override;
+	void mover(int x, int y, bool comer) override;
 	void mueve(unsigned char key) override;
-	bool esmovimientoValido(int x_Destino, int y_Destino);
+	bool esmovimientoValido(int x_Destino, int y_Destino, bool comer);
 	void movaje(char p[2], char z);
 	virtual TipoPieza getClass() const override { return TipoPieza::CABALLO; }
 	bool casilla_cab;
