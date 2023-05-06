@@ -151,14 +151,14 @@ void Tablero::mover(int x, int y) {
 	if (piezaSelecc != nullptr) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {
-			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) {
-				// La casilla seleccionada contiene una pieza del equipo contrario
-				// Eliminar la pieza del equipo contrario y mover la pieza seleccionada a esa casilla
-				listapiezas.eliminar(piezaDestino);
-				std::cout << "Se esta eliminando la pieza";
-				piezaSelecc->mover(x, y);
-				piezaSelecc = nullptr;
-				ETSIDI::play("sonidos/comer.wav");
+			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) { // La casilla seleccionada contiene una pieza del equipo contrario
+				if (piezaSelecc->esmovimientoValido(x, y) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
+					listapiezas.eliminar(piezaDestino);
+					std::cout << "Se esta eliminando la pieza";
+					piezaSelecc->mover(x, y);
+					piezaSelecc = nullptr;
+					ETSIDI::play("sonidos/comer.wav");
+				}			
 			}
 		}
 		else {	
