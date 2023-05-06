@@ -1,5 +1,3 @@
-#include <iostream>
-#include "freeglut.h"
 #include "caballo.h"
 #include <math.h>
 
@@ -8,10 +6,10 @@ Caballo::Caballo(int x, int y, bool color) {
 	this->setY(y);
 	this->color = color;
 	TipoPieza CABALLO;
-
 }
 
-bool Caballo::esmovimientoValido(int x_Destino, int y_Destino) {
+
+bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
 	if (fabs(x_Destino - getX()) == 1 && (fabs(y_Destino - getY()) == 2)) {
 		return true;
@@ -23,11 +21,11 @@ bool Caballo::esmovimientoValido(int x_Destino, int y_Destino) {
 	else return false;
 }
 
-void Caballo::mover(int x, int y) {
+void Caballo::mover(int x, int y, bool comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido para el alfil
-	if (esmovimientoValido(x, y)) {
+	if (esmovimientoValido(x, y, comer)) {
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);
@@ -39,9 +37,6 @@ void Caballo::mueve(unsigned char key) {
 
 }
 
-Caballo::~Caballo() {
-
-}
 
 void Caballo::movaje(char p[2], char z) {
 	int k = getX();

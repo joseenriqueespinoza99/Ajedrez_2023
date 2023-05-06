@@ -28,7 +28,7 @@ private:
 		void inicializa();
 		void mueve(unsigned char key);
 		void seleccionar_pieza(int x, int y);
-		void mover(int x, int y);
+		void mover(int x, int y, bool comer);
 		bool casillaOcupada(int x, int y);
 	
 //Definición del destructor

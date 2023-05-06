@@ -9,8 +9,8 @@ public:
 	Peon() {};
 	void dibuja() override;
 	void mueve(unsigned char key) override;
-	bool esmovimientoValido(int x_destino, int y_destino) override;
-	void mover(int x, int y) override;
+	bool esmovimientoValido(int x_destino, int y_destino, bool comer) override;
+	void mover(int x, int y, bool comer) override;
 	virtual TipoPieza getClass() const override { return TipoPieza::PEON; }
 };
 

@@ -45,9 +45,9 @@ void Torre::dibuja() {
 			}
 }
 
-void Torre::mover(int x, int y)
+void Torre::mover(int x, int y, bool comer)
 {
-	if (esmovimientoValido(x, y)) {
+	if (esmovimientoValido(x, y, comer)) {
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);
@@ -55,7 +55,7 @@ void Torre::mover(int x, int y)
 	glutPostRedisplay;
 }
 
-bool Torre::esmovimientoValido(int x_Destino, int y_Destino) {
+bool Torre::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
 		return true;
 	return false;

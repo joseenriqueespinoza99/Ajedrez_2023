@@ -10,7 +10,7 @@ Rey::Rey(int x, int y, bool color) {
 void Rey::mueve(unsigned char key) {}
 
 // Método para comprobar si el movimiento del rey es válido
-bool Rey::esmovimientoValido(int x_Destino, int y_Destino) {
+bool Rey::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	// El rey se puede mover 1 casilla a su alrededor
 	if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
 		return 1;
@@ -30,11 +30,11 @@ void Rey::dibuja() {
 		pintar("imagenes/reyblanco.png", "imagenes/reynegro.png", "imagenes/reynnegro.png", "imagenes/reynblanco.png", getX(), getY() + 1);
 }
 
-void Rey::mover(int x, int y) {
+void Rey::mover(int x, int y, bool comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido 
-	if (esmovimientoValido(x, y)) {
+	if (esmovimientoValido(x, y, comer)) {
 		// Actualizar la posición del rey a la celda de destino
 		setX(x);
 		setY(y);

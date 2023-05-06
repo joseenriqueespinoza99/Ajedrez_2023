@@ -1,11 +1,5 @@
 #include "freeglut.h"
 #include "Tablero.h"
-#include "Alfil.h"
-#include "Torre.h"
-#include "Caballo.h"
-#include "Dama.h"
-#include "Rey.h"
-#include "Peon.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
@@ -101,12 +95,11 @@ void Tablero::dibuja() {
 
 }
 void Tablero::mueve(unsigned char key) {
-
 	for (int i = 0; i < listapiezas.size(); i++) {
 		listapiezas.getPiezas(i)->mueve(key);
 	}
-
 }
+
 void Tablero::seleccionar_pieza(int x, int y) {
 	Pieza* nueva_Pieza_Seleccionada = listapiezas.getPieza(x, y);
 	if (nueva_Pieza_Seleccionada != nullptr) {
@@ -115,12 +108,12 @@ void Tablero::seleccionar_pieza(int x, int y) {
 			if (listapiezas.getPieza(x, y) != nullptr) {
 				// Si la casilla seleccionada está ocupada, mueve la pieza seleccionada encima de la pieza allí 
 				//dentro de la funcion mover se elimina la esa pieza que esta debajo de la lista
-				mover( x, y);
+				mover( x, y, 0);
 				piezaSelecc = nullptr;
 			}
 			else {
 				// mueve la pieza si la casilla seleccionada esta vacia
-				mover( x, y);
+				mover( x, y, 0);
 				piezaSelecc = nullptr;
 			}
 		}
@@ -146,25 +139,35 @@ bool Tablero::casillaOcupada(int x, int y) {
 	}
 }
 
-void Tablero::mover(int x, int y) {
+void Tablero::mover(int x, int y, bool comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {
-			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) {
-				// La casilla seleccionada contiene una pieza del equipo contrario
-				// Eliminar la pieza del equipo contrario y mover la pieza seleccionada a esa casilla
-				listapiezas.eliminar(piezaDestino);
-				std::cout << "Se esta eliminando la pieza";
-				piezaSelecc->mover(x, y);
-				piezaSelecc = nullptr;
-				ETSIDI::play("sonidos/comer.wav");
+			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) { // La casilla seleccionada contiene una pieza del equipo contrario
+				comer = 1;
+				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
+					listapiezas.eliminar(piezaDestino);
+					std::cout << "Se esta eliminando la pieza";
+					piezaSelecc->mover(x, y, comer);
+					piezaSelecc = nullptr;
+					ETSIDI::play("sonidos/comer.wav");
+				}
+				else {
+					std::cout << "Movimiento no valido para la pieza" << std::endl;
+				}
 			}
 		}
 		else {	
-			piezaSelecc->mover(x, y);
-			piezaSelecc = nullptr;
-			ETSIDI::play("sonidos/mover.wav");
+			if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
+				comer = 0;
+				piezaSelecc->mover(x, y, comer);
+				piezaSelecc = nullptr;
+				ETSIDI::play("sonidos/mover.wav");
+			}
+			else{
+				std::cout << "Movimiento no valido para la pieza" << std::endl;
+			}
 		}
 
 		}

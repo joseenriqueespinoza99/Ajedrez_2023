@@ -1,10 +1,5 @@
-#include "Pieza.h"
-#include "Tablero.h"
-#include "freeglut.h"
-#include <iostream>
-#include "Torre.h"
-#include "Mundo.h"
 #include "Dama.h"
+
 Dama::Dama(int x, int y, bool color) {
 	this->setX(x);
 	this->setY(y);
@@ -47,7 +42,7 @@ void Dama::mueve(unsigned char key) {
 }
 
 // Método para comprobar si el movimiento del alfil es válido
-bool Dama::esmovimientoValido(int x_Destino, int y_Destino) {
+bool Dama::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
 	if (fabs(getX() - x_Destino) == fabs(getY() - y_Destino))
 		return true;
@@ -65,11 +60,11 @@ void Dama::dibuja() {
 		pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
 }
 
-void Dama::mover(int x, int y) {
+void Dama::mover(int x, int y, bool comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido para el alfil
-	if (esmovimientoValido(x, y)) {
+	if (esmovimientoValido(x, y, comer)) {
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);
