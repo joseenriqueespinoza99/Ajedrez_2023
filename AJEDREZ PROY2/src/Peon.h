@@ -4,7 +4,9 @@
 #include "freeglut.h"
 
 class Peon :public Pieza {
+	int movimientos = 0;
 public:
+	
 	Peon(int x, int y, bool color);
 	Peon() {};
 	void dibuja() override;

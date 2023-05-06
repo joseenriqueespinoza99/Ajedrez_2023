@@ -18,8 +18,10 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino) {
 		else if ((color == 0) && (y_Destino - getY()) == -1) {
 			return 1;
 		}
-		else
-			return 0;
+		else if ((color == 0) && ((y_Destino - getY()) == -2) && (movimientos == 0)) {
+			return 1;
+		}
+		else { return 0; }
 	}
 	else
 		return 0;
@@ -40,6 +42,7 @@ void Peon::mover(int x, int y) {
 		// Actualizar la posición del rey a la celda de destino
 		setX(x);
 		setY(y);
+		movimientos++;
 	}
 	glutPostRedisplay;
 }
