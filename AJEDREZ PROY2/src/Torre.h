@@ -2,7 +2,6 @@
 #include "Pieza.h"
 #include "Tablero.h"
 #include "freeglut.h"
-#include "Coordenadas.h"
 
 class Torre:public Pieza {
 

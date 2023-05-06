@@ -1,10 +1,4 @@
 #include "Alfil.h"
-#include "Pieza.h"
-#include "Tablero.h"
-#include "freeglut.h"
-#include <iostream>
-#include "Torre.h"
-#include "Mundo.h"
 
 Alfil :: Alfil(int x, int y, bool color) {
 	this->setX(x);

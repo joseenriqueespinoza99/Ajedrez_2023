@@ -1,6 +1,8 @@
 #pragma once
-#include "Coordenadas.h"
 #include "Pieza.h"
+#include "Tablero.h"
+#include "freeglut.h"
+
 
 class Dama:public Pieza
 {

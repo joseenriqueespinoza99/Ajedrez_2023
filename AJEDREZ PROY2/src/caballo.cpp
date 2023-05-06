@@ -1,5 +1,3 @@
-#include <iostream>
-#include "freeglut.h"
 #include "caballo.h"
 #include <math.h>
 
@@ -8,8 +6,8 @@ Caballo::Caballo(int x, int y, bool color) {
 	this->setY(y);
 	this->color = color;
 	TipoPieza CABALLO;
-
 }
+
 
 bool Caballo::esmovimientoValido(int x_Destino, int y_Destino) {
 	//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
@@ -39,9 +37,6 @@ void Caballo::mueve(unsigned char key) {
 
 }
 
-Caballo::~Caballo() {
-
-}
 
 void Caballo::movaje(char p[2], char z) {
 	int k = getX();

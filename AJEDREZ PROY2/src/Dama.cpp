@@ -1,10 +1,5 @@
-#include "Pieza.h"
-#include "Tablero.h"
-#include "freeglut.h"
-#include <iostream>
-#include "Torre.h"
-#include "Mundo.h"
 #include "Dama.h"
+
 Dama::Dama(int x, int y, bool color) {
 	this->setX(x);
 	this->setY(y);

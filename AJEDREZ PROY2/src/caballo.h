@@ -1,6 +1,7 @@
 #pragma once
-#include "Coordenadas.h"
 #include "Pieza.h"
+#include "Tablero.h"
+#include "freeglut.h"
 
 
 class Caballo:public Pieza
@@ -8,7 +9,7 @@ class Caballo:public Pieza
 public:
 
 	Caballo(int x, int y, bool color);
-	virtual ~Caballo();
+	Caballo() {};
 	void dibuja() override;
 	void mover(int x, int y) override;
 	void mueve(unsigned char key) override;
@@ -18,4 +19,6 @@ public:
 	bool casilla_cab;
 
 };
+
+
 
