@@ -11,14 +11,17 @@ void Peon::mueve(unsigned char key) {}
 
 // Método para comprobar si el movimiento del peon es válido
 bool Peon::esmovimientoValido(int x_Destino, int y_Destino) {
-	if (abs(x_Destino - getX()) == 0) {
-		if ((color == 1) && (y_Destino - getY()) == 1) {
+	if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
+		if ((color == 1) && (y_Destino - getY()) == 1) { // Solo se puede mover 1 casilla hacia delante
+			return 1;
+		}
+		else if ((color == 1) && ((y_Destino - getY()) == 2) && (getMov() == 0)) { // Se puede mover 2 casillas si estaba en la posicion inicial
 			return 1;
 		}
 		else if ((color == 0) && (y_Destino - getY()) == -1) {
 			return 1;
 		}
-		else if ((color == 0) && ((y_Destino - getY()) == -2) && (movimientos == 0)) {
+		else if ((color == 0) && ((y_Destino - getY()) == -2) && (getMov() == 0)) {
 			return 1;
 		}
 		else { return 0; }
@@ -42,7 +45,7 @@ void Peon::mover(int x, int y) {
 		// Actualizar la posición del rey a la celda de destino
 		setX(x);
 		setY(y);
-		movimientos++;
+		setMov(); // Al cambiar de posición se suma 1 a movimientos
 	}
 	glutPostRedisplay;
 }
