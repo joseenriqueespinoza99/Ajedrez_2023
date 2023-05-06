@@ -7,7 +7,6 @@
 class Caballo:public Pieza
 {
 public:
-
 	Caballo(int x, int y, bool color);
 	Caballo() {};
 	void dibuja() override;
@@ -19,6 +18,7 @@ public:
 	bool casilla_cab;
 
 };
+
 
 
 
