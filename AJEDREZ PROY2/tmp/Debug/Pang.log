@@ -1,1 +1,4 @@
-﻿  Pang.vcxproj -> D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+﻿  Peon.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(8,12): warning C4101: 'PEON': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(50,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

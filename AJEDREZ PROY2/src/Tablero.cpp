@@ -2,12 +2,14 @@
 #include "Tablero.h"
 #include "Alfil.h"
 #include "Torre.h"
+#include "Caballo.h"
+#include "Dama.h"
 #include "Rey.h"
+#include "Peon.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
 #include "Mundo.h"
-#include "Caballo.h"
-#include "Dama.h"
+
 
 Pieza* p[32];
 ListaPiezas listapiezas;
@@ -28,18 +30,27 @@ void Tablero::inicializa() {
 	p[6] = new Torre(0, 7, false);
 	p[7] = new Torre(7, 7, false);
 
+	//CABALLOS
 	p[8] = new Caballo(1,0 ,true);
 	p[9] = new Caballo(6, 0, true);
 	p[10] = new Caballo(1, 7, false);
 	p[11] = new Caballo(6, 7, false);
 
+	//REYES
 	p[12] = new Rey(4, 0, true);
 	p[13] = new Rey(4, 7, false);
 
+	//DAMAS
 	p[14] = new Dama(3, 0, true);
 	p[15] = new Dama(3, 7, false);
 
-	for (int i = 0; i < 16; i++)
+	//PEONES
+	for (int i = 0; i < 8; i++) {
+		p[16 + i] = new Peon(i, 1, true);
+		p[24 + i] = new Peon(i, 6, false);
+	}
+
+	for (int i = 0; i < 32; i++)
 		listapiezas.agregar(p[i]);
 	
 }

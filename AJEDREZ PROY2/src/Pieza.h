@@ -7,7 +7,7 @@
 
     private:
         int jugador_actual;
-
+        int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
     protected:
      
         bool color;
@@ -28,6 +28,8 @@
         
         //virtual bool esMovimientoValido(int x_origen, int y_origen, int x_destino, int y_destino) = 0;
         bool getColor(){  return color;}
+        void setMov() { movimientos++; }
+        int getMov() { return movimientos; }
         int getX()  { return Coordenadas.getX(); }
         int getY()  { return Coordenadas.getY(); }
         void setX(int x) { this->Coordenadas.setX(x); }
