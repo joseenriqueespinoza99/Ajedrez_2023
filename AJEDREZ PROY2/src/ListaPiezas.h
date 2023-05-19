@@ -1,5 +1,6 @@
 #pragma once
 #include "Pieza.h"
+#include "Coordenadas.h"
 #define MAX_PIEZAS 32
 
 class ListaPiezas
@@ -7,6 +8,7 @@ class ListaPiezas
 	private:
 		int numero;
 		Pieza* piezas[MAX_PIEZAS];
+		Coordenadas coor;
 
 	public:
 		ListaPiezas();
@@ -29,6 +31,7 @@ class ListaPiezas
 		int size() {
 			return numero;
 		}
+		bool comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, int turno);
 
 };
 

@@ -120,8 +120,8 @@ void Tablero::seleccionar_pieza(int x, int y) {
 		glutPostRedisplay();
 
 	}
+}
 
-	}
 bool Tablero::casillaOcupada(int x, int y) {
 	Pieza* piezaEnCasilla = listapiezas.getPieza(x, y);
 	if (piezaEnCasilla == nullptr) {
@@ -130,7 +130,6 @@ bool Tablero::casillaOcupada(int x, int y) {
 	else {
 		std::cout << "Esta ocupada";
 		return true; // Casilla ocupada
-	
 	}
 }
 

@@ -9,6 +9,81 @@ Peon::Peon(int x, int y, bool color) {
 void Peon::mueve(unsigned char key) {}
 
 // Método para comprobar si el movimiento del peon es válido
+//bool Peon::PosiblesMovimientosBase(int x_Destino, int y_Destino, bool comer) {
+//	if (comer == false) {
+//		if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
+//			if ((color == 1) && (y_Destino - getY()) == 1) { // Solo se puede mover 1 casilla hacia delante
+//				return 1;
+//			}
+//			else if ((color == 1) && ((y_Destino - getY()) == 2) && (getMov() == 0)) { // Se puede mover 2 casillas si estaba en la posicion inicial
+//				if (Tablero::casillaOcupada(x_Destino, y_Destino) == true) {
+//					return 0;
+//				}
+//				return 1;
+//			}
+//			else if ((color == 0) && (y_Destino - getY()) == -1) {
+//				return 1;
+//			}
+//			else if ((color == 0) && ((y_Destino - getY()) == -2) && (getMov() == 0)) {
+//				return 1;
+//			}
+//			else { return 0; }
+//		}
+//	}
+//
+//	else { // Solo si va a comer
+//		// Solo se puede comer 1 casilla en diagonal 
+//		if ((color == 1) && (x_Destino - getX()) == 1 && (y_Destino - getY()) == 1) { // Superior derecha
+//			return 1;
+//		}
+//		else if ((color == 1) && (x_Destino - getX()) == -1 && (y_Destino - getY()) == 1) { // Superior izquierda
+//			return 1;
+//		}
+//		else if ((color == 0) && (x_Destino - getX()) == -1 && (y_Destino - getY()) == -1) { // inferior izquierda
+//			return 1;
+//		}
+//		else if ((color == 0) && (x_Destino - getX()) == 1 && (y_Destino - getY()) == -1) { // inferior derecha
+//			return 1;
+//		}
+//		else { return 0; }
+//	}
+//	return 0;
+//}
+//
+//bool Peon::PosiblesMovimientos(int x_Destino, int y_Destino, bool comer) {
+//	if (PosiblesMovimientosBase(x_Destino, y_Destino, comer) == true) {
+//		if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
+//			if ((color == 1) && ((y_Destino - getY()) == 2) && (getMov() == 0)) { // Se puede mover 2 casillas si estaba en la posicion inicial
+//				return 1;
+//			}
+//			else if ((color == 0) && (y_Destino - getY()) == -1) {
+//				return 1;
+//			}
+//			else if ((color == 0) && ((y_Destino - getY()) == -2) && (getMov() == 0)) {
+//				return 1;
+//			}
+//			else { return 0; }
+//		}
+//	}
+//
+//	else { // Solo si va a comer
+//		// Solo se puede comer 1 casilla en diagonal 
+//		if ((color == 1) && (x_Destino - getX()) == 1 && (y_Destino - getY()) == 1) { // Superior derecha
+//			return 1;
+//		}
+//		else if ((color == 1) && (x_Destino - getX()) == -1 && (y_Destino - getY()) == 1) { // Superior izquierda
+//			return 1;
+//		}
+//		else if ((color == 0) && (x_Destino - getX()) == -1 && (y_Destino - getY()) == -1) { // inferior izquierda
+//			return 1;
+//		}
+//		else if ((color == 0) && (x_Destino - getX()) == 1 && (y_Destino - getY()) == -1) { // inferior derecha
+//			return 1;
+//		}
+//		else { return 0; }
+//	}
+//	return 0;
+//}
 bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	if (comer == false) {
 		if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
