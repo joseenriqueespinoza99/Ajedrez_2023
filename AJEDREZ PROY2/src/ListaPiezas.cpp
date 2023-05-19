@@ -49,25 +49,30 @@ void ListaPiezas::destruirContenido()
 
  bool ListaPiezas::comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, int turno) {
 
+	 //obtenemos las coordenadas actuales de la clase Coordenadas	
 	 or_x = coor.getX();
 	 or_y = coor.getY();
 
+	 //sacamos la x y la y siguiente mediante un doble bucle anidado
 	 for (int i = 0; i < 32; i++) {
 		 dest_x = (piezas[i]->getX());
 		 for (int j = 0; j < 32; j++) {
 			 dest_y = (piezas[j]->getY());
-			 //coor.setY(dest_y);
+			 //ahora particularizamos la trayectoria para cada pieza
 			 for (int k = 0; k < 32; k++) {
-				 //
+				 //alfil, solo en diagonal
 				 if ((k < 4) && ((dest_x - dest_y) == (or_x - or_y))) {
 					 return true;
 				 }
+				 //torre, solo en horizontal o vertical 
 				 else if ((3 < k < 8) && ((or_x - dest_x == 0 && or_y - dest_y != 0)) || ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
 					 return true;
 				 }
+				 //dama, una mezcla de ambas
 				 else if ((13 < k < 16) && (((or_x - dest_x == 0 && or_y - dest_y != 0)) || ((or_x - dest_x != 0) && (or_y - dest_y == 0)) || ((dest_x - dest_y) == (or_x - or_y)))) {
 					 return true;
 				 }
+				 //ninguna otra pieza es necesaria
 				 else {
 					 return false;
 				 }
