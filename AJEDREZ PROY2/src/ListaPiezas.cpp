@@ -20,17 +20,17 @@ void ListaPiezas::eliminar(Pieza* p)
 {
 	for (int i = 0; i < numero; i++)
 	{
-		if (piezas[i] == p)
-		{
+		if (piezas[i] == p) {
 			delete piezas[i];
-			piezas[i] = nullptr;
-			// Mover la última pieza de la lista a la posición eliminada
-			piezas[i] = piezas[numero - 1];
-			piezas[numero - 1] = nullptr;
-			numero--;
+				piezas[i] = nullptr;
+				// Mover la última pieza de la lista a la posición eliminada
+				piezas[i] = piezas[numero - 1];
+				piezas[numero - 1] = nullptr;
+				numero--;
 			return;
 		}
 	}
+
 }
 void ListaPiezas::destruirContenido()
 {

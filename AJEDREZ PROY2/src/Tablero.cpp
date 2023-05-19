@@ -4,11 +4,6 @@
 #include "ListaPiezas.h"
 #include "Mundo.h"
 
-
-Pieza* p[32];
-ListaPiezas listapiezas;
-Pieza* piezaSelecc=nullptr;
-
 void Tablero::inicializa() {
 
 
@@ -139,6 +134,13 @@ bool Tablero::casillaOcupada(int x, int y) {
 	}
 }
 
+void Tablero::posicionPiezas(int x, int y, bool comer) {
+	if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
+
+	}
+
+}
+
 void Tablero::mover(int x, int y, bool comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
@@ -152,6 +154,27 @@ void Tablero::mover(int x, int y, bool comer) {
 					piezaSelecc->mover(x, y, comer);
 					piezaSelecc = nullptr;
 					ETSIDI::play("sonidos/comer.wav");
+					//SACAR INFO PROVISIONAL
+					for (int i = 0; i < 32; i++) {
+						if (Alfil* alfil = dynamic_cast<Alfil*>(p[i])) {
+							std::cout << "Alfil: (" << alfil->getX() << ", " << alfil->getY() << "), activo: " << (alfil->getColor() ? "true" : "false") << std::endl;
+						}
+						else if (Torre* torre = dynamic_cast<Torre*>(p[i])) {
+							std::cout << "Torre: (" << torre->getX() << ", " << torre->getY() << "), activo: " << (torre->getColor() ? "true" : "false") << std::endl;
+						}
+						else if (Caballo* caballo = dynamic_cast<Caballo*>(p[i])) {
+							std::cout << "Caballo: (" << caballo->getX() << ", " << caballo->getY() << "), activo: " << (caballo->getColor() ? "true" : "false") << std::endl;
+						}
+						else if (Rey* rey = dynamic_cast<Rey*>(p[i])) {
+							std::cout << "Rey: (" << rey->getX() << ", " << rey->getY() << "), activo: " << (rey->getColor() ? "true" : "false") << std::endl;
+						}
+						else if (Dama* dama = dynamic_cast<Dama*>(p[i])) {
+							std::cout << "Dama: (" << dama->getX() << ", " << dama->getY() << "), activo: " << (dama->getColor() ? "true" : "false") << std::endl;
+						}
+						else if (Peon* peon = dynamic_cast<Peon*>(p[i])) {
+							std::cout << "Peon: (" << peon->getX() << ", " << peon->getY() << "), activo: " << (peon->getColor() ? "true" : "false") << std::endl;
+						}
+					}
 				}
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
@@ -164,6 +187,27 @@ void Tablero::mover(int x, int y, bool comer) {
 				piezaSelecc->mover(x, y, comer);
 				piezaSelecc = nullptr;
 				ETSIDI::play("sonidos/mover.wav");
+				//SACAR INFO PROVISIONAL
+				for (int i = 0; i < 32; i++) {
+					if (Alfil* alfil = dynamic_cast<Alfil*>(p[i])) {
+						std::cout << "Alfil: (" << alfil->getX() << ", " << alfil->getY() << "), activo: " << (alfil->getColor() ? "true" : "false") << std::endl;
+					}
+					else if (Torre* torre = dynamic_cast<Torre*>(p[i])) {
+						std::cout << "Torre: (" << torre->getX() << ", " << torre->getY() << "), activo: " << (torre->getColor() ? "true" : "false") << std::endl;
+					}
+					else if (Caballo* caballo = dynamic_cast<Caballo*>(p[i])) {
+						std::cout << "Caballo: (" << caballo->getX() << ", " << caballo->getY() << "), activo: " << (caballo->getColor() ? "true" : "false") << std::endl;
+					}
+					else if (Rey* rey = dynamic_cast<Rey*>(p[i])) {
+						std::cout << "Rey: (" << rey->getX() << ", " << rey->getY() << "), activo: " << (rey->getColor() ? "true" : "false") << std::endl;
+					}
+					else if (Dama* dama = dynamic_cast<Dama*>(p[i])) {
+						std::cout << "Dama: (" << dama->getX() << ", " << dama->getY() << "), activo: " << (dama->getColor() ? "true" : "false") << std::endl;
+					}
+					else if (Peon* peon = dynamic_cast<Peon*>(p[i])) {
+						std::cout << "Peon: (" << peon->getX() << ", " << peon->getY() << "), activo: " << (peon->getColor() ? "true" : "false") << std::endl;
+					}
+				}
 			}
 			else{
 				std::cout << "Movimiento no valido para la pieza" << std::endl;

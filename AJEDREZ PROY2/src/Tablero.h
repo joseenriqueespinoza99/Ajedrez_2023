@@ -11,6 +11,10 @@ struct posicion{
 class Tablero
 {
 private:
+	Pieza* p[32];
+	ListaPiezas listapiezas;
+	Pieza* piezaSelecc = nullptr;
+
 	posicion origen;//sirve para determinar la posición origen
 	posicion destino;//sirve para determinar la posicion de destino
 	
@@ -30,6 +34,7 @@ private:
 		void seleccionar_pieza(int x, int y);
 		void mover(int x, int y, bool comer);
 		bool casillaOcupada(int x, int y);
+		void posicionPiezas(int x, int y, bool comer);
 	
 //Definición del destructor
 	};

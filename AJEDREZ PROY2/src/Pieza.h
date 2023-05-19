@@ -9,14 +9,14 @@
         int jugador_actual;
         int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
     protected:
-     
+        int x, y;
         bool color;
         Coordenadas Coordenadas;
 
 	public:
 
         virtual ~Pieza() {}
-        enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
+        enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON};
 
         void dibujar(const char foto[], int x1, int y2);
         void pintar(const char foto1[], const char foto2[], const char foto3[], const char foto4[], int x1, int y2);
