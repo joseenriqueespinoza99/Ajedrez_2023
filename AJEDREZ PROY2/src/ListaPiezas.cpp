@@ -44,6 +44,7 @@ void ListaPiezas::eliminar(Pieza* p)
 	for (int i = 0; i < numero; i++)
 		if (piezas[i] == p) {
 			eliminar(i);
+			//std::cout << numero << std::endl; //comprobacion de que se eliminan bien las piezas
 			return;
 		}
 }
