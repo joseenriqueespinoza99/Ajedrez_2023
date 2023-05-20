@@ -5,30 +5,25 @@
 class ListaPiezas
 {
 	private:
-		int numero;
+		int numero = 0;
 		Pieza* piezas[MAX_PIEZAS];
 
 	public:
 		ListaPiezas();
 		bool agregar(Pieza* p);
+		void eliminar(int index);
 		void eliminar(Pieza* p);
+		void destruirContenido();
 		Pieza* getPiezas(int i){ return piezas[i]; };
 		Pieza* getPieza(int fila, int columna);
-		Pieza* getPiezass(int ind) {
-			if (ind < 0 || ind >= size()) {
-				// si el índice es inválido, retornar un puntero nulo
-				return nullptr;
-			}
-			return piezas[ind]; // retornar el puntero a la pieza en el índice dado
-		}
-		void getClass() {
-
-		}
-
-		void destruirContenido();
-		int size() {
-			return numero;
-		}
-
+		int getNumero() { return numero; }
+//de momento funciona igual sin lo de abajo
+		void dibuja();
+		void mueve(float t);
+		Pieza* operator [](int i);
+		void choque();
+		
 };
 
+
+	

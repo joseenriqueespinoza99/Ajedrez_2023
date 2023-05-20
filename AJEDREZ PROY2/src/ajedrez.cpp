@@ -1,10 +1,9 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
-#include "Mundo.h"
+#include "Tablero.h"
 
 
-
-Mundo mundo;
+Tablero tablero;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -39,7 +38,7 @@ int main(int argc,char* argv[])
 	glutKeyboardFunc(OnKeyboardDown);
 	glutMouseFunc(MouseButton);
 
-	mundo.inicializa();
+	tablero.inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
@@ -57,7 +56,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	mundo.dibuja();
+	tablero.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -65,7 +64,7 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	mundo.tecla(key);
+	tablero.tecla(key);
 
 	glutPostRedisplay();
 }
@@ -73,7 +72,7 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 void OnTimer(int value)
 {
 //poner aqui el código de animacion
-	mundo.mueve();
+	tablero.mueve();
 
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
@@ -82,7 +81,7 @@ void OnTimer(int value)
 void MouseButton(int button, int down, int x, int y) {
 	//final cell coordinates
 	if (button == down){
-		mundo.coord_a_celda(x, y);
+		tablero.coord_a_celda(x, y);
 	}
 	glutPostRedisplay();
 

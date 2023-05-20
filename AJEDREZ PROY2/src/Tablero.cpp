@@ -1,16 +1,11 @@
 #include "freeglut.h"
 #include "Tablero.h"
-#include "Pieza.h"
-#include "ListaPiezas.h"
-#include "Mundo.h"
 
-
-Pieza* p[32];
-ListaPiezas listapiezas;
-Pieza* piezaSelecc=nullptr;
 
 void Tablero::inicializa() {
-
+	x_ojo = 4.0;
+	y_ojo = 4.0;
+	z_ojo = 14.0;
 
 	//ALFILES
 	p[0] = new Alfil(2, 0, true);
@@ -43,17 +38,17 @@ void Tablero::inicializa() {
 		p[16 + i] = new Peon(i, 1, true);
 		p[24 + i] = new Peon(i, 6, false);
 	}
-
 	for (int i = 0; i < 32; i++)
-		listapiezas.agregar(p[i]);
-	
-}
-Tablero::Tablero() {
-	inicializa();
+		listapiezas.agregar(p[i]);	
 }
 
 
 void Tablero::dibuja() {
+	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
+		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
+		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
+
+	//aqui es donde hay que poner el codigo de dibujo
 	if (piezaSelecc != nullptr) {//dibujar 
 		glLineWidth(4.0);
 		glColor3f(1.0, 0.0, 0.0);
@@ -64,13 +59,13 @@ void Tablero::dibuja() {
 		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY() + 1);
 		glEnd();
 	}
-	for (int i = 0; i < listapiezas.size(); i++) {
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
 
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			posicion p{ i + 1, j + 1 };
+			Coordenadas p{ i + 1, j + 1 };
 			int indices = i + j;
 			if ((indices % 2) == 0) {
 				glBegin(GL_POLYGON);
@@ -94,8 +89,13 @@ void Tablero::dibuja() {
 	}
 
 }
-void Tablero::mueve(unsigned char key) {
-	for (int i = 0; i < listapiezas.size(); i++) {
+void Tablero::mueve() {
+
+}
+
+void Tablero::tecla(unsigned char key)
+{
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->mueve(key);
 	}
 }
@@ -174,6 +174,29 @@ void Tablero::mover(int x, int y, bool comer) {
 		glutPostRedisplay();
 	}
 
+void Tablero::coord_a_celda(int x, int y)
+{
+	celda.x = (((x - 163) / 59.5) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (163) y 59.5 el ancho de celda aproximado
+	celda.y = (9 - ((y - 61) / 59.5)); // Pos en y del raton, la separacion por arriba desde que empieza la ventana hasta que empieza el tablero (61) y 59.5 el ancho de celda aproximado
 
+
+	if ((x < 163 || x > 637 || y < 61 || y > 535)) {
+		celda = { 0, 0 }; // si se selecciona fuera del tablero
+	}
+	seleccionar_pieza(celda.x - 1, celda.y - 1);
+	destino.x = x;
+	destino.y = y;
+	mover(celda.x - 1, celda.y - 1, 0);
+
+
+	//Comprobacion auxiliar (borrar)
+//	std::cout << "(" << x << "," << y << ")" << std::endl;
+//	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
+
+}
+
+//Tablero::~Tablero() {
+//	//esferas.destruirContenido(); //TODO
+//}
 
 
