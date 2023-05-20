@@ -65,7 +65,4 @@ void Pieza::pintar(const char foto1[], const char foto2[], const char foto3[], c
     
 }
 
-void Pieza::setColor(bool c)
-{
-    color = c;
-}
+
