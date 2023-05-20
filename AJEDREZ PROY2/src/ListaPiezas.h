@@ -17,15 +17,13 @@ class ListaPiezas
 		Pieza* getPiezas(int i){ return piezas[i]; };
 		Pieza* getPieza(int fila, int columna);
 		int getNumero() { return numero; }
-
+//funciona igual sin lo de abajo
+		void dibuja();
+		void mueve(float t);
+		Pieza* operator [](int i);
+		void choque();
+		
 };
 
 
-	//void dibuja();
-	//void mueve(float t);
-
-
-	//Esfera* colision(const Hombre& h);
-	//Esfera* operator [](int i);
-	//int getNumero() { return numero; }
-
+	
