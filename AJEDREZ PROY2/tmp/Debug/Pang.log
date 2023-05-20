@@ -1,1 +1,45 @@
-﻿  Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+﻿  Alfil.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(7,12): warning C4101: 'ALFIL': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(40,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Alfil.cpp(68,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Caballo.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Caballo.cpp(8,12): warning C4101: 'CABALLO': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Caballo.cpp(33,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Caballo.cpp(81,3): warning C4551: la llamada a la función no tiene lista de argumentos
+  Dama.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Dama.cpp(7,12): warning C4101: 'REINA': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Dama.cpp(40,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Dama.cpp(72,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  ajedrez.cpp
+  Peon.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(7,12): warning C4101: 'PEON': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(67,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Pieza.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(15,43): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(15,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(16,45): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(16,41): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(17,47): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(17,41): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(18,45): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Pieza.cpp(18,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+  Rey.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Rey.cpp(8,12): warning C4101: 'REY': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Rey.cpp(42,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Tablero.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,52): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,56): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,55): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(181,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(182,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Torre.cpp
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(8,12): warning C4101: 'TORRE': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(34,2): warning C4551: la llamada a la función no tiene lista de argumentos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(55,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  Generando código...
+  Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
