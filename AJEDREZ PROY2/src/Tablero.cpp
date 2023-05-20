@@ -38,10 +38,8 @@ void Tablero::inicializa() {
 		p[16 + i] = new Peon(i, 1, true);
 		p[24 + i] = new Peon(i, 6, false);
 	}
-
 	for (int i = 0; i < 32; i++)
-		listapiezas.agregar(p[i]);
-	
+		listapiezas.agregar(p[i]);	
 }
 
 
@@ -61,7 +59,7 @@ void Tablero::dibuja() {
 		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY() + 1);
 		glEnd();
 	}
-	for (int i = 0; i < listapiezas.size(); i++) {
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
 
@@ -97,7 +95,7 @@ void Tablero::mueve() {
 
 void Tablero::tecla(unsigned char key)
 {
-	for (int i = 0; i < listapiezas.size(); i++) {
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->mueve(key);
 	}
 }
