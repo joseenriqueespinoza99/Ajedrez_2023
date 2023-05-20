@@ -174,6 +174,56 @@ void Tablero::mover(int x, int y, bool comer) {
 		glutPostRedisplay();
 	}
 
+
+bool Tablero::comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, int turno, bool trayectoria) {
+
+	//obtenemos las coordenadas actuales de la clase Coordenadas	
+	or_x = coor.x;
+	or_y = coor.y;
+
+	//sacamos la x y la y siguiente mediante un doble bucle anidado
+	for (int i = 0; i < 32; i++) {
+		dest_x = (piezas[i]->getX());
+		for (int j = 0; j < 32; j++) {
+			dest_y = (piezas[j]->getY());
+			//ahora particularizamos la trayectoria para cada pieza
+			for (int k = 0; k < 32; k++) {
+				//alfil, solo en diagonal
+				if (((dest_x - dest_y) == (or_x - or_y))) {
+					trayectoria = true;
+					std::cout << "trayectoria en diagonal" << std::endl;
+					return trayectoria;
+				}
+				//torre, solo en horizontal o vertical 
+				else if ( ((or_x - dest_x == 0 && or_y - dest_y != 0)) || ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
+					trayectoria = true;
+					std::cout << "trayectoria en vertical" << std::endl;
+					return trayectoria;
+				}
+				//dama, una mezcla de ambas
+				else if (  ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
+					trayectoria = true;
+					std::cout << "trayectoria en horizontal" << std::endl;
+					return trayectoria;
+				}
+				//ninguna otra pieza es necesaria
+				else {
+					trayectoria = false;
+					return trayectoria;
+				}
+
+			}
+
+		}
+	}
+}
+
+
+bool Tablero::comprobar_posicion(int or_x, int or_y, int dest_x, int dest_y) {
+
+}
+
+
 void Tablero::coord_a_celda(int x, int y)
 {
 	celda.x = (((x - 163) / 59.5) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (163) y 59.5 el ancho de celda aproximado

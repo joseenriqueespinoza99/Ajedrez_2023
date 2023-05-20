@@ -24,6 +24,8 @@ private:
 	ListaPiezas listapiezas;
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
+	Coordenadas coor;
+	Pieza* piezas[MAX_PIEZAS];
 
 public:
 	void dibuja();
@@ -33,6 +35,10 @@ public:
 	void seleccionar_pieza(int x, int y);
 	void mover(int x, int y, bool comer);
 	bool casillaOcupada(int x, int y);
+	bool comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, int turno, bool trayectoria);
+	bool comprobar_posicion(int or_x, int or_y, int dest_x, int dest_y);
+	//bool ComprobarNegra(Coordenadas const coordenada);
+	//bool ComprobarNegra(Coordenadas const coordenada);
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
 
