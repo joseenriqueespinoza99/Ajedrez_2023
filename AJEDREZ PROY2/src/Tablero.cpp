@@ -65,7 +65,7 @@ void Tablero::dibuja() {
 
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
-			Posicion p{ i + 1, j + 1 };
+			Coordenadas p{ i + 1, j + 1 };
 			int indices = i + j;
 			if ((indices % 2) == 0) {
 				glBegin(GL_POLYGON);

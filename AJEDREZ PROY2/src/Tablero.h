@@ -10,16 +10,16 @@
 #include "Dama.h"
 #include "Pieza.h"
 #include "ListaPiezas.h"
-#include "Posicion.h"
+#include "Coordenadas.h"
 
 class Tablero {
 private:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
-	Posicion celda; //celda seleccionada por el raton
-	Posicion origen;//sirve para determinar la posición origen
-	Posicion destino;//sirve para determinar la posicion de destino
+	Coordenadas celda; //celda seleccionada por el raton
+	Coordenadas origen;//sirve para determinar la posición origen
+	Coordenadas destino;//sirve para determinar la posicion de destino
 	
 	ListaPiezas listapiezas;
 	Pieza* p[32];

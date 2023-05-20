@@ -12,7 +12,6 @@ C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Dama.cpp(72,2): warning C4551: la llamada a la función no tiene lista de argumentos
   ListaPiezas.cpp
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\ListaPiezas.cpp(70,21): warning C4244: 'argumento': conversión de 'float' a 'unsigned char'; posible pérdida de datos
-  ajedrez.cpp
   Peon.cpp
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(7,12): warning C4101: 'PEON': variable local sin referencia
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Peon.cpp(67,2): warning C4551: la llamada a la función no tiene lista de argumentos
@@ -43,5 +42,6 @@ C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(8,12): warning C4101: 'TORRE': variable local sin referencia
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(34,2): warning C4551: la llamada a la función no tiene lista de argumentos
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Torre.cpp(55,2): warning C4551: la llamada a la función no tiene lista de argumentos
+  ajedrez.cpp
   Generando código...
   Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
