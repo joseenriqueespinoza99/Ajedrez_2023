@@ -24,7 +24,7 @@ private:
 	ListaPiezas listapiezas;
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
-
+	bool turno=true;
 public:
 	void dibuja();
 	void inicializa();
@@ -33,6 +33,7 @@ public:
 	void seleccionar_pieza(int x, int y);
 	void mover(int x, int y, bool comer);
 	bool casillaOcupada(int x, int y);
+	bool su_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
 

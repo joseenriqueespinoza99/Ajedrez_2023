@@ -152,6 +152,19 @@ void Tablero::tecla(unsigned char key)
 	}
 }
 
+bool Tablero::su_turno() {
+	if (piezaSelecc != nullptr) {
+		if (piezaSelecc->getColor() == turno) {
+			std::cout << "turno = color" << std::endl;
+			return true;
+		}
+		else {
+			std::cout << "No le toca a ese color" << std::endl;
+			return false;
+		}
+	}
+}
+
 bool Tablero::casillaOcupada(int x, int y) {
 	Pieza* piezaEnCasilla = listapiezas.getPieza(x, y);
 	if (piezaEnCasilla == nullptr) {
@@ -177,8 +190,17 @@ void Tablero::mover(int x, int y, bool comer) {
 						listapiezas.eliminar(piezaDestino);
 						std::cout << "Se está eliminando la pieza" << std::endl;
 						piezaSelecc->mover(x, y, comer);
-						piezaSelecc = nullptr;
+						
 						ETSIDI::play("sonidos/comer.wav");
+						if (piezaSelecc->getColor() == true) {
+							std::cout << "Turno blancas" << std::endl;
+							turno = false;
+						}
+						else {
+							std::cout << "Turno negras" << std::endl;
+							turno = true;
+						}
+						piezaSelecc = nullptr;
 					}
 					else
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
@@ -189,13 +211,21 @@ void Tablero::mover(int x, int y, bool comer) {
 			}
 		}
 		else {
-			if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
+			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
 				if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
 				{
 					comer = false;
 					piezaSelecc->mover(x, y, comer);
-					piezaSelecc = nullptr;
 					ETSIDI::play("sonidos/mover.wav");
+					if (piezaSelecc->getColor() == true) {
+						std::cout << "Turno blancas" << std::endl;
+						turno = false;
+					}
+					else {
+						std::cout << "Turno negras" << std::endl;
+						turno = true;
+					}
+					piezaSelecc = nullptr;
 				}
 				else
 					std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
