@@ -1,7 +1,9 @@
 #include "freeglut.h"
 #include "Tablero.h"
 #include <string>
+
 int casillasDisponibles = 0;
+
 void Tablero::inicializa() {
 	x_ojo = 4.0;
 	y_ojo = 4.0;
@@ -173,19 +175,6 @@ void Tablero::tecla(unsigned char key)
 	}
 }
 
-bool Tablero::su_turno() {
-	if (piezaSelecc != nullptr) {
-		if (piezaSelecc->getColor() == turno) {
-			std::cout << "turno = color" << std::endl;
-			return true;
-		}
-		else {
-			std::cout << "No le toca a ese color" << std::endl;
-			return false;
-		}
-	}
-}
-
 bool Tablero::casillaOcupada(int x, int y) {
 	Pieza* piezaEnCasilla = listapiezas.getPieza(x, y);
 	if (piezaEnCasilla == nullptr) {
@@ -206,6 +195,20 @@ bool Tablero::comprobar_color(bool color)
 	else
 		return false;
 }
+
+bool Tablero::su_turno() {
+	if (piezaSelecc != nullptr) {
+		if (piezaSelecc->getColor() == turno) {
+			std::cout << "turno = color" << std::endl;
+			return true;
+		}
+		else {
+			std::cout << "No le toca a ese color" << std::endl;
+			return false;
+		}
+	}
+}
+
 void Tablero::mover(int x, int y, bool comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
@@ -214,7 +217,8 @@ void Tablero::mover(int x, int y, bool comer) {
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 				comer = true;
 				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
-					
+					if (su_turno() == true) {
+						comer = false;
 						if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
 						{
 							listapiezas.eliminar(piezaDestino);
@@ -231,7 +235,7 @@ void Tablero::mover(int x, int y, bool comer) {
 							}
 							piezaSelecc = nullptr;
 						}
-
+					}
 						else
 							std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
 					
@@ -287,20 +291,7 @@ void Tablero::coord_a_celda(int x, int y)
 	destino.y = y;
 	mover(celda.x - 1, celda.y - 1, 0);
 
-
-	//Comprobacion auxiliar (borrar)
-//	std::cout << "(" << x << "," << y << ")" << std::endl;
-//	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
-
 }
-
-
-
-
-//Tablero::~Tablero() {
-//	//esferas.destruirContenido(); //TODO
-//}
-
 
 bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y) {
 	// Verificar si el movimiento es horizontal, vertical o diagonal
