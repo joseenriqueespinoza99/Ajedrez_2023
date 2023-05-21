@@ -7,6 +7,7 @@ class Pieza {
 private:
     //int jugador_actual; -- de momento no se usa
     int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
+    friend class Tablero;
 protected:
     bool color;
     Coordenadas coordenadas;

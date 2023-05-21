@@ -1,45 +1,40 @@
 #include "freeglut.h"
 #include "Tablero.h"
 
-
 void Tablero::inicializa() {
 	x_ojo = 4.0;
 	y_ojo = 4.0;
 	z_ojo = 14.0;
 
-	//ALFILES
-	p[0] = new Alfil(2, 0, true);
-	p[1] = new Alfil(5, 0, true);
-	p[2] = new Alfil(5, 7, false);
-	p[3] = new Alfil(2, 7, false);
+	//blancas
+	pB[0] = new Alfil(2, 0, true);
+	pB[1] = new Alfil(5, 0, true);
+	pB[2] = new Torre(0, 0, true);
+	pB[3] = new Torre(7, 0, true);
+	pB[4] = new Caballo(1, 0, true);
+	pB[5] = new Caballo(6, 0, true);
+	pB[6] = new Rey(4, 0, true);
+	pB[7] = new Dama(3, 0, true);
 
-	//TORRES	
-	p[4] = new Torre(0, 0, true);
-	p[5] = new Torre(7, 0, true);
-	p[6] = new Torre(0, 7, false);
-	p[7] = new Torre(7, 7, false);
-
-	//CABALLOS
-	p[8] = new Caballo(1,0 ,true);
-	p[9] = new Caballo(6, 0, true);
-	p[10] = new Caballo(1, 7, false);
-	p[11] = new Caballo(6, 7, false);
-
-	//REYES
-	p[12] = new Rey(4, 0, true);
-	p[13] = new Rey(4, 7, false);
-
-	//DAMAS
-	p[14] = new Dama(3, 0, true);
-	p[15] = new Dama(3, 7, false);
+	//negras
+	pN[0] = new Alfil(5, 7, false);
+	pN[1] = new Alfil(2, 7, false);
+	pN[2] = new Torre(0, 7, false);
+	pN[3] = new Torre(7, 7, false);
+	pN[4] = new Caballo(1, 7, false);
+	pN[5] = new Caballo(6, 7, false);
+	pN[6] = new Rey(4, 7, false);
+	pN[7] = new Dama(3, 7, false);
 
 	//PEONES
 	for (int i = 0; i < 8; i++) {
-		p[16 + i] = new Peon(i, 1, true);
-		p[24 + i] = new Peon(i, 6, false);
+		pB[8 + i] = new Peon(i, 1, true);
+		pN[8 + i] = new Peon(i, 6, false);
 	}
-	for (int i = 0; i < 32; i++)
-		listapiezas.agregar(p[i]);	
+	for (int i = 0; i < 16; i++) {
+		listapiezas.agregar(pN[i]);
+		listapiezas.agregar(pB[i]);
+	}
 }
 
 
@@ -139,89 +134,113 @@ bool Tablero::casillaOcupada(int x, int y) {
 	}
 }
 
+bool Tablero::su_turno() {
+	if (piezaSelecc != nullptr) {
+		if (piezaSelecc->getColor() == turno) {
+			std::cout << "turno = color" << std::endl;
+			return true;
+		}
+		else {
+			std::cout << "No le toca a ese color" << std::endl;
+			return false;
+		}
+	}
+}
+
 void Tablero::mover(int x, int y, bool comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
-	if (piezaSelecc != nullptr) {
-		// Intentar mover la pieza a la nueva posición
-		if (casillaOcupada(x, y)) {
-			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) { // La casilla seleccionada contiene una pieza del equipo contrario
-				comer = 1;
-				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
-					listapiezas.eliminar(piezaDestino);
-					std::cout << "Se esta eliminando la pieza";
+	if (piezaSelecc != nullptr) { 
+			// Intentar mover la pieza a la nueva posición
+			if (casillaOcupada(x, y)) {
+				if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor()) && su_turno() == true) { // La casilla seleccionada contiene una pieza del equipo contrario
+					comer = 1;
+					if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
+						listapiezas.eliminar(piezaDestino);
+						std::cout << "Se esta eliminando la pieza";
+						piezaSelecc->mover(x, y, comer);
+						ETSIDI::play("sonidos/comer.wav");
+						if (piezaSelecc->getColor() == true) {
+							std::cout << "Turno blancas" << std::endl;
+							turno = false;
+						}
+						else{
+							std::cout << "Turno negras" << std::endl;
+							turno = true;
+						}
+						piezaSelecc = nullptr;
+					}
+					else {
+						std::cout << "Movimiento no valido para la pieza" << std::endl;
+					}
+				}
+			}
+			else {
+				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && su_turno() == true) {
+					comer = 0;
 					piezaSelecc->mover(x, y, comer);
+					ETSIDI::play("sonidos/mover.wav");
+					if (piezaSelecc->getColor() == true) {
+						std::cout << "Turno blancas" << std::endl;
+						turno = false;
+					}
+					else {
+						std::cout << "Turno negras" << std::endl;
+						turno = true;
+					}
 					piezaSelecc = nullptr;
-					ETSIDI::play("sonidos/comer.wav");
 				}
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
 				}
 			}
 		}
-		else {	
-			if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
-				comer = 0;
-				piezaSelecc->mover(x, y, comer);
-				piezaSelecc = nullptr;
-				ETSIDI::play("sonidos/mover.wav");
-			}
-			else{
-				std::cout << "Movimiento no valido para la pieza" << std::endl;
-			}
-		}
-
-		}
-		glutPostRedisplay();
-	}
-
-
-bool Tablero::comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, int turno, bool trayectoria) {
-
-	//obtenemos las coordenadas actuales de la clase Coordenadas	
-	or_x = coor.x;
-	or_y = coor.y;
-
-	//sacamos la x y la y siguiente mediante un doble bucle anidado
-	for (int i = 0; i < 32; i++) {
-		dest_x = (piezas[i]->getX());
-		for (int j = 0; j < 32; j++) {
-			dest_y = (piezas[j]->getY());
-			//ahora particularizamos la trayectoria para cada pieza
-			for (int k = 0; k < 32; k++) {
-				//alfil, solo en diagonal
-				if (((dest_x - dest_y) == (or_x - or_y))) {
-					trayectoria = true;
-					std::cout << "trayectoria en diagonal" << std::endl;
-					return trayectoria;
-				}
-				//torre, solo en horizontal o vertical 
-				else if ( ((or_x - dest_x == 0 && or_y - dest_y != 0)) || ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
-					trayectoria = true;
-					std::cout << "trayectoria en vertical" << std::endl;
-					return trayectoria;
-				}
-				//dama, una mezcla de ambas
-				else if (  ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
-					trayectoria = true;
-					std::cout << "trayectoria en horizontal" << std::endl;
-					return trayectoria;
-				}
-				//ninguna otra pieza es necesaria
-				else {
-					trayectoria = false;
-					return trayectoria;
-				}
-
-			}
-
-		}
-	}
+	glutPostRedisplay();
 }
 
 
-bool Tablero::comprobar_posicion(int or_x, int or_y, int dest_x, int dest_y) {
 
-}
+	
+
+
+
+
+//bool Tablero::comprobar_trayectoria(int or_x, int or_y, int dest_x, int dest_y, bool trayectoria) {
+//	for (int i = 0; i < 16; i++) {
+//		//alfil (2,3) -> alfil' (3,4) 
+//		pN[i]->setX(or_x); //2
+//		pN[i]->setY(or_y);//3
+//		pB[i]->setX(or_x);
+//		pB[i]->setY(or_y);
+//		for(int j=0; j<32; j++){
+//			dest_x = pN[j]-> setX(coor.x); //3
+//			dest_y = pN[j]->setY(coor.y); //4 
+//			if (((dest_x - dest_y) == (or_x - or_y))) { // 3-2 = 1, 4-3= 1 -> diagonal
+//				trayectoria = true;
+//				std::cout << "trayectoria en diagonal" << std::endl;
+//				return trayectoria;
+//				}
+//				//torre, solo en horizontal o vertical 
+//				else if ( ((or_x - dest_x == 0 && or_y - dest_y != 0)) ) {
+//					trayectoria = true;
+//					std::cout << "trayectoria en vertical" << std::endl;
+//					return trayectoria;
+//
+//				}
+//				//dama, una mezcla de ambas
+//				else if (  ((or_x - dest_x != 0) && (or_y - dest_y == 0))) {
+//					trayectoria = true;
+//					std::cout << "trayectoria en horizontal" << std::endl;
+//					return trayectoria;
+//				}
+//				//ninguna otra pieza es necesaria
+//				else {
+//					trayectoria = false;
+//					return trayectoria;
+//				}
+//		}
+//
+//	}
+//}
 
 
 void Tablero::coord_a_celda(int x, int y)
