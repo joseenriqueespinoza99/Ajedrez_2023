@@ -1,20 +1,14 @@
 #pragma once
 #include "Pieza.h"
-#include "Tablero.h"
 #include "freeglut.h"
 
 class Torre:public Pieza {
-
 public:
-	bool casilla_torre;
-	
-	//virtual bool getPrimerMovimiento() { return primer_movimiento; }
-	void dibuja() override;
-	void mueve(unsigned char key) override;
-	void mover(int x, int y, bool comer) override;
+	Torre() {};
 	Torre(int x, int y, bool color);
-	//nt getValor() { return valor; };
-	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
-
+	void dibuja() override;
+	void mueve(unsigned char key) override {}
 	bool esmovimientoValido(int x_Destino, int y_Destino, bool comer);
+	void mover(int x, int y, bool comer) override;
+	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
 };

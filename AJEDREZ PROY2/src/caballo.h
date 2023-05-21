@@ -1,21 +1,18 @@
 #pragma once
 #include "Pieza.h"
-#include "Tablero.h"
 #include "freeglut.h"
 
 
-class Caballo:public Pieza
-{
+class Caballo:public Pieza {
 public:
-	Caballo(int x, int y, bool color);
 	Caballo() {};
+	Caballo(int x, int y, bool color);
 	void dibuja() override;
-	void mover(int x, int y, bool comer) override;
-	void mueve(unsigned char key) override;
+	void mueve(unsigned char key) override{}
 	bool esmovimientoValido(int x_Destino, int y_Destino, bool comer);
-	void movaje(char p[2], char z);
-	virtual TipoPieza getClass() const override { return TipoPieza::CABALLO; }
-	bool casilla_cab;
+	void mover(int x, int y, bool comer) override;
+	TipoPieza getClass() const override { return TipoPieza::CABALLO; }
+	
 
 };
 

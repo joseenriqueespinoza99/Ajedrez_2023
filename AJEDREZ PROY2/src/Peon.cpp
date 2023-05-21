@@ -6,7 +6,13 @@ Peon::Peon(int x, int y, bool color) {
 	this->color = color;
 	TipoPieza PEON;
 }
-void Peon::mueve(unsigned char key) {}
+
+void Peon::dibuja() {
+	if (color == true)
+		pintar("imagenes/peonnegro.png", "imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnnegro.png", getX(), getY() + 1);
+	else
+		pintar("imagenes/peonblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", "imagenes/peonnblanco.png", getX(), getY() + 1);
+}
 
 // Método para comprobar si el movimiento del peon es válido
 bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
@@ -45,13 +51,6 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 		else { return 0; }
 	}
 	return 0;
-}
-
-void Peon::dibuja() {
-	if (color == true)
-		pintar("imagenes/peonnegro.png", "imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnnegro.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/peonblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", "imagenes/peonnblanco.png", getX(), getY() + 1);
 }
 
 void Peon::mover(int x, int y, bool comer) {
