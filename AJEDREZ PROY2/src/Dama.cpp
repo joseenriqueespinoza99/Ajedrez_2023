@@ -7,38 +7,12 @@ Dama::Dama(int x, int y, bool color) {
 	TipoPieza REINA;
 }
 
-void Dama::mueve(unsigned char key) {
 
-	int m = getX();
-	int n = getY();
-	if (m < 7 && n < 7) {
-		if (key == 'c')
-		{
-			m++;
-			n++;
-		}
-		if (key == 'q') {
-			m--;
-			n--;
-		}
-		if (key == 'e') {
-			m++;
-			n--;
-		}
-		if (key == 'z') {
-			m--;
-			n++;
-		}
-	}
+void Dama::dibuja() {
+	if (color == true)
+		pintar("imagenes/damanegra.png", "imagenes/damablanca.png", "imagenes/damanblanca.png", "imagenes/damannegra.png", getX(), getY() + 1);
 	else
-	{
-		m = m;
-		n = n;
-	}
-	setX(m);
-	setY(n);
-	glutPostRedisplay;
-
+		pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
 }
 
 // Método para comprobar si el movimiento del alfil es válido
@@ -51,13 +25,6 @@ bool Dama::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	if ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0))
 		return true;
 	return false;
-}
-
-void Dama::dibuja() {
-	if (color == true)
-		pintar("imagenes/damanegra.png", "imagenes/damablanca.png", "imagenes/damanblanca.png", "imagenes/damannegra.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
 }
 
 void Dama::mover(int x, int y, bool comer) {

@@ -1,13 +1,18 @@
 #include "Rey.h"
 
-
 Rey::Rey(int x, int y, bool color) {
 	this->setX(x);
 	this->setY(y);
 	this->color = color;
 	TipoPieza REY;
 }
-void Rey::mueve(unsigned char key) {}
+
+void Rey::dibuja() {
+	if (color == true)
+		pintar("imagenes/reynegro.png", "imagenes/reyblanco.png", "imagenes/reynblanco.png", "imagenes/reynnegro.png", getX(), getY() + 1);
+	else
+		pintar("imagenes/reyblanco.png", "imagenes/reynegro.png", "imagenes/reynnegro.png", "imagenes/reynblanco.png", getX(), getY() + 1);
+}
 
 // Método para comprobar si el movimiento del rey es válido
 bool Rey::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
@@ -21,13 +26,6 @@ bool Rey::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	else { 
 		return 0;
 	}
-}
-
-void Rey::dibuja() {
-	if (color == true)
-		pintar("imagenes/reynegro.png", "imagenes/reyblanco.png", "imagenes/reynblanco.png", "imagenes/reynnegro.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/reyblanco.png", "imagenes/reynegro.png", "imagenes/reynnegro.png", "imagenes/reynblanco.png", getX(), getY() + 1);
 }
 
 void Rey::mover(int x, int y, bool comer) {

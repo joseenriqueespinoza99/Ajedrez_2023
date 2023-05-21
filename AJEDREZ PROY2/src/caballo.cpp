@@ -9,6 +9,13 @@ Caballo::Caballo(int x, int y, bool color) {
 }
 
 
+void Caballo::dibuja() {
+	if (color == true)
+		pintar("imagenes/caballonegro.png", "imagenes/caballoblanco.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
+	else
+		pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
+}
+
 bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
 	if (fabs(x_Destino - getX()) == 1 && (fabs(y_Destino - getY()) == 2)) {
@@ -33,66 +40,5 @@ void Caballo::mover(int x, int y, bool comer) {
 	glutPostRedisplay;
 }
 
-void Caballo::mueve(unsigned char key) {
-
-}
 
 
-void Caballo::movaje(char p[2], char z) {
-	int k = getX();
-	int l = getY();
-	if (p == "rd") {
-		l = l + 2;
-		if (z == 'a') {
-			k++;
-		}
-		else if (z == 'd') {
-			k--;
-		}
-	}
-	else if (p == "ri") {
-		l = l - 2;
-		if (z == 'a') {
-			k++;
-		}
-		else if (z == 'd') {
-			k--;
-		}
-	}
-	else if (p == "nd") {
-		l++;
-		if (z == 'a') {
-			k = k + 2;
-		}
-		else if (z == 'd') {
-			k = k - 2;
-		}
-	}
-	else if (p == "ni") {
-		l--;
-		if (z == 'a') {
-			k = k + 2;
-		}
-		else if (z == 'd') {
-			k = k - 2;
-		}
-		setX(k);
-		setY(l);
-		glutPostRedisplay;
-	}
-
-}
-
-
-
-
-void Caballo::dibuja() {
-	if (color == true) {
-		pintar("imagenes/caballonegro.png", "imagenes/caballoblanco.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
-		casilla_cab = true;
-	}
-	else {
-		pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
-		casilla_cab = true;
-	}
-}

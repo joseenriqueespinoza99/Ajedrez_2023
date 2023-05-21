@@ -2,6 +2,7 @@
 #include "string.h"
 #include <iostream>
 #include "Coordenadas.h"
+#include "ETSIDI.h"
 
 class Pieza {
 private:
@@ -11,7 +12,7 @@ protected:
     bool color;
     Coordenadas coordenadas;
 public:
-    virtual ~Pieza() {}
+    //virtual ~Pieza() {}
     enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 
     void setColor(bool c) {color = c;}
@@ -44,10 +45,3 @@ public:
 };
 
 
-
-//    Esfera();
-//    Esfera(float rad = 1.0f, float x = 0.0f, float y = 0.0f, float vx = 0.0f, float vy = 0.0f); //necesitas inicializar todos los valores, si no pones el valor inicial al crear objetos
-//
-//
-//    void setColor(Byte r, Byte v, Byte a);
-//    void setRadio(float r);
