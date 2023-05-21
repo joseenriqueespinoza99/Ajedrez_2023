@@ -1,7 +1,7 @@
 #include "freeglut.h"
 #include "Tablero.h"
-
-
+#include <string>
+int casillasDisponibles = 0;
 void Tablero::inicializa() {
 	x_ojo = 4.0;
 	y_ojo = 4.0;
@@ -45,8 +45,8 @@ void Tablero::inicializa() {
 
 void Tablero::dibuja() {
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
-		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
+        4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
+        0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)  
 
 	//aqui es donde hay que poner el codigo de dibujo
 	if (piezaSelecc != nullptr) {//dibujar 
@@ -59,9 +59,29 @@ void Tablero::dibuja() {
 		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY() + 1);
 		glEnd();
 	}
+	
 	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
+	if (piezaSelecc != nullptr) {
+		for (int i = 0; i <=7; i++) {
+			for (int j = 0; j <= 7; j++) {
+				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
+					glPushMatrix();
+					glTranslatef(i, j, 0.0); // Posición de la casilla disponible
+					glBegin(GL_QUADS);
+					glColor3f(0.9, 0.9, 0.4); // Color del cuadrado
+					glVertex2f(0.05, 0.05);
+					glVertex2f(0.95, 0.05);
+					glVertex2f(0.95, 0.95);
+					glVertex2f(0.05, 0.95);
+					glEnd();
+					glPopMatrix();
+				}
+			}
+		}
+	}
+	
 
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -87,6 +107,7 @@ void Tablero::dibuja() {
 			}
 		}
 	}
+	
 
 }
 void Tablero::mueve() {
@@ -108,6 +129,7 @@ void Tablero::seleccionar_pieza(int x, int y) {
 			if (listapiezas.getPieza(x, y) != nullptr) {
 				// Si la casilla seleccionada está ocupada, mueve la pieza seleccionada encima de la pieza allí 
 				//dentro de la funcion mover se elimina la esa pieza que esta debajo de la lista
+				
 				mover( x, y, 0);
 				piezaSelecc = nullptr;
 			}
@@ -147,11 +169,13 @@ void Tablero::mover(int x, int y, bool comer) {
 			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) { // La casilla seleccionada contiene una pieza del equipo contrario
 				comer = 1;
 				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
-					listapiezas.eliminar(piezaDestino);
-					std::cout << "Se esta eliminando la pieza";
-					piezaSelecc->mover(x, y, comer);
-					piezaSelecc = nullptr;
-					ETSIDI::play("sonidos/comer.wav");
+					
+						listapiezas.eliminar(piezaDestino);
+						std::cout << "Se esta eliminando la pieza";
+						piezaSelecc->mover(x, y, comer);
+						piezaSelecc = nullptr;
+						ETSIDI::play("sonidos/comer.wav");
+						
 				}
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
@@ -161,9 +185,12 @@ void Tablero::mover(int x, int y, bool comer) {
 		else {	
 			if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
 				comer = 0;
-				piezaSelecc->mover(x, y, comer);
-				piezaSelecc = nullptr;
-				ETSIDI::play("sonidos/mover.wav");
+				
+					piezaSelecc->mover(x, y, comer);
+					piezaSelecc = nullptr;
+					ETSIDI::play("sonidos/mover.wav");
+					
+				
 			}
 			else{
 				std::cout << "Movimiento no valido para la pieza" << std::endl;
@@ -194,6 +221,9 @@ void Tablero::coord_a_celda(int x, int y)
 //	std::cout << "(" << celda.x << "," << celda.y << ")" << std::endl; //test para comprobar visualmente que la celda seleccionada es la correcta
 
 }
+
+
+
 
 //Tablero::~Tablero() {
 //	//esferas.destruirContenido(); //TODO

@@ -35,5 +35,5 @@ public:
 	bool casillaOcupada(int x, int y);
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
-
+	
 	};
