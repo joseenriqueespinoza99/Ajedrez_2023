@@ -36,6 +36,6 @@ public:
 	bool su_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
-
+	bool comprobar_color(bool color);
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
-	};
+};

@@ -59,7 +59,27 @@ void Tablero::dibuja() {
 		glVertex2f(piezaSelecc->getX(), piezaSelecc->getY() + 1);
 		glEnd();
 	}
-	
+	if (piezaSelecc != nullptr) {
+		for (int i = 0; i <= 7; i++) {
+			for (int j = 0; j <= 7; j++) {
+				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
+					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
+						Pieza* piezaDestino = listapiezas.getPieza(i, j);
+						if (piezaDestino != nullptr && piezaDestino->getColor() != piezaSelecc->getColor()) {
+							glLineWidth(4.0);
+							glBegin(GL_LINE_LOOP);
+							glColor3f(0, 1, 0);
+							glVertex2f(piezaDestino->getX(), piezaDestino->getY());
+							glVertex2f(piezaDestino->getX() + 1, piezaDestino->getY());
+							glVertex2f(piezaDestino->getX()+1, piezaDestino->getY()+1);
+							glVertex2f(piezaDestino->getX(), piezaDestino->getY()+1);
+							glEnd();
+						}
+					}
+				}
+			}
+		}
+	}
 	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
@@ -85,7 +105,8 @@ void Tablero::dibuja() {
 		}
 	}
 	
-
+	
+	
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {
 			Coordenadas p{ i + 1, j + 1 };
@@ -128,11 +149,11 @@ void Tablero::seleccionar_pieza(int x, int y) {
 				mover( x, y, 0);
 				piezaSelecc = nullptr;
 			}
-			else {
-				// mueve la pieza si la casilla seleccionada esta vacia
-				mover( x, y, 0);
-				piezaSelecc = nullptr;
-			}
+			//else {
+			//	// mueve la pieza si la casilla seleccionada esta vacia
+			//	mover( x, y, 0);
+			//	piezaSelecc = nullptr;
+			//}
 		}
 		else {
 			// No hay ninguna pieza seleccionada, selecciona la pieza en la nueva casilla
@@ -176,22 +197,58 @@ bool Tablero::casillaOcupada(int x, int y) {
 	
 	}
 }
-
+bool Tablero::comprobar_color(bool color)
+{
+	if (piezaSelecc->getColor() == color)
+	{
+		return true;
+	}
+	else
+		return false;
+}
 void Tablero::mover(int x, int y, bool comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {
-			if (piezaDestino != nullptr && (piezaSelecc->getColor() != piezaDestino->getColor())) { // La casilla seleccionada contiene una pieza del equipo contrario
+			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 				comer = true;
 				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
+					
+						if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
+						{
+							listapiezas.eliminar(piezaDestino);
+							std::cout << "Se está eliminando la pieza" << std::endl;
+							piezaSelecc->mover(x, y, comer);
+							ETSIDI::play("sonidos/comida.mp3");
+							if (piezaSelecc->getColor() == true) {
+								std::cout << "Turno blancas" << std::endl;
+								turno = false;
+							}
+							else {
+								std::cout << "Turno negras" << std::endl;
+								turno = true;
+							}
+							piezaSelecc = nullptr;
+						}
+
+						else
+							std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+					
+				}
+				else {
+					std::cout << "Movimiento no válido para la pieza" << std::endl;
+				}
+			}
+		}
+		else {
+			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+				
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
 					{
-						listapiezas.eliminar(piezaDestino);
-						std::cout << "Se está eliminando la pieza" << std::endl;
+						comer = false;
 						piezaSelecc->mover(x, y, comer);
-						
-						ETSIDI::play("sonidos/comer.wav");
+						ETSIDI::play("sonidos/mueve.mp3");
 						if (piezaSelecc->getColor() == true) {
 							std::cout << "Turno blancas" << std::endl;
 							turno = false;
@@ -204,31 +261,7 @@ void Tablero::mover(int x, int y, bool comer) {
 					}
 					else
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
-				}
-				else {
-					std::cout << "Movimiento no válido para la pieza" << std::endl;
-				}
-			}
-		}
-		else {
-			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
-				if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
-				{
-					comer = false;
-					piezaSelecc->mover(x, y, comer);
-					ETSIDI::play("sonidos/mover.wav");
-					if (piezaSelecc->getColor() == true) {
-						std::cout << "Turno blancas" << std::endl;
-						turno = false;
-					}
-					else {
-						std::cout << "Turno negras" << std::endl;
-						turno = true;
-					}
-					piezaSelecc = nullptr;
-				}
-				else
-					std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+				
 			}
 
 			else {
@@ -308,3 +341,4 @@ bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int de
 
 	return false; // No hay piezas en el camino
 }
+
