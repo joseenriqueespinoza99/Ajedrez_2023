@@ -235,7 +235,7 @@ void Tablero::mover(int x, int y, bool comer) {
 				comer = true;
 				if (piezaSelecc->esmovimientoValido(x, y, comer) == 1) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (su_turno() == true) {
-						comer = false;
+						
 						if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
 						{
 							listapiezas.eliminar(piezaDestino);
