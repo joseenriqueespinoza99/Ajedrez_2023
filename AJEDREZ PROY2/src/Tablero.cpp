@@ -86,28 +86,45 @@ void Tablero::dibuja() {
 		listapiezas.getPiezas(i)->dibuja();
 	}
 	if (piezaSelecc != nullptr) {
-		for (int i = 0; i <=7; i++) {
+		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
 				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
-					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j))
-					{
+					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
 						glPushMatrix();
 						glTranslatef(i, j, 0.0); // Posición de la casilla disponible
+
+						if (turno && piezaSelecc->getColor() == true) {
+							glColor3f(0.9, 0.9, 0.4); // Color del cuadrado para el jugador 1
+						}
+						else if (!turno && piezaSelecc->getColor() == false) {
+							glColor3f(0.4, 0.9, 0.9); // Color del cuadrado para el jugador 2
+						}
+						else {
+							Pieza* piezaDestino = listapiezas.getPieza(i, j);
+							if (piezaDestino != nullptr && piezaDestino->getColor() != piezaSelecc->getColor()) {
+								glColor3f(0, 1, 0); // Color verde para las casillas que pueden ser capturadas
+							}
+							else {
+								glPopMatrix();
+								continue; // Si no es el turno del jugador correspondiente y la casilla no puede ser capturada, se pasa a la siguiente iteración
+							}
+						}
+
 						glBegin(GL_QUADS);
-						glColor3f(0.9, 0.9, 0.4); // Color del cuadrado
 						glVertex2f(0.05, 0.05);
 						glVertex2f(0.95, 0.05);
 						glVertex2f(0.95, 0.95);
 						glVertex2f(0.05, 0.95);
 						glEnd();
+
 						glPopMatrix();
 					}
 				}
 			}
 		}
 	}
-	
-	
+
+
 	
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++) {

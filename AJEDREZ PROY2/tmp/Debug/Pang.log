@@ -1,28 +1,29 @@
 ﻿  Tablero.cpp
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,52): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,56): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,55): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(74,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(74,37): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(75,63): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(75,40): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(76,63): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(76,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(77,61): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(77,37): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(95,23): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(95,20): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(97,30): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(98,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(99,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(100,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(101,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(282,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(283,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(210): warning C4715: 'Tablero::su_turno': no todas las rutas de acceso de control devuelven un valor
-  Pang.vcxproj -> C:\Users\alval\OneDrive\Escritorio\informática\github\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,52): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(58,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,56): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(59,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(60,34): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,55): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(61,31): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(74,59): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(74,37): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(75,63): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(75,40): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(76,63): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(76,39): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(77,61): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(77,37): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(94,23): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(94,20): warning C4244: 'argumento': conversión de 'int' a 'GLfloat'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(97,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(100,31): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(114,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(115,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(116,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(117,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(299,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(300,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(227): warning C4715: 'Tablero::su_turno': no todas las rutas de acceso de control devuelven un valor
+  Pang.vcxproj -> C:\Users\solom\OneDrive\Documentos\repositorio trabajo informatica industrial\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
