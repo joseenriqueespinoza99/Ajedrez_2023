@@ -1,8 +1,10 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 #include "Tablero.h"
+#include "Coordinador.h"
 
 Tablero tablero;
+Coordinador pang;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -36,7 +38,7 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	glutMouseFunc(MouseButton);
-
+	
 	tablero.inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
@@ -55,6 +57,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
+	//pang.dibuja();
 	tablero.dibuja();
 
 	//no borrar esta linea ni poner nada despues
@@ -63,6 +66,7 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
+
 	tablero.tecla(key);
 
 	glutPostRedisplay();
