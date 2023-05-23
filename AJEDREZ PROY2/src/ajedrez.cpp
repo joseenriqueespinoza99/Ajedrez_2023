@@ -2,7 +2,6 @@
 #include "ETSIDI.h"
 #include "Tablero.h"
 
-
 Tablero tablero;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
