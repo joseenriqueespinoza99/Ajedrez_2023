@@ -13,7 +13,7 @@ protected:
     Coordenadas coordenadas;
 public:
     //virtual ~Pieza() {} jja
-    enum class TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
+    enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
     void setColor(bool c) {color = c;}
     bool getColor() { return color; }
 

@@ -289,7 +289,9 @@ void Tablero::mover(int x, int y, bool comer) {
 				std::cout << "Movimiento no válido para la pieza" << std::endl;
 			}
 		}
-
+		if (comprobar_jaqueRey(turno)) {
+			std::cout << "¡El rey está en jaque!" << std::endl;
+		}
 		glutPostRedisplay();
 	}
 }
@@ -348,5 +350,36 @@ bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int de
 	}
 
 	return false; // No hay piezas en el camino
+}
+
+bool Tablero::comprobar_jaqueRey(bool color)
+{
+
+	Pieza* Rey = nullptr;
+	Pieza* pieza;
+	tipo = REY;
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
+		if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un rey y 
+			Rey = listapiezas.getPiezas(i);
+			break;
+		}
+	}
+
+	if (Rey == nullptr) {
+		return false;
+	}
+
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
+		pieza = listapiezas.getPiezas(i);
+		if (pieza->getColor() != color) {
+			if (pieza->esmovimientoValido(Rey->getX(), Rey->getY(), true) == 1) {
+				if (!comprobar_camino(pieza->getX(), pieza->getY(), Rey->getX(), Rey->getY())) {
+					return true; // El rey está en jaque
+				}
+			}
+		}
+	}
+
+	return false; // El rey no está en jaque
 }
 

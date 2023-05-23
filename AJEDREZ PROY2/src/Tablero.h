@@ -20,11 +20,11 @@ private:
 	Coordenadas celda; //celda seleccionada por el raton
 	Coordenadas origen;//sirve para determinar la posición origen
 	Coordenadas destino;//sirve para determinar la posicion de destino
-	
+
 	ListaPiezas listapiezas;
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
-	bool turno=true;
+	bool turno = true;
 public:
 	void dibuja();
 	void inicializa();
@@ -38,4 +38,8 @@ public:
 	//~Tablero();
 	bool comprobar_color(bool color);
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
+	bool comprobar_jaqueRey(bool color);
+	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
+	TipoPieza1 tipo;
 };
+
