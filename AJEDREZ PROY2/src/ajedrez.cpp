@@ -4,7 +4,7 @@
 #include "Coordinador.h"
 
 Tablero tablero;
-Coordinador pang;
+Coordinador coordinador;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -22,7 +22,7 @@ int main(int argc,char* argv[])
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("MiJuego");
-	glClearColor(0.5, 0.5, 0.0, 0.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	//habilitar luces y definir perspectiva
@@ -57,8 +57,8 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	//pang.dibuja();
-	tablero.dibuja();
+	
+	coordinador.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -67,7 +67,7 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
 
-	tablero.tecla(key);
+	coordinador.eleccion(key);
 
 	glutPostRedisplay();
 }
@@ -75,7 +75,7 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 void OnTimer(int value)
 {
 //poner aqui el código de animacion
-	tablero.mueve();
+	coordinador.mueve();
 
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
@@ -84,7 +84,7 @@ void OnTimer(int value)
 void MouseButton(int button, int down, int x, int y) {
 	//final cell coordinates
 	if (button == down){
-		tablero.coord_a_celda(x, y);
+		coordinador.coord_a_celda(x, y);
 	}
 	glutPostRedisplay();
 

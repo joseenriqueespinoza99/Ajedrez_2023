@@ -4,10 +4,9 @@
 
 class Coordinador
 {
-	enum Estados{INICIO, INSTRUCCIONES, JUEGO, PAUSA};
+	enum Estados{INICIO, INSTRUCCIONES, JUEGO, PAUSA, FIN};
 	Estados estado;
 	int elegir;
-	bool jaque;
 	Tablero tablerinyo; 
 
 public:
@@ -15,6 +14,8 @@ public:
 	Coordinador();
 	void dibuja();
 	void cambio_estado();
+	void mueve();
+	void coord_a_celda(int x, int y);
 	void eleccion(unsigned char elec);
 
 };
