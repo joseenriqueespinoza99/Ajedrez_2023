@@ -247,7 +247,7 @@ void Tablero::mover(int x, int y, int comer) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {//Mover comiendo
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
-				/*if(alpaso == 1) {
+				if(alpaso == 1) {
 					comer = 2;
 				}
 				else if (alpaso == 2) {
@@ -255,8 +255,7 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 				else {
 					comer = 1;
-				}*/
-				comer = 1;
+				}
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
@@ -288,7 +287,7 @@ void Tablero::mover(int x, int y, int comer) {
 		else { //Solo mover
 			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 	{
-						//comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
+						comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
 						comer = 0;
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
@@ -302,12 +301,12 @@ void Tablero::mover(int x, int y, int comer) {
 							turno = true;
 						}
 						total++;
-						/*if (alpaso == 1) {
+						if (alpaso == 1) {
 							comer = 2;
 						}
 						if (alpaso == 2) {
 							comer = 3;
-						}*/
+						}
 						piezaSelecc = nullptr;
 					}
 					else
@@ -469,33 +468,33 @@ Pieza * Tablero::coronacion(int x, int y) {
 }
 
 
-//bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
-//	//si un peon se mueve 2 posiciones y se coloca al lado de otro peon
-//	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
-//	Pieza* Peon = nullptr;
-//	tipo = PEON;
-//	//alpaso = 0;
-//
-//	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
-//		for (int i = 0; i < listapiezas.getNumero(); i++) {
-//			std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
-//			if (listapiezas.getPiezas(i)->getClass() == tipo) {
-//				Peon = listapiezas.getPiezas(i);
-//				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
-//					if (Peon->getX() == destino_x + 1) {
-//						std::cout << "Se puede capturar al paso" << std::endl;
-//						alpaso = 1; // se puede comer el de la izquierda
-//						return true; // Hay posibilidad de capturar al paso
-//					}
-//					if (Peon->getX() == destino_x - 1) {
-//						alpaso = 2; // se puede comer el de la derecha
-//						std::cout << "Se puede capturar al paso" << std::endl;
-//						return true; // Hay posibilidad de capturar al paso
-//					}
-//
-//				}
-//			}
-//		}
-//		return false; // No hay posibilidad de capturar al paso
-//	}
-//}
+bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
+	//si un peon se mueve 2 posiciones y se coloca al lado de otro peon
+	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
+	Pieza* Peon = nullptr;
+	tipo = PEON;
+	//alpaso = 0;
+
+	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
+		for (int i = 0; i < listapiezas.getNumero(); i++) {
+			std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
+			if (listapiezas.getPiezas(i)->getClass() == tipo) {
+				Peon = listapiezas.getPiezas(i);
+				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
+					if (Peon->getX() == destino_x + 1) {
+						std::cout << "Se puede capturar al paso" << std::endl;
+						alpaso = 1; // se puede comer el de la izquierda
+						return true; // Hay posibilidad de capturar al paso
+					}
+					if (Peon->getX() == destino_x - 1) {
+						alpaso = 2; // se puede comer el de la derecha
+						std::cout << "Se puede capturar al paso" << std::endl;
+						return true; // Hay posibilidad de capturar al paso
+					}
+
+				}
+			}
+		}
+		return false; // No hay posibilidad de capturar al paso
+	}
+}
