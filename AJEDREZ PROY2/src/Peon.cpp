@@ -1,5 +1,4 @@
 #include "Peon.h"
-//int comer;
 
 Peon::Peon(int x, int y, bool color) {
 	this->setX(x);
@@ -53,6 +52,7 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	}
 	return 0;
 }
+
 
 void Peon::mover(int x, int y, int comer) {
 	getX();

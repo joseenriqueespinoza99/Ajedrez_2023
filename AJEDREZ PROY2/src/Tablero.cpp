@@ -239,7 +239,7 @@ void Tablero::mover(int x, int y, int comer) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
 						listapiezas.eliminar(piezaDestino);
-						std::cout << "Se está eliminando la pieza" << std::endl;
+						std::cout << "Se esta eliminando la pieza" << std::endl;
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/comida.mp3");
 						if (piezaSelecc->getColor() == true) { 
@@ -289,7 +289,7 @@ void Tablero::mover(int x, int y, int comer) {
 			}
 		}
 		if (comprobar_jaqueRey(turno)) {
-			std::cout << "¡El rey esta en jaque!" << std::endl;
+			std::cout << "El rey esta en jaque!" << std::endl;
 		}
 		glutPostRedisplay();
 	}
