@@ -39,6 +39,7 @@ public:
 	bool comprobar_color(bool color);
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 	bool comprobar_jaqueRey(bool color);
+	Pieza* coronacion(int x, int y);
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
 };
