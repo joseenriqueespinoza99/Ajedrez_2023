@@ -2,6 +2,10 @@
 
 Coordinador::Coordinador(){
 	estado = INICIO;
+<<<<<<< Updated upstream
+=======
+	//ETSIDI::playMusica("sonidos/ambiente.mp3", true);
+>>>>>>> Stashed changes
 }
 
 void Coordinador::dibuja() {
@@ -10,13 +14,13 @@ void Coordinador::dibuja() {
 			4.0, 4.0, 0.0,
 			0.0, 1.0, 0.0); // definimos hacia arriba (eje Y) 
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 16);
-		ETSIDI::printxy("Bienvenidos al ajedrez del grupo Termas de Logrono:", -0.5, 8);
+		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 14);
+		ETSIDI::printxy("Bienvenidos al ajedrez del grupo Termas de Logrono:", -1.5, 8);
 		ETSIDI::printxy("Esperemos que disfruten de este juego", -0.5, 6);
 		ETSIDI::setTextColor(1, 0, 1);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 14);
-		ETSIDI::printxy("Pulse 'A' para jugar", -0.5, 4);
-		ETSIDI::printxy("Pulse 'I' para ver las instrucciones del ajedrez", -0.5, 2);
+		ETSIDI::printxy("Pulse la letra 'A' para jugar", -0.5, 4);
+		ETSIDI::printxy("Pulse la letra 'I' para ver las instrucciones del ajedrez", -0.5, 2);
 		//ETSIDI::setTextColor(0, 255, 255);
 		
 	}
@@ -33,7 +37,7 @@ void Coordinador::dibuja() {
 		ETSIDI::printxy("Cada pieza tiene sus movimientos caracteristicos", -0.5, 6.0);
 		ETSIDI::printxy("Cuando una pieza de un color se pone sobre otra de distinto color diremos que se la come", -0.5, 5.0);
 		ETSIDI::printxy("El objetivo es comer el rey del otro color", -0.5, 4.0);
-		ETSIDI::printxy("Simpre empezaran jugando las blancas", -0.5, 3.5);
+		ETSIDI::printxy("Siempre empezaran jugando las blancas", -0.5, 3.5);
 		ETSIDI::printxy("No se pueden atravesar piezas ni poner una sobre otra en la misma casilla", -0.5, 2.5);
 		ETSIDI::printxy("Pulse 'A' para jugar, pulse 'Z' para volver al inicio:", -0.5, 1.5);
 		/*ETSIDI::setTextColor(1, 1, 1);
@@ -49,22 +53,25 @@ void Coordinador::dibuja() {
 		ETSIDI::printxy("Pulse 'a' para jugar y 'z' para volver a la pantalla de inicio", -0.5, 1.0);*/
 	}
 	else if (estado = JUEGO) {
-		
 		tablerinyo.inicializa();
-		tablerinyo.dibuja();
+		tablerinyo.dibuja();	
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
+		ETSIDI::printxy("Electronica vs. Electrica", 0.8, 8.5);
 	}
 	else if (estado = PAUSA) {
 		gluLookAt(4, 4, 14,
 			4.0, 4.0, 0.0,
 			0.0, 1.0, 0.0);
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 18);
+		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
 		ETSIDI::printxy("Has parado el juego", -0.5, 5.0);
+		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 18);
 		ETSIDI::printxy("Pulse 'A' para volver a reiniciar el juego", -0.5, 4.0);
 	}
 	else if (estado = FIN) {	
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 20);
+		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 20);
 		ETSIDI::printxy("DERROTA HUMILLANTE", -0.5, 5.0);
 	}
 }

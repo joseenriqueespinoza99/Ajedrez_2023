@@ -27,13 +27,14 @@ void Tablero::inicializa() {
 	p[10] = new Caballo(1, 7, false);
 	p[11] = new Caballo(6, 7, false);
 
-	//REYES
-	p[12] = new Rey(4, 0, true);
-	p[13] = new Rey(4, 7, false);
-
 	//DAMAS
-	p[14] = new Dama(3, 0, true);
-	p[15] = new Dama(3, 7, false);
+	p[12] = new Dama(3, 0, true);
+	p[13] = new Dama(3, 7, false);
+
+	//REYES
+	p[14] = new Rey(4, 0, true);
+	p[15] = new Rey(4, 7, false);
+
 
 	//PEONES
 	for (int i = 0; i < 8; i++) {
@@ -153,6 +154,19 @@ void Tablero::dibuja() {
 			}
 		}
 	}
+
+	if (total % 2 == 0) {
+		ETSIDI::setTextColor(1, 0, 0);
+		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
+	}
+
+
+	if (total % 2 ) {
+		ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+		ETSIDI::printxy("Mueven las NEGRAS", 6.5, -1);
+	}
 }
 
 
@@ -232,7 +246,7 @@ void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
 		// Intentar mover la pieza a la nueva posición
-		if (casillaOcupada(x, y)) {
+		if (casillaOcupada(x, y)) { //Mover comiendo
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 				comer = 1;
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
@@ -250,6 +264,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Ahora les toca a las blancas" << std::endl;
 							turno = true;
 						}
+						total++;
 						piezaSelecc = nullptr;
 					}
 					else
@@ -261,27 +276,32 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 			}
 		}
-		else {
+		else { // Solo mover
 			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
-				
-					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
-					{
-						comer = 0;
-						piezaSelecc->mover(x, y, comer);
-						ETSIDI::play("sonidos/mueve.mp3");
-						if (piezaSelecc->getColor() == true) { 
-							std::cout << "Ahora les toca a las negras" << std::endl;
-							turno = false;
-						}
+				if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))	{
+					comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
+					comer = 0;
+					piezaSelecc->mover(x, y, comer);
+					ETSIDI::play("sonidos/mueve.mp3");
+					if (piezaSelecc->getColor() == true) { 
+						std::cout << "Ahora les toca a las negras" << std::endl;
+						turno = false;
+					}
 						else {
 							std::cout << "Ahora les toca a las blancas" << std::endl;
 							turno = true;
+						}
+						total++;	
+						if (alpaso == 1) {
+							comer = 2;
+						}
+						if (alpaso == 2) {
+							comer = 3;
 						}
 						piezaSelecc = nullptr;
 					}
 					else
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
-				
 			}
 
 			else {
@@ -357,7 +377,7 @@ bool Tablero::comprobar_jaqueRey(bool color) {
 	Pieza* pieza;
 	tipo = REY;
 	for (int i = 0; i < listapiezas.getNumero(); i++) {
-		if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un rey 
+		if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un rey del color que le toca mover
 			Rey = listapiezas.getPiezas(i);
 			break;
 		}
@@ -377,7 +397,70 @@ bool Tablero::comprobar_jaqueRey(bool color) {
 			}
 		}
 	}
-
 	return false; // El rey no está en jaque
 }
 
+bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
+	//si un peon se mueve 2 posiciones y se coloca al lado de otro peon
+	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
+	Pieza* Peon = nullptr;
+	tipo = PEON;
+	//alpaso = 0;
+
+	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)){
+		for (int i = 0; i < listapiezas.getNumero(); i++) {
+			std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
+			if (listapiezas.getPiezas(i)->getClass() == tipo) {
+				Peon = listapiezas.getPiezas(i);
+				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
+					if (Peon->getX() == destino_x + 1) {
+						std::cout << "Se puede capturar al paso" << std::endl;
+						alpaso = 1; // se puede comer el de la izquierda
+						return true; // Hay posibilidad de capturar al paso
+					} 
+					if (Peon->getX() == destino_x - 1) {
+						alpaso = 2; // se puede comer el de la derecha
+						std::cout << "Se puede capturar al paso" << std::endl;
+						return true; // Hay posibilidad de capturar al paso
+					}
+					
+				}
+			}
+		}
+		return false; // No hay posibilidad de capturar al paso
+
+	}
+
+}
+
+//bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
+//	//si un peon se mueve 2 posiciones y se coloca al lado de otro peon
+//	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
+//	Pieza* Peon1 = nullptr;
+//	Pieza* Peon2;
+//	tipo = PEON;
+//	for (int i = 0; i < listapiezas.getNumero(); i++) {
+//		if (abs(destino_y - origen_y) == 2)
+//			if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un peon del color que le toca
+//				Peon1 = listapiezas.getPiezas(i);
+//				std::cout << listapiezas.getPiezas(i) << std::endl;
+//				break;
+//			}
+//		if (Peon1 == nullptr) {
+//			return false;
+//		}
+//
+//		for (int i = 0; i < listapiezas.getNumero(); i++) {
+//			if (listapiezas.getPiezas(i)->getClass() == tipo) {
+//				Peon2 = listapiezas.getPiezas(i);
+//				if (/*(Peon2->getColor() != color) && */((Peon2->getX() == destino_x + 1) || (Peon2->getX() == destino_x - 1))) {
+//					std::cout << "Se puede capturar al paso" << std::endl;
+//					return true; // Hay posibilidad de capturar al paso
+//				}
+//			}
+//		}
+//		return false; // No hay posibilidad de capturar al paso
+//
+//	}
+//
+//}

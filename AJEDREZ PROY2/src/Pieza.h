@@ -5,12 +5,11 @@
 #include "ETSIDI.h"
 
 class Pieza {
-private:
       int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
 protected:
     bool color;
     Coordenadas coordenadas;
-
+    
 public:
     //virtual ~Pieza() {} jja
     enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
@@ -36,11 +35,7 @@ public:
     virtual void mover(int x, int y, int comer) = 0;
     virtual TipoPieza getClass() const = 0;
         
-    
-
-
-    
-    //friend class ListaPiezas;//las hacemos amigas para que puedan acceder a los atributo privados de la otra clase
+   
 };
 
 
