@@ -58,34 +58,6 @@ void ListaPiezas::eliminar(Pieza* p)
 	return nullptr;
 }
 
- void ListaPiezas::dibuja()
- {
-	 for (int i = 0; i < numero; i++)
-		 piezas[i]->dibuja(); 
- }
-
- void ListaPiezas::mueve(float t)
- {
-	 for (int i = 0; i < numero; i++)
-		 piezas[i]->mueve(t);
- }
-
- Pieza* ListaPiezas::operator [](int i) {
-	 if (i >= numero)//si me paso, devuelvo la ultima 
-		 i = numero - 1;
-	 if (i < 0) //si el indice es negativo, devuelvo la primera 
-		 i = 0;
-	 return piezas[i];
- }
-
- void ListaPiezas::choque() { //choque de las piezas al intentar mover una
-	 for (int i = 0; i < numero - 1; i++) {
-		 for (int j = i + 1; j < numero; j++) {
-			 //TODO implementar aqui los nuevos limites cuando una pieza no se pueda mover mas alla de otra
-		 }
-	 }
- }
-
 void ListaPiezas::reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza) {
 	 for (int i = 0; i < numero; i++) {
 		 if (piezas[i] == piezaExistente) {
