@@ -14,17 +14,17 @@ bool ListaPiezas::agregar(Pieza* p) {
 		if (piezas[i] == p)
 			iguales = true;
 	}
-	// si no ha sido ya introducida y el vector no est· lleno
+	// si no ha sido ya introducida y el vector no est√° lleno
 	if ((numero < MAX_PIEZAS) && (iguales == false))
-		piezas[numero++] = p; // ˙ltimo puesto sin rellenar 
+		piezas[numero++] = p; // √∫ltimo puesto sin rellenar 
 	else
-		return false; // capacidad m·xima alcanzada 
+		return false; // capacidad m√°xima alcanzada 
 	return true;
 }
 
 
 void ListaPiezas::destruirContenido() {
-	for (int i = 0; i < numero; i++) // destrucciÛn de las piezas contenidas 
+	for (int i = 0; i < numero; i++) // destrucci√≥n de las piezas contenidas 
 		delete piezas[i];
 	numero = 0; // inicializa piezas (reseteo el contador)
 } //la llamo cuando se destruya el tablero
@@ -86,5 +86,16 @@ void ListaPiezas::eliminar(Pieza* p)
 	 }
  }
 
+void ListaPiezas::reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza) {
+	 for (int i = 0; i < numero; i++) {
+		 if (piezas[i] == piezaExistente) {
+			 delete piezas[i];  // Liberar memoria de la pieza existente
+			 piezas[i] = nuevaPieza;  // Asignar la nueva pieza en su lugar
+			 return;
+		 }
+	 }
+ }
 
+
+ 
  
