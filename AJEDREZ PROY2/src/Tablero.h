@@ -27,12 +27,11 @@ private:
 	bool turno = true;
 public:
 	void dibuja();
-	void dibujar_movValidos(bool comer);
 	void inicializa();
 	void mueve();
 	void tecla(unsigned char key);
 	void seleccionar_pieza(int x, int y);
-	void mover(int x, int y, bool comer);
+	void mover(int x, int y, int comer);
 	bool casillaOcupada(int x, int y);
 	bool su_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero

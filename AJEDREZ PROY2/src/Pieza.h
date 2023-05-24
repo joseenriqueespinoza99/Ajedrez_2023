@@ -10,7 +10,7 @@ private:
 protected:
     bool color;
     Coordenadas coordenadas;
-    bool comer; 
+
 public:
     //virtual ~Pieza() {} jja
     enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
@@ -25,9 +25,6 @@ public:
     int getX() { return coordenadas.x; }
     int getY() { return coordenadas.y; }
 
-    void setComer(bool c) { comer = c; }
-    bool getComer() { return comer; }
-
     //para diferenciar entre las piezas en casillas blancas y negras
     void dibujar(const char foto[], int x1, int y2);
     void pintar(const char foto1[], const char foto2[], const char foto3[], const char foto4[], int x1, int y2);
@@ -35,8 +32,8 @@ public:
 
     virtual void mueve(unsigned char key) = 0;
     virtual void dibuja() = 0;
-    virtual bool esmovimientoValido(int x_Destino, int y_Destino, bool comer) = 0;
-    virtual void mover(int x, int y, bool comer) = 0;
+    virtual bool esmovimientoValido(int x_Destino, int y_Destino, int comer) = 0;
+    virtual void mover(int x, int y, int comer) = 0;
     virtual TipoPieza getClass() const = 0;
         
     

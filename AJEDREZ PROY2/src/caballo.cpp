@@ -16,14 +16,7 @@ void Caballo::dibuja() {
 		pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
 }
 
-bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool 
-
-
-
-
-
-
-) {
+bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
 	if (fabs(x_Destino - getX()) == 1 && (fabs(y_Destino - getY()) == 2)) {
 		return true;
@@ -35,7 +28,7 @@ bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool
 	else return false;
 }
 
-void Caballo::mover(int x, int y, bool comer) {
+void Caballo::mover(int x, int y, int comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido para el alfil

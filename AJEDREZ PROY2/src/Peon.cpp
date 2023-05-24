@@ -1,4 +1,5 @@
 #include "Peon.h"
+//int comer;
 
 Peon::Peon(int x, int y, bool color) {
 	this->setX(x);
@@ -15,8 +16,8 @@ void Peon::dibuja() {
 }
 
 // Método para comprobar si el movimiento del peon es válido
-bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
-	if (comer == false) {
+bool Peon::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
+	if (comer == 0) {
 		if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
 			if ((color == 1) && (y_Destino - getY()) == 1) { // Solo se puede mover 1 casilla hacia delante
 				return 1;
@@ -34,7 +35,7 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 		}
 	}
 
-	else { // Solo si va a comer
+	if (comer == 1) { // Solo si va a comer
 		// Solo se puede comer 1 casilla en diagonal 
 		if ((color == 1) && (x_Destino - getX()) == 1 && (y_Destino - getY()) == 1) { // Superior derecha
 			return 1;
@@ -53,7 +54,7 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
 	return 0;
 }
 
-void Peon::mover(int x, int y, bool comer) {
+void Peon::mover(int x, int y, int comer) {
 	getX();
 	getY();
 	// Comprobar si el movimiento es válido 

@@ -62,11 +62,10 @@ void Tablero::dibuja() {
 		glEnd();
 	}
 
-	// --> PARA SELECCIONAR LAS CASILLAS QUE TE PUEDES COMER
-	if ((piezaSelecc != nullptr) && (su_turno() == true)) {
+	if ((piezaSelecc != nullptr) && (su_turno() == true)) { // Selecciona las casilla donde hay piezas que te puedes comer
 		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
-				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
+				if (piezaSelecc->esmovimientoValido(i, j, 1) == 1) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
 						Pieza* piezaDestino = listapiezas.getPieza(i, j);
 						if (piezaDestino != nullptr && piezaDestino->getColor() != piezaSelecc->getColor()) {
@@ -84,12 +83,13 @@ void Tablero::dibuja() {
 			}
 		}
 	}
+
 	for (int i = 0; i < listapiezas.getNumero(); i++) {
 		listapiezas.getPiezas(i)->dibuja();
 	}
 
-	// --> PARA SELECCIONAR LAS CASILLAS DONDE SE PUEDEN MOVER
-	if (piezaSelecc != nullptr) {
+
+	if (piezaSelecc != nullptr) { // Selecciona las casillas vacías a las que te puedes mover
 		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
 				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
@@ -214,7 +214,7 @@ bool Tablero::comprobar_color(bool color)
 	else return false;
 }
 
-// --> PARA VER DE QUIEN ES TURNO
+
 bool Tablero::su_turno() {
 	if (piezaSelecc != nullptr) {
 		if (piezaSelecc->getColor() == turno) {
@@ -228,13 +228,13 @@ bool Tablero::su_turno() {
 	}
 }
 
-void Tablero::mover(int x, int y, bool comer) {
+void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
-				comer = true;
+				comer = 1;
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
@@ -266,7 +266,7 @@ void Tablero::mover(int x, int y, bool comer) {
 				
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
-						comer = false;
+						comer = 0;
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
 						if (piezaSelecc->getColor() == true) { 
@@ -351,15 +351,13 @@ bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int de
 	return false; // No hay piezas en el camino
 }
 
-// --> JAQUE
-bool Tablero::comprobar_jaqueRey(bool color)
-{
 
+bool Tablero::comprobar_jaqueRey(bool color) {
 	Pieza* Rey = nullptr;
 	Pieza* pieza;
 	tipo = REY;
 	for (int i = 0; i < listapiezas.getNumero(); i++) {
-		if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un rey y 
+		if (listapiezas.getPiezas(i)->getClass() == tipo && listapiezas.getPiezas(i)->getColor() == color) {//identifica si la pieza es un rey 
 			Rey = listapiezas.getPiezas(i);
 			break;
 		}

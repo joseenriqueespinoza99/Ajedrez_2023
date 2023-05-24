@@ -7,7 +7,7 @@ Torre::Torre(int x, int y, bool color) {
 	TipoPieza TORRE;
 }
 
-bool Torre::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
+bool Torre::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
 		return true;
 	return false;
@@ -21,7 +21,7 @@ void Torre::dibuja() {
 		pintar("imagenes/torreblanca.png", "imagenes/torrenegra.png", "imagenes/torrennegra.png", "imagenes/torrenblanca.png", getX(), getY()+1);
 }
 
-void Torre::mover(int x, int y, bool comer)
+void Torre::mover(int x, int y, int comer)
 {
 	if (esmovimientoValido(x, y, comer)) {
 		// Actualizar la posición del alfil a la celda de destino
