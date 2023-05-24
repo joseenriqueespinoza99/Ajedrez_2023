@@ -2,6 +2,7 @@
 
 Coordinador::Coordinador(){
 	estado = INICIO;
+	ETSIDI::playMusica("sonidos/ambiente.mp3", true);
 }
 
 void Coordinador::dibuja() {
