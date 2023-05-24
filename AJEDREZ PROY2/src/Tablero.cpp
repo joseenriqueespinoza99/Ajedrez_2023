@@ -63,7 +63,7 @@ void Tablero::dibuja() {
 	}
 
 	// --> PARA SELECCIONAR LAS CASILLAS QUE TE PUEDES COMER
-	if (piezaSelecc != nullptr) {
+	if ((piezaSelecc != nullptr) && (su_turno() == true)) {
 		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
 				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
@@ -218,11 +218,11 @@ bool Tablero::comprobar_color(bool color)
 bool Tablero::su_turno() {
 	if (piezaSelecc != nullptr) {
 		if (piezaSelecc->getColor() == turno) {
-			std::cout << "turno = color" << std::endl;
+			//std::cout << "turno = color" << std::endl;
 			return true;
 		}
 		else {
-			std::cout << "No le toca a ese color" << std::endl;
+			//std::cout << "No le toca a ese color" << std::endl;
 			return false;
 		}
 	}
@@ -243,11 +243,11 @@ void Tablero::mover(int x, int y, bool comer) {
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/comida.mp3");
 						if (piezaSelecc->getColor() == true) { 
-							std::cout << "Turno blancas" << std::endl;
+							std::cout << "Ahora les toca a las negras" << std::endl;
 							turno = false;
 						}
 						else {
-							std::cout << "Turno negras" << std::endl;
+							std::cout << "Ahora les toca a las blancas" << std::endl;
 							turno = true;
 						}
 						piezaSelecc = nullptr;
@@ -270,11 +270,11 @@ void Tablero::mover(int x, int y, bool comer) {
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
 						if (piezaSelecc->getColor() == true) { 
-							std::cout << "Turno blancas" << std::endl;
+							std::cout << "Ahora les toca a las negras" << std::endl;
 							turno = false;
 						}
 						else {
-							std::cout << "Turno negras" << std::endl;
+							std::cout << "Ahora les toca a las blancas" << std::endl;
 							turno = true;
 						}
 						piezaSelecc = nullptr;
