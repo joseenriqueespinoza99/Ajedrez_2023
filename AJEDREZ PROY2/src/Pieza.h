@@ -6,11 +6,11 @@
 
 class Pieza {
 private:
-    //int jugador_actual; -- de momento no se usa
-    int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
+      int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
 protected:
     bool color;
     Coordenadas coordenadas;
+
 public:
     //virtual ~Pieza() {} jja
     enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
@@ -32,8 +32,8 @@ public:
 
     virtual void mueve(unsigned char key) = 0;
     virtual void dibuja() = 0;
-    virtual bool esmovimientoValido(int x_Destino, int y_Destino, bool comer) = 0;
-    virtual void mover(int x, int y, bool comer) = 0;
+    virtual bool esmovimientoValido(int x_Destino, int y_Destino, int comer) = 0;
+    virtual void mover(int x, int y, int comer) = 0;
     virtual TipoPieza getClass() const = 0;
         
     
