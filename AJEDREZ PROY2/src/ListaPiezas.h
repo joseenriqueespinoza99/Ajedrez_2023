@@ -22,7 +22,7 @@ class ListaPiezas
 		void mueve(float t);
 		Pieza* operator [](int i);
 		void choque();
-		
+		void reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza);
 };
 
 
