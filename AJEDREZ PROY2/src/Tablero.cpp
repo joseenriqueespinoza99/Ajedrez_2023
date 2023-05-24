@@ -89,13 +89,13 @@ void Tablero::dibuja() {
 	}
 
 
-	if (piezaSelecc != nullptr) { // Selecciona las casillas vacÌas a las que te puedes mover
+	if (piezaSelecc != nullptr) { // Selecciona las casillas vac√≠as a las que te puedes mover
 		for (int i = 0; i <= 7; i++) {
 			for (int j = 0; j <= 7; j++) {
 				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
 						glPushMatrix();
-						glTranslatef(i, j, 0.0); // PosiciÛn de la casilla disponible
+						glTranslatef(i, j, 0.0); // Posici√≥n de la casilla disponible
 
 						if (turno && piezaSelecc->getColor() == true) {
 							glColor3f(0.9, 0.9, 0.4); // Color del cuadrado para el jugador 1
@@ -110,7 +110,7 @@ void Tablero::dibuja() {
 							}
 							else {
 								glPopMatrix();
-								continue; // Si no es el turno del jugador correspondiente y la casilla no puede ser capturada, se pasa a la siguiente iteraciÛn
+								continue; // Si no es el turno del jugador correspondiente y la casilla no puede ser capturada, se pasa a la siguiente iteraci√≥n
 							}
 						}
 
@@ -166,7 +166,7 @@ void Tablero::seleccionar_pieza(int x, int y) {
 		// mueva a una nueva casilla estando seleccioanda la pieza
 		if (piezaSelecc != nullptr) {
 			if (listapiezas.getPieza(x, y) != nullptr) {
-				// Si la casilla seleccionada est· ocupada, mueve la pieza seleccionada encima de la pieza allÌ 
+				// Si la casilla seleccionada est√° ocupada, mueve la pieza seleccionada encima de la pieza all√≠ 
 				//dentro de la funcion mover se elimina la esa pieza que esta debajo de la lista
 				
 				mover( x, y, 0);
@@ -199,7 +199,7 @@ void Tablero::tecla(unsigned char key)
 bool Tablero::casillaOcupada(int x, int y) {
 	Pieza* piezaEnCasilla = listapiezas.getPieza(x, y);
 	if (piezaEnCasilla == nullptr) {
-		return false; // Casilla vacÌa
+		return false; // Casilla vac√≠a
 	}
 	else {
 		//std::cout << "Esta ocupada";
@@ -231,13 +231,14 @@ bool Tablero::su_turno() {
 void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
-		// Intentar mover la pieza a la nueva posiciÛn
+		// Intentar mover la pieza a la nueva posici√≥n
 		if (casillaOcupada(x, y)) {
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 				comer = 1;
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
+						coronacion(x, y);//implementaci√≥n
 						listapiezas.eliminar(piezaDestino);
 						std::cout << "Se esta eliminando la pieza" << std::endl;
 						piezaSelecc->mover(x, y, comer);
@@ -267,6 +268,7 @@ void Tablero::mover(int x, int y, int comer) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
 						comer = 0;
+						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
 						if (piezaSelecc->getColor() == true) { 
@@ -372,12 +374,67 @@ bool Tablero::comprobar_jaqueRey(bool color) {
 		if (pieza->getColor() != color) {
 			if (pieza->esmovimientoValido(Rey->getX(), Rey->getY(), true) == 1) {
 				if (!comprobar_camino(pieza->getX(), pieza->getY(), Rey->getX(), Rey->getY())) {
-					return true; // El rey est· en jaque
+					return true; // El rey est√° en jaque
 				}
 			}
 		}
 	}
 
-	return false; // El rey no est· en jaque
+	return false; // El rey no est√° en jaque
 }
+Pieza * Tablero::coronacion(int x, int y) {
+	Pieza* Peon= nullptr;
+	Pieza* pieza;
+	tipo = PEON;
+	if (piezaSelecc != nullptr && piezaSelecc->getClass() == tipo) {
+		if ((piezaSelecc->getColor() == true && y == 7) || (piezaSelecc->getColor() == false && y == 0)) {
+			// Seleccionar la pieza a la que se desea coronar
+			int opcion;
+			std::cout << "Seleccione la pieza a la que desea coronar: " << std::endl;
+			std::cout << "1. Dama" << std::endl;
+			std::cout << "2. Torre" << std::endl;
+			std::cout << "3. Alfil" << std::endl;
+			std::cout << "4. Caballo" << std::endl;
+			std::cout << "Ingrese el n√∫mero correspondiente a la opci√≥n: ";
+			std::cin >> opcion;
 
+			switch (opcion) {
+			case 1: {
+				Dama* nuevaDama = new Dama(x, y, piezaSelecc->getColor());
+				listapiezas.reemplazar(piezaSelecc, nuevaDama);
+				piezaSelecc = nuevaDama;
+				return piezaSelecc;
+				break;
+			}
+			case 2: {
+				Torre* nuevaTorre = new Torre(x, y, piezaSelecc->getColor());
+				listapiezas.reemplazar(piezaSelecc, nuevaTorre);
+				piezaSelecc = nuevaTorre;
+				return piezaSelecc;
+				break;
+			}
+			case 3: {
+				Alfil* nuevoAlfil = new Alfil(x, y, piezaSelecc->getColor());
+				listapiezas.reemplazar(piezaSelecc, nuevoAlfil);
+				piezaSelecc = nuevoAlfil;
+				return piezaSelecc;
+				break;
+			}
+			case 4: {
+				Caballo* nuevoCaballo = new Caballo(x, y, piezaSelecc->getColor());
+				listapiezas.reemplazar(piezaSelecc, nuevoCaballo);
+				piezaSelecc = nuevoCaballo;
+				return piezaSelecc;
+				break;
+			}
+			default:
+				std::cout << "Opci√≥n inv√°lida." << std::endl;
+				return nullptr;
+				break;
+			}
+		}
+	
+	}
+
+	return nullptr;
+}
