@@ -6,11 +6,11 @@
 
 class Pieza {
 private:
-    //int jugador_actual; -- de momento no se usa
-    int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
+      int movimientos = 0; //para saber si una pieza se ha movido o sigue en su posicion original
 protected:
     bool color;
     Coordenadas coordenadas;
+    bool comer; 
 public:
     //virtual ~Pieza() {} jja
     enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
@@ -24,6 +24,9 @@ public:
     void setY(int y) { this->coordenadas.y = y; }
     int getX() { return coordenadas.x; }
     int getY() { return coordenadas.y; }
+
+    void setComer(bool c) { comer = c; }
+    bool getComer() { return comer; }
 
     //para diferenciar entre las piezas en casillas blancas y negras
     void dibujar(const char foto[], int x1, int y2);

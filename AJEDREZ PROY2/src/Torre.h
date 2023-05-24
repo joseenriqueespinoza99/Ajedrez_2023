@@ -10,5 +10,5 @@ public:
 	void mueve(unsigned char key) override {}
 	bool esmovimientoValido(int x_Destino, int y_Destino, bool comer);
 	void mover(int x, int y, bool comer) override;
-	virtual TipoPieza getClass() const override { return TipoPieza::TORRE; }
+	TipoPieza getClass() const override { return TipoPieza::TORRE; }
 };

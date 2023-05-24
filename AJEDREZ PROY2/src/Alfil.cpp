@@ -15,7 +15,13 @@ void Alfil::dibuja() {
 }
 
 // Método para comprobar si el movimiento del alfil es válido
-bool Alfil::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
+bool Alfil::esmovimientoValido(int x_Destino, int y_Destino, bool 
+
+
+
+
+
+) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
 	int distanciaX = abs(x_Destino - getX());
 	int distanciaY = abs(y_Destino - getY());

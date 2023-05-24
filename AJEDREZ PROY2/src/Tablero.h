@@ -27,6 +27,7 @@ private:
 	bool turno = true;
 public:
 	void dibuja();
+	void dibujar_movValidos(bool comer);
 	void inicializa();
 	void mueve();
 	void tecla(unsigned char key);

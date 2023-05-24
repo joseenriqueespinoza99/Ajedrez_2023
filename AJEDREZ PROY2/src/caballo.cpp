@@ -16,7 +16,14 @@ void Caballo::dibuja() {
 		pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
 }
 
-bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
+bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, bool 
+
+
+
+
+
+
+) {
 	//si hay 2 casillas de diferencia entre columna inicial y final y 1 entre filas sera correcto
 	if (fabs(x_Destino - getX()) == 1 && (fabs(y_Destino - getY()) == 2)) {
 		return true;

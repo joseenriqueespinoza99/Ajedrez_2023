@@ -16,7 +16,14 @@ void Dama::dibuja() {
 }
 
 // Método para comprobar si el movimiento del alfil es válido
-bool Dama::esmovimientoValido(int x_Destino, int y_Destino, bool comer) {
+bool Dama::esmovimientoValido(int x_Destino, int y_Destino, bool 
+
+
+
+
+
+
+) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
 	if (fabs(getX() - x_Destino) == fabs(getY() - y_Destino))
 		return true;
