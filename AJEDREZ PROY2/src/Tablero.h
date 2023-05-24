@@ -25,7 +25,15 @@ private:
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
 	bool turno = true;
+	int total = 0;
+	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
+	TipoPieza1 tipo;
+	int alpaso = 0; //para el comer al paso
+
 public:
+	void setPaso(bool alp) { alpaso = alp; }
+	int getPaso() { return alpaso; }
+
 	void dibuja();
 	void inicializa();
 	void mueve();
@@ -40,7 +48,6 @@ public:
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 	bool comprobar_jaqueRey(bool color);
 	Pieza* coronacion(int x, int y);
-	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
-	TipoPieza1 tipo;
+	bool comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
 };
 

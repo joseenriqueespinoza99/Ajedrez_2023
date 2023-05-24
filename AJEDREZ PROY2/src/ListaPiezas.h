@@ -17,11 +17,6 @@ class ListaPiezas
 		Pieza* getPiezas(int i){ return piezas[i]; };
 		Pieza* getPieza(int fila, int columna);
 		int getNumero() { return numero; }
-//de momento funciona igual sin lo de abajo
-		void dibuja();
-		void mueve(float t);
-		Pieza* operator [](int i);
-		void choque();
 		void reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza);
 };
 

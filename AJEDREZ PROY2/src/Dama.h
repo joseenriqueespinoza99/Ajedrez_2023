@@ -11,6 +11,6 @@ public:
 	void mueve(unsigned char key)override{}
 	bool esmovimientoValido(int x_destino, int y_destino, int comer) override;
 	void mover(int x, int y, int comer)override;
-	TipoPieza getClass() const override { return TipoPieza::ALFIL; }
+	TipoPieza getClass() const override { return TipoPieza::REINA; }
 };
 

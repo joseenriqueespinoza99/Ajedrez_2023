@@ -12,7 +12,7 @@ protected:
     Coordenadas coordenadas;
 
 public:
-    //virtual ~Pieza() {} jja
+    //virtual ~Pieza() {} 
     enum TipoPieza { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
     void setColor(bool c) {color = c;}
     bool getColor() { return color; }
