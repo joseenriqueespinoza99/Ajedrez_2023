@@ -50,6 +50,6 @@ public:
 	Pieza* coronacion(int x, int y);
 	void comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
 	bool casillaEnJaque(bool colorRey, int x, int y);
-
+	bool quitarJaque();
 };
 
