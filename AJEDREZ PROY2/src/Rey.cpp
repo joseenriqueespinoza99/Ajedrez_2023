@@ -36,6 +36,8 @@ void Rey::mover(int x, int y, int comer) {
 		// Actualizar la posición del rey a la celda de destino
 		setX(x);
 		setY(y);
+		setMov();
 	}
 	glutPostRedisplay;
+
 }

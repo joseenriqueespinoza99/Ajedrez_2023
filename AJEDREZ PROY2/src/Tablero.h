@@ -25,6 +25,11 @@ private:
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
 	bool turno = true;
+	//bool enroque_largo_blancas();
+	//bool enroque_largo_negras();
+//	bool enroque_corto_blancas();
+	bool enroque_corto_negras();
+
 public:
 	void dibuja();
 	void inicializa();
@@ -39,8 +44,10 @@ public:
 	bool comprobar_color(bool color);
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 	bool comprobar_jaqueRey(bool color);
+	void enrocar();
 	Pieza* coronacion(int x, int y);
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
+	TipoPieza1 tipo2;
 };
 

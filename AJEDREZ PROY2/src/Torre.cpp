@@ -27,6 +27,7 @@ void Torre::mover(int x, int y, int comer)
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);
+		setMov();
 	}
 	glutPostRedisplay;
 }

@@ -231,6 +231,12 @@ bool Tablero::su_turno() {
 void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
+		if ((piezaSelecc->getClass() == REY) || (piezaSelecc->getClass() == TORRE)) {
+			if (enroque_corto_negras() == true) {
+				enrocar();
+			}
+		}
+	
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
@@ -293,6 +299,9 @@ void Tablero::mover(int x, int y, int comer) {
 		if (comprobar_jaqueRey(turno)) {
 			std::cout << "El rey esta en jaque!" << std::endl;
 		}
+		else {
+			enroque_corto_negras();
+		}
 		glutPostRedisplay();
 	}
 }
@@ -312,6 +321,102 @@ void Tablero::coord_a_celda(int x, int y)
 	mover(celda.x - 1, celda.y - 1, 0);
 
 }
+
+
+//bool Tablero::enroque_largo_blancas() {
+//	Pieza* Torre;
+//	Pieza* Rey;
+//	for (int i = 0; i< listapiezas.getNumero(); i++) {
+//		for (int j = 0; j < listapiezas.getNumero(); j++) {
+//			Rey = listapiezas.getPiezas(i);
+//			Torre = listapiezas.getPiezas(j);
+//			//juegan las blancas
+//
+//			if (turno) {
+//				//rey y torre del mismo color blanco
+//				if ((Rey->getColor() == true) && (Torre->getColor() == true)) {
+//					//que el rey no se haya movido
+//					if ((Rey->getX() == 4) && (Rey->getY() == 0)) {
+//						if ((Torre->getX() == 0) && (Rey->getY() == 0)) {
+//							if (comprobar_jaqueRey (turno)  == true) {
+//								std::cout << "Se puede enrocar" << std::endl;
+//									return true;
+//							}
+//							else return false;
+//						}
+//						else return false;
+//					}
+//					else return false;
+//				}
+//				else return false;
+//			}
+//			else return false;
+//		}
+//	}
+// }
+//
+//
+//bool Tablero::enroque_largo_negras() {
+//	Pieza* Torre;
+//	Pieza* Rey;
+//	for (int i = 0; i < listapiezas.getNumero(); i++) {
+//		for (int j = 0; j < listapiezas.getNumero(); j++) {
+//			Rey = listapiezas.getPiezas(i);
+//			Torre = listapiezas.getPiezas(j);
+//			//juegan las blancas
+//			if (turno==0) {
+//				//rey y torre del mismo color blanco
+//				if ((Rey->getColor() == false) && (Torre->getColor() == false)){
+//					//que el rey no se haya movido
+//					if ((Rey->getX() == 4) && (Rey->getY() == 7)){
+//						if ((Torre->getX() == 0) && (Rey->getY() == 7)){
+//							if (comprobar_jaqueRey(turno) == false) {
+//								std::cout << "Se puede enrocar" << std::endl;
+//									return true;
+//							}
+//							else return false;
+//						}
+//						else return false;
+//					}
+//					else return false;
+//				}
+//				else return false;
+//			}
+//			else return false;
+//		}
+//	}
+//}
+//
+//bool Tablero::enroque_corto_blancas() {
+//	Pieza* Torre;
+//	Pieza* Rey;
+//	for (int i = 0; i < listapiezas.getNumero(); i++) {
+//		for (int j = 0; j < listapiezas.getNumero(); j++) {
+//			Rey = listapiezas.getPiezas(i);
+//			Torre = listapiezas.getPiezas(j);
+//			//juegan las blancas
+//			if (turno) {
+//				//rey y torre del mismo color blanco
+//				if ((Rey->getColor() == true) && (Torre->getColor() == true)) {
+//					//que el rey no se haya movido
+//					if ((Rey->getX() == 4) && (Rey->getY() == 0)) {
+//						if ((Torre->getX() == 7) && (Rey->getY() == 0)) {
+//							if (comprobar_jaqueRey(turno) == true) {
+//								std::cout << "Se puede enrocar" << std::endl;
+//								return true;
+//							}
+//							else return false;
+//						}
+//						else return false;
+//					}
+//					else return false;
+//				}
+//				else return false;
+//			}
+//			else return false;
+//		}
+//	}
+//}
 
 bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y) { // Para evitar que las piezas se salten otras piezas
 	// Verificar si el movimiento es horizontal, vertical o diagonal
@@ -353,6 +458,86 @@ bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int de
 	return false; // No hay piezas en el camino
 }
 
+bool Tablero::enroque_corto_negras() {
+	Pieza* Torre;
+	Pieza* Rey;
+	tipo2 = REY;
+	tipo = TORRE;
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
+		for (int j = 0; j < listapiezas.getNumero(); j++) {
+			if (listapiezas.getPiezas(i)->getClass() == tipo) {
+				if (listapiezas.getPiezas(j)->getClass() == tipo2) {
+					Rey = listapiezas.getPiezas(i);
+					Torre = listapiezas.getPiezas(j);
+					//juegan las negras
+					//if (turno == 0) {
+					//rey y torre del mismo color negro
+					if ((Rey->getColor() == false) && (Torre->getColor() == false)) {
+						std::cout << "Ambos turno negro y ambas negras" << std::endl;
+						
+						//que el rey no se haya movido
+						if (Torre->getX() == 7) {		
+							std::cout << "Torre derecha" << std::endl;
+							
+							if (comprobar_jaqueRey(false)) {
+								std::cout << "Se puede enrocar" << std::endl;
+
+								if ((Rey->getMov() == 0) && (Torre->getMov() == 0)) {
+									//no hay piezas en el camino
+									std::cout << "Se puede enrocar" << std::endl;
+
+									if (comprobar_camino(Rey->getX(), Rey->getY(), Torre->getX(), Torre->getY()) == false) {
+										std::cout << "Se puede enrocar" << std::endl;
+										return true;
+									}
+								}
+								
+							}
+							
+						}
+						
+					//}
+						
+				}
+					
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void Tablero::enrocar() {
+	Pieza* Torre;
+	Pieza* Rey;
+	tipo2 = REY;
+	tipo = TORRE;
+	if((piezaSelecc->getClass() == tipo)|| (piezaSelecc->getClass() == tipo2)){
+		for (int i = 0; i < listapiezas.getNumero(); i++) {
+			for (int j = 0; j < listapiezas.getNumero(); j++) {
+				Rey = listapiezas.getPiezas(i);
+				Torre = listapiezas.getPiezas(j);
+				
+				if (enroque_corto_negras() == true) {
+					Rey->mover(Rey->getX() + 2, Rey->getY(), false);
+					Torre->mover(Torre->getX() - 2, Torre->getY(), false);
+				}
+				/*if (enroque_largo_blancas() == true) {
+					Rey->mover(Rey->getX() - 3, Rey->getY(), false);
+					Torre->mover(Torre->getX() + 3, Torre->getY(), false);
+				}
+				else if (enroque_largo_negras() == true) {
+					Rey->mover(Rey->getX() - 3, Rey->getY(), false);
+					Torre->mover(Torre->getX() + 3, Torre->getY(), false);
+				}*/
+				/*else if (enroque_corto_blancas() == true) {
+					Rey->mover(Rey->getX() + 2, Rey->getY(), false);
+					Torre->mover(Torre->getX() - 2, Torre->getY(), false);
+				}*/
+			}
+		}
+	}
+}
 
 bool Tablero::comprobar_jaqueRey(bool color) {
 	Pieza* Rey = nullptr;
@@ -382,6 +567,7 @@ bool Tablero::comprobar_jaqueRey(bool color) {
 
 	return false; // El rey no está en jaque
 }
+
 Pieza * Tablero::coronacion(int x, int y) {
 	Pieza* Peon= nullptr;
 	Pieza* pieza;
