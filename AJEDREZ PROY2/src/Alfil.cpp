@@ -19,7 +19,13 @@ bool Alfil::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
 	int distanciaX = abs(x_Destino - getX());
 	int distanciaY = abs(y_Destino - getY());
-	return (distanciaX == distanciaY);
+	if (distanciaX == distanciaY) {
+
+		return true;
+
+	}
+	else
+		return false;
 }
 
 void Alfil::mover(int x, int y, int comer) {
