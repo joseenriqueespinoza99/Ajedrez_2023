@@ -8,9 +8,16 @@ Torre::Torre(int x, int y, bool color) {
 }
 
 bool Torre::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
-	if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
-		return true;
-	return false;
+	if (comer == 4) {
+		if (((x_Destino - getX()) == -2) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
+			return 1;
+		}
+	}
+	else {
+		if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
+			return true;
+		else return false;
+	}
 }
 
 
@@ -27,6 +34,7 @@ void Torre::mover(int x, int y, int comer)
 		// Actualizar la posición del alfil a la celda de destino
 		setX(x);
 		setY(y);
+		setMov();
 	}
 	glutPostRedisplay;
 }

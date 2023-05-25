@@ -29,6 +29,7 @@ private:
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
 	int alpaso = 0; //para el comer al paso
+	int enroca_c = 0;
 
 public:
 	void setPaso(bool alp) { alpaso = alp; }
@@ -50,6 +51,7 @@ public:
 	Pieza* coronacion(int x, int y);
 	void comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
 	bool casillaEnJaque(bool colorRey, int x, int y);
+	bool comprobar_enroque_corto(bool color);
 
 };
 
