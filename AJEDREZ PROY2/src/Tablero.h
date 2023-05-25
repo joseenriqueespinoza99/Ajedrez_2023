@@ -29,10 +29,13 @@ private:
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
 	int alpaso = 0; //para el comer al paso
+	bool enroque_c = 0; //para el enroque corto
+	bool enroque_l = 0; //para el enroque largo
 
 public:
-	void setPaso(bool alp) { alpaso = alp; }
 	int getPaso() { return alpaso; }
+	int getEnroqueC() { return enroque_c; }
+	int getEnroqueL() { return enroque_l; }
 
 	void dibuja();
 	void inicializa();

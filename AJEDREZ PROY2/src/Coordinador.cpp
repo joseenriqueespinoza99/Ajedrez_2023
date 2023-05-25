@@ -63,6 +63,22 @@ void Coordinador::dibuja() {
 			ETSIDI::printxy("comer", -2, 2);
 			ETSIDI::printxy("al paso", -2, 1);
 		}
+		if (tablerinyo.getEnroqueC() == 1) {
+			ETSIDI::setTextColor(1, 1, 1);
+			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::printxy("Puedes", -2, 4);
+			ETSIDI::printxy("hacer", -2, 3);
+			ETSIDI::printxy("enroque", -2, 2);
+			ETSIDI::printxy("corto", -2, 1);
+		}
+		if (tablerinyo.getEnroqueL() == 1) {
+			ETSIDI::setTextColor(1, 1, 1);
+			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::printxy("Puedes", -2, 4);
+			ETSIDI::printxy("hacer", -2, 3);
+			ETSIDI::printxy("enroque", -2, 2);
+			ETSIDI::printxy("largo", -2, 1);
+		}
 
 	}
 	else if (estado = PAUSA) {
