@@ -263,6 +263,7 @@ void Tablero::mover(int x, int y, int comer) {
 								std::cout << "Ahora les toca a las blancas" << std::endl;
 								turno = true;
 							}
+							total++;
 							piezaSelecc = nullptr;
 						}
 						else {
@@ -270,7 +271,7 @@ void Tablero::mover(int x, int y, int comer) {
 						}
 					}
 					else {
-						std::cout << "Movimiento no válido para la pieza" << std::endl;
+						std::cout << "Movimiento no valido para la pieza" << std::endl;
 					}
 				}
 			}
@@ -291,6 +292,7 @@ void Tablero::mover(int x, int y, int comer) {
 								std::cout << "Ahora les toca a las blancas" << std::endl;
 								turno = true;
 							}
+							total++;
 							piezaSelecc = nullptr;
 						}
 						else {
@@ -368,10 +370,11 @@ void Tablero::mover(int x, int y, int comer) {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
 				}
 			}
-			if (casillaOcupada(x, y - 1)) {
+			if (casillaOcupada(x, y - 1)) { //comer al paso para las blancas
 				Pieza* piezaDestino2 = listapiezas.getPieza(x, y - 1);
-				if (alpaso == 1) {
-					comer = 1;
+				if ((alpaso == 1)|| (alpaso == 2)) {
+					if (alpaso == 1) comer = 3;
+					else comer = 2;
 					if (piezaDestino2 != nullptr && (!comprobar_color(piezaDestino2->getColor()))) {
 						if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
 							listapiezas.eliminar(piezaDestino2);
@@ -393,10 +396,11 @@ void Tablero::mover(int x, int y, int comer) {
 					}
 				}
 			}
-			if (casillaOcupada(x, y + 1)) {
+			if (casillaOcupada(x, y + 1)) { //comer al paso para las negras
 				Pieza* piezaDestino2 = listapiezas.getPieza(x, y + 1);
-				if (alpaso == 2) {
-					comer = 1;
+				if ((alpaso == 3) || (alpaso == 4)) {
+					if (alpaso == 3) comer = 3;
+					else comer = 2;
 					if (piezaDestino2 != nullptr && (!comprobar_color(piezaDestino2->getColor()))) {
 						if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
 							listapiezas.eliminar(piezaDestino2);
@@ -576,19 +580,30 @@ void Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 
 	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
 		for (int i = 0; i < listapiezas.getNumero(); i++) {
-						if (listapiezas.getPiezas(i)->getClass() == tipo) {
+			if (listapiezas.getPiezas(i)->getClass() == tipo) {
 				Peon = listapiezas.getPiezas(i);
 				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
-					if ((Peon->getX() == destino_x + 1) || (Peon->getX() == destino_x - 1)) {
-						if (Peon->getColor() == true) {
+					if (Peon->getColor() == true) {
+						if (Peon->getX() == destino_x + 1) {
 							std::cout << "Se puede capturar al paso" << std::endl;
-							alpaso = 1; // se puede mover al paso para las blancas
+							alpaso = 1; // La blanca puede comer al paso hacia la izquierda
 						}
-						else {
+						if (Peon->getX() == destino_x - 1) {
 							std::cout << "Se puede capturar al paso" << std::endl;
-							alpaso = 2; // se puede mover al paso para las negras
+							alpaso = 2; // La blanca puede comer al paso hacia la derecha
 						}
 					}
+					else {
+						if (Peon->getX() == destino_x + 1) {
+							std::cout << "Se puede capturar al paso" << std::endl;
+							alpaso = 3; // La negra puede comer al paso hacia la izquierda
+						}
+						if (Peon->getX() == destino_x - 1) {
+							std::cout << "Se puede capturar al paso" << std::endl;
+							alpaso = 4; // La negra puede comer al paso hacia la derecha
+						}
+					}
+					
 				}
 			}
 		}
