@@ -652,6 +652,15 @@ bool Tablero::comprobar_enroque_largo(bool color) {
 							std::cout << "Se puede hacer enroque largo" << std::endl;
 							enroque_l = 1;
 							return true;
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
 
 bool Tablero::quitarJaque() {
 	if (piezaSelecc != nullptr && piezaSelecc->getClass() == REY) {
@@ -667,7 +676,6 @@ bool Tablero::quitarJaque() {
 							mover(i, j, 0);
 							bool jaqueRey = comprobar_jaqueRey(piezaSelecc->getColor());
 							mover(xAnterior, yAnterior, 0);
-
 							if (!jaqueRey) {
 								return true; // Movimiento válido, no hay jaque
 							}
@@ -680,6 +688,3 @@ bool Tablero::quitarJaque() {
 	}
 	return false; // No se encontró ningún movimiento que elimine el jaque
 }
-
-
-
