@@ -12,6 +12,5 @@ public:
 	bool esmovimientoValido(int x_destino, int y_destino, int comer) override;
 	void mover(int x, int y, int comer) override;
 	TipoPieza getClass() const override { return TipoPieza::PEON; }
-	//Tablero t;
 };
 

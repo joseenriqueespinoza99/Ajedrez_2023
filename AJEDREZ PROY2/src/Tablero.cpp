@@ -80,21 +80,6 @@ void Tablero::dibuja() {
 						}
 					}
 				}
-				if (piezaSelecc->esmovimientoValido(i, j, 1) == 1) {
-					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
-						Pieza* piezaDestino = listapiezas.getPieza(i, j);
-						if (piezaDestino != nullptr && piezaDestino->getColor() != piezaSelecc->getColor()) {
-							glLineWidth(4.0);
-							glBegin(GL_LINE_LOOP);
-							glColor3f(0, 1, 0);
-							glVertex2f(piezaDestino->getX(), piezaDestino->getY());
-							glVertex2f(piezaDestino->getX() + 1, piezaDestino->getY());
-							glVertex2f(piezaDestino->getX() + 1, piezaDestino->getY() + 1);
-							glVertex2f(piezaDestino->getX(), piezaDestino->getY() + 1);
-							glEnd();
-						}
-					}
-				}
 			}
 		}
 	}
@@ -262,15 +247,6 @@ void Tablero::mover(int x, int y, int comer) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {//Mover comiendo
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
-			/*	if(alpaso == 1) {
-					comer = 2;
-				}
-				else if (alpaso == 2) {
-					comer = 3;
-				}
-				else {
-					comer = 1;
-				}*/
 				comer = 1;
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
@@ -317,12 +293,6 @@ void Tablero::mover(int x, int y, int comer) {
 							turno = true;
 						}
 						total++;
-						//if (alpaso == 1) {
-						//	comer = 2;
-						//}
-						//if (alpaso == 2) {
-						//	comer = 3;
-						//}
 						piezaSelecc = nullptr;
 					}
 					else
@@ -337,6 +307,31 @@ void Tablero::mover(int x, int y, int comer) {
 		if (casillaOcupada(x, y - 1)) {
 			Pieza* piezaDestino2 = listapiezas.getPieza(x, y-1);
 			if (alpaso == 1) {
+				comer = 1;
+				if (piezaDestino2 != nullptr && (!comprobar_color(piezaDestino2->getColor()))) {
+					if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+						listapiezas.eliminar(piezaDestino2);
+						std::cout << "Se esta eliminando la pieza" << std::endl;
+						piezaSelecc->mover(x, y, comer);
+						ETSIDI::play("sonidos/comida.mp3");
+						if (piezaSelecc->getColor() == true) {
+							std::cout << "Ahora les toca a las negras" << std::endl;
+							turno = false;
+						}
+						else {
+							std::cout << "Ahora les toca a las blancas" << std::endl;
+							turno = true;
+						}
+						total++;
+						alpaso = 0;
+						piezaSelecc = nullptr;
+					}
+				}
+			}
+		}
+		if (casillaOcupada(x, y + 1)) {
+			Pieza* piezaDestino2 = listapiezas.getPieza(x, y + 1);
+			if (alpaso == 2) {
 				comer = 1;
 				if (piezaDestino2 != nullptr && (!comprobar_color(piezaDestino2->getColor()))) {
 					if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
@@ -448,6 +443,8 @@ bool Tablero::comprobar_jaqueRey(bool color) {
 
 	return false; // El rey no está en jaque
 }
+
+
 Pieza * Tablero::coronacion(int x, int y) {
 	Pieza* Peon= nullptr;
 	Pieza* pieza;
@@ -506,7 +503,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 }
 
 
-bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
+void Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color) {
 	//si un peon se mueve 2 posiciones y se coloca al lado de otro peon
 	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
 	Pieza* Peon = nullptr;
@@ -514,33 +511,22 @@ bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 
 	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
 		for (int i = 0; i < listapiezas.getNumero(); i++) {
-			//std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
-			if (listapiezas.getPiezas(i)->getClass() == tipo) {
+						if (listapiezas.getPiezas(i)->getClass() == tipo) {
 				Peon = listapiezas.getPiezas(i);
 				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
 					if ((Peon->getX() == destino_x + 1) || (Peon->getX() == destino_x - 1)) {
 						if (Peon->getColor() == true) {
 							std::cout << "Se puede capturar al paso" << std::endl;
 							alpaso = 1; // se puede mover al paso para las blancas
-							return true; // Hay posibilidad de capturar al paso
 						}
 						else {
 							std::cout << "Se puede capturar al paso" << std::endl;
 							alpaso = 2; // se puede mover al paso para las negras
-							return true; // Hay posibilidad de capturar al paso
 						}
-
 					}
-					//if (Peon->getX() == destino_x - 1) {
-					//	alpaso = 2; // se puede comer el de la derecha
-					//	std::cout << "Se puede capturar al paso" << std::endl;
-					//	return true; // Hay posibilidad de capturar al paso
-					//}
-
 				}
 			}
 		}
-		return false; // No hay posibilidad de capturar al paso
 	}
 }
 
