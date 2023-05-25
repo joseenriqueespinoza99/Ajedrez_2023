@@ -49,5 +49,7 @@ public:
 	bool comprobar_jaqueRey(bool color);
 	Pieza* coronacion(int x, int y);
 	bool comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
+
+	//friend class Peon;
 };
 

@@ -80,6 +80,21 @@ void Tablero::dibuja() {
 						}
 					}
 				}
+				if (piezaSelecc->esmovimientoValido(i, j, 1) == 1) {
+					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
+						Pieza* piezaDestino = listapiezas.getPieza(i, j);
+						if (piezaDestino != nullptr && piezaDestino->getColor() != piezaSelecc->getColor()) {
+							glLineWidth(4.0);
+							glBegin(GL_LINE_LOOP);
+							glColor3f(0, 1, 0);
+							glVertex2f(piezaDestino->getX(), piezaDestino->getY());
+							glVertex2f(piezaDestino->getX() + 1, piezaDestino->getY());
+							glVertex2f(piezaDestino->getX() + 1, piezaDestino->getY() + 1);
+							glVertex2f(piezaDestino->getX(), piezaDestino->getY() + 1);
+							glEnd();
+						}
+					}
+				}
 			}
 		}
 	}
@@ -247,7 +262,7 @@ void Tablero::mover(int x, int y, int comer) {
 		// Intentar mover la pieza a la nueva posición
 		if (casillaOcupada(x, y)) {//Mover comiendo
 			if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
-				if(alpaso == 1) {
+			/*	if(alpaso == 1) {
 					comer = 2;
 				}
 				else if (alpaso == 2) {
@@ -255,7 +270,8 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 				else {
 					comer = 1;
-				}
+				}*/
+				comer = 1;
 				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 
 					{
@@ -284,7 +300,7 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 			}
 		}
-		else { //Solo mover
+		else if (casillaOcupada(x, y) == false){ //Solo mover
 			if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
 					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) 	{
 						comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
@@ -301,12 +317,12 @@ void Tablero::mover(int x, int y, int comer) {
 							turno = true;
 						}
 						total++;
-						if (alpaso == 1) {
-							comer = 2;
-						}
-						if (alpaso == 2) {
-							comer = 3;
-						}
+						//if (alpaso == 1) {
+						//	comer = 2;
+						//}
+						//if (alpaso == 2) {
+						//	comer = 3;
+						//}
 						piezaSelecc = nullptr;
 					}
 					else
@@ -318,9 +334,32 @@ void Tablero::mover(int x, int y, int comer) {
 				std::cout << "Movimiento no valido para la pieza" << std::endl;
 			}
 		}
-		if (comprobar_jaqueRey(turno)) {
-			std::cout << "El rey esta en jaque!" << std::endl;
+		if (casillaOcupada(x, y - 1)) {
+			Pieza* piezaDestino2 = listapiezas.getPieza(x, y-1);
+			if (alpaso == 1) {
+				comer = 1;
+				if (piezaDestino2 != nullptr && (!comprobar_color(piezaDestino2->getColor()))) {
+					if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+						listapiezas.eliminar(piezaDestino2);
+						std::cout << "Se esta eliminando la pieza" << std::endl;
+						piezaSelecc->mover(x, y, comer);
+						ETSIDI::play("sonidos/comida.mp3");
+						if (piezaSelecc->getColor() == true) {
+							std::cout << "Ahora les toca a las negras" << std::endl;
+							turno = false;
+						}
+						else {
+							std::cout << "Ahora les toca a las blancas" << std::endl;
+							turno = true;
+						}
+						total++;
+						alpaso = 0;
+						piezaSelecc = nullptr;
+					}
+				}
+			}
 		}
+
 		glutPostRedisplay();
 	}
 }
@@ -338,7 +377,6 @@ void Tablero::coord_a_celda(int x, int y)
 	destino.x = x;
 	destino.y = y;
 	mover(celda.x - 1, celda.y - 1, 0);
-
 }
 
 bool Tablero::comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y) { // Para evitar que las piezas se salten otras piezas
@@ -473,24 +511,31 @@ bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
 	Pieza* Peon = nullptr;
 	tipo = PEON;
-	//alpaso = 0;
 
 	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
 		for (int i = 0; i < listapiezas.getNumero(); i++) {
-			std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
+			//std::cout << listapiezas.getPiezas(i)->getClass() << std::endl;
 			if (listapiezas.getPiezas(i)->getClass() == tipo) {
 				Peon = listapiezas.getPiezas(i);
 				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
-					if (Peon->getX() == destino_x + 1) {
-						std::cout << "Se puede capturar al paso" << std::endl;
-						alpaso = 1; // se puede comer el de la izquierda
-						return true; // Hay posibilidad de capturar al paso
+					if ((Peon->getX() == destino_x + 1) || (Peon->getX() == destino_x - 1)) {
+						if (Peon->getColor() == true) {
+							std::cout << "Se puede capturar al paso" << std::endl;
+							alpaso = 1; // se puede mover al paso para las blancas
+							return true; // Hay posibilidad de capturar al paso
+						}
+						else {
+							std::cout << "Se puede capturar al paso" << std::endl;
+							alpaso = 2; // se puede mover al paso para las negras
+							return true; // Hay posibilidad de capturar al paso
+						}
+
 					}
-					if (Peon->getX() == destino_x - 1) {
-						alpaso = 2; // se puede comer el de la derecha
-						std::cout << "Se puede capturar al paso" << std::endl;
-						return true; // Hay posibilidad de capturar al paso
-					}
+					//if (Peon->getX() == destino_x - 1) {
+					//	alpaso = 2; // se puede comer el de la derecha
+					//	std::cout << "Se puede capturar al paso" << std::endl;
+					//	return true; // Hay posibilidad de capturar al paso
+					//}
 
 				}
 			}
@@ -498,3 +543,5 @@ bool Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 		return false; // No hay posibilidad de capturar al paso
 	}
 }
+
+
