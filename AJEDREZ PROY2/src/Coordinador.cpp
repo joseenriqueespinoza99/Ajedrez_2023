@@ -55,6 +55,15 @@ void Coordinador::dibuja() {
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
 		ETSIDI::printxy("Electronica vs. Electrica", 0.8, 8.5);
+
+		if (tablerinyo.getPaso() != 0) {
+			ETSIDI::setTextColor(1, 1, 1);
+			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::printxy("Puedes", -2, 3);
+			ETSIDI::printxy("comer", -2, 2);
+			ETSIDI::printxy("al paso", -2, 1);
+		}
+
 	}
 	else if (estado = PAUSA) {
 		gluLookAt(4, 4, 14,
