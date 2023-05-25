@@ -16,15 +16,27 @@ void Rey::dibuja() {
 
 // Método para comprobar si el movimiento del rey es válido
 bool Rey::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
-	// El rey se puede mover 1 casilla a su alrededor
-	if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
-		return 1;
-	else if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 1)
-		return 1;
-	else if (abs(x_Destino - getX()) == 0 && abs(y_Destino - getY()) == 1)
-		return 1;
-	else { 
-		return 0;
+	if (comer == 4) {
+		if (((x_Destino - getX()) == 2) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
+			return 1;
+		}
+	}
+	else if (comer == 5) {
+		if (((x_Destino - getX()) == -2) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
+			return 1;
+		}
+	}
+	else {
+		// El rey se puede mover 1 casilla a su alrededor
+		if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
+			return 1;
+		else if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 1)
+			return 1;
+		else if (abs(x_Destino - getX()) == 0 && abs(y_Destino - getY()) == 1)
+			return 1;
+		else {
+			return 0;
+		}
 	}
 }
 
@@ -36,6 +48,7 @@ void Rey::mover(int x, int y, int comer) {
 		// Actualizar la posición del rey a la celda de destino
 		setX(x);
 		setY(y);
+		setMov();
 	}
 	glutPostRedisplay;
 }

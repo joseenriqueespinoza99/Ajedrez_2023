@@ -25,14 +25,16 @@ private:
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
 	bool turno = true;
-	int total = 0;
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
 	int alpaso = 0; //para el comer al paso
+	bool enroque_c = 0; //para el enroque corto
+	bool enroque_l = 0; //para el enroque largo
 
 public:
-	void setPaso(bool alp) { alpaso = alp; }
 	int getPaso() { return alpaso; }
+	int getEnroqueC() { return enroque_c; }
+	int getEnroqueL() { return enroque_l; }
 
 	void dibuja();
 	void inicializa();
@@ -42,6 +44,7 @@ public:
 	void mover(int x, int y, int comer);
 	bool casillaOcupada(int x, int y);
 	bool su_turno();
+	void cambio_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
 	bool comprobar_color(bool color);
@@ -50,6 +53,8 @@ public:
 	Pieza* coronacion(int x, int y);
 	void comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
 	bool casillaEnJaque(bool colorRey, int x, int y);
+	bool comprobar_enroque_corto(bool color);
+	bool comprobar_enroque_largo(bool color);
 	bool quitarJaque();
 };
 

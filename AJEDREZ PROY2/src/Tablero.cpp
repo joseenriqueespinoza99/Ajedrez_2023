@@ -154,14 +154,12 @@ void Tablero::dibuja() {
 		}
 	}
 
-	if (total % 2 == 0) {
+	if (turno == true) {
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
 	}
-
-
-	if (total % 2) {
+	else {
 		ETSIDI::setTextColor(1, 1, 0);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las NEGRAS", 6.5, -1);
@@ -241,9 +239,25 @@ bool Tablero::su_turno() {
 	}
 }
 
+void Tablero::cambio_turno() {
+	if (piezaSelecc != nullptr) {
+		if (piezaSelecc->getColor() == true) {
+			std::cout << "Ahora les toca a las negras" << std::endl;
+			turno = false;
+		}
+		else {
+			std::cout << "Ahora les toca a las blancas" << std::endl;
+			turno = true;
+		}
+	}
+}
+
+
 void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
+		comprobar_enroque_corto(turno);
+		comprobar_enroque_largo(turno);
 		bool jaqueRey = comprobar_jaqueRey(piezaSelecc->getColor());
 		if (jaqueRey) {
 			
@@ -257,15 +271,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								quitarJaque();
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
+							cambio_turno();
 							piezaSelecc = nullptr;
 						}
 						else
@@ -284,17 +290,8 @@ void Tablero::mover(int x, int y, int comer) {
 						comer = 0;
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
-						
 						ETSIDI::play("sonidos/mueve.mp3");
-						if (piezaSelecc->getColor() == true) {
-							std::cout << "Ahora les toca a las negras" << std::endl;
-							turno = false;
-						}
-						else {
-							std::cout << "Ahora les toca a las blancas" << std::endl;
-							turno = true;
-						}
-						total++;
+						cambio_turno();
 						piezaSelecc = nullptr;
 					}
 					else
@@ -307,40 +304,12 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 			}
 		}
-			//else {
-			//	// Verificar si la pieza seleccionada es el rey y si el movimiento es válido para el rey
-			//	if ( piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
-			//		// Mover al rey para salir del jaque
-			//		if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) {
-			//			coronacion(x, y);
-			//			piezaSelecc->mover(x, y, comer);
-			//			ETSIDI::play("sonidos/mueve.mp3");
-			//			if (piezaSelecc->getColor() == true) {
-			//				std::cout << "Ahora les toca a las negras" << std::endl;
-			//				turno = false;
-			//			}
-			//			else {
-			//				std::cout << "Ahora les toca a las blancas" << std::endl;
-			//				turno = true;
-			//			}
-			//			piezaSelecc = nullptr;
-			//		}
-			//		else {
-			//			std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
-			//		}
-			//	}
-				//else {
-			/*		std::cout << "Solo se puede mover al rey para salir del jaque" << std::endl;
-				}
-			}
-
-		}*/
-
 		else {
 			// Intentar mover la pieza a la nueva posición
 			if (casillaOcupada(x, y)) {//Mover comiendo
 				if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 					comer = 1;
+					alpaso = 0;
 					if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 						if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y))
 						{
@@ -349,15 +318,9 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
+							enroque_c = 0;
+							enroque_l = 0;
 							piezaSelecc = nullptr;
 						}
 						else
@@ -377,22 +340,41 @@ void Tablero::mover(int x, int y, int comer) {
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
-						if (piezaSelecc->getColor() == true) {
-							std::cout << "Ahora les toca a las negras" << std::endl;
-							turno = false;
-						}
-						else {
-							std::cout << "Ahora les toca a las blancas" << std::endl;
-							turno = true;
-						}
-						total++;
+						cambio_turno();
+						enroque_c = 0;
+						enroque_l = 0;
 						piezaSelecc = nullptr;
 					}
 					else
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
 
 				}
-
+				else if ((comprobar_enroque_corto(turno)) || (comprobar_enroque_largo(turno))) {
+					if (enroque_c == 1) {
+						comer = 4;
+						Pieza* piezaDestino2 = listapiezas.getPieza(x + 1, y);
+						if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+							piezaSelecc->mover(x, y, comer);
+							piezaDestino2->mover(x - 1, y, comer);
+							ETSIDI::play("sonidos/mueve.mp3");
+							cambio_turno();
+							enroque_c = 0;
+							piezaSelecc = nullptr;
+						}
+					}
+					else if (enroque_l == 1) {
+						comer = 5;
+						Pieza* piezaDestino2 = listapiezas.getPieza(x - 2, y);
+						if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+							piezaSelecc->mover(x, y, comer);
+							piezaDestino2->mover(x + 1, y, comer);
+							ETSIDI::play("sonidos/mueve.mp3");
+							cambio_turno();
+							enroque_l = 0;
+							piezaSelecc = nullptr;
+						}
+					}	
+				}
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
 				}
@@ -408,15 +390,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							alpaso = 0;
 							piezaSelecc = nullptr;
 						}
@@ -434,23 +408,15 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							alpaso = 0;
 							piezaSelecc = nullptr;
 						}
 					}
 				}
 			}
+			
 		}
-
 		glutPostRedisplay();
 	}
 }
@@ -592,9 +558,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 				break;
 			}
 		}
-	
 	}
-
 	return nullptr;
 }
 
@@ -604,12 +568,12 @@ void Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 	//el otro peon puede en el siguiente movimiento comerse al peon que tiene a su lado moviendose en diagonal
 	Pieza* Peon = nullptr;
 	tipo = PEON;
-
+	alpaso = 0;
 	if (piezaSelecc->getClass() == tipo && (abs(destino_y - origen_y) == 2)) {
 		for (int i = 0; i < listapiezas.getNumero(); i++) {
 			if (listapiezas.getPiezas(i)->getClass() == tipo) {
 				Peon = listapiezas.getPiezas(i);
-				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
+				if ((Peon != nullptr)&&(Peon->getColor() != color) && (Peon->getY() == destino_y)) {
 					if (Peon->getColor() == true) {
 						if (Peon->getX() == destino_x + 1) {
 							std::cout << "Se puede capturar al paso" << std::endl;
@@ -630,7 +594,6 @@ void Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 							alpaso = 4; // La negra puede comer al paso hacia la derecha
 						}
 					}
-					
 				}
 			}
 		}
@@ -648,6 +611,47 @@ bool Tablero::casillaEnJaque(bool colorRey, int x, int y) {
 	}
 	return false;
 }
+
+
+bool Tablero::comprobar_enroque_corto(bool color) {
+	//si selecciono al rey y: el rey nunca se ha movido, la torre nunca se ha movido, el rey no está en jaque, no hay nada en medio de las piezas
+	//se pueden intercambiar la torre y el rey en medio
+	Pieza* Tor = nullptr;
+	enroque_c = 0;
+	if ((piezaSelecc != nullptr)&&(piezaSelecc->getClass() == REY) && piezaSelecc->getColor() == color) { // Si es rey
+		for (int i = 0; i < listapiezas.getNumero(); i++) {
+			if ((listapiezas.getPiezas(i)->getClass() == TORRE) && (listapiezas.getPiezas(i)->getX() == 7) && (listapiezas.getPiezas(i)->getColor() == color)) { // Si es torre derecha
+				Tor = listapiezas.getPiezas(i);
+				if ((Tor != nullptr) &&(piezaSelecc->getMov() == 0) && (Tor->getMov() == 0)) { // Si nunca se han movido
+					if (comprobar_jaqueRey(color) == false) { // Si el rey no está en jaque
+						if (comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), Tor->getX(), Tor->getY())==false) {
+							std::cout << "Se puede hacer enroque corto" << std::endl;
+							enroque_c = 1;
+							return true;
+						}
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool Tablero::comprobar_enroque_largo(bool color) {
+	//si selecciono al rey y: el rey nunca se ha movido, la torre nunca se ha movido, el rey no está en jaque, no hay nada en medio de las piezas
+	//se pueden intercambiar la torre y el rey en medio
+	Pieza* Tor = nullptr;
+	enroque_l = 0;
+	if ((piezaSelecc != nullptr) && (piezaSelecc->getClass() == REY) && piezaSelecc->getColor() == color) { // Si es rey
+		for (int i = 0; i < listapiezas.getNumero(); i++) {
+			if ((listapiezas.getPiezas(i)->getClass() == TORRE) && (listapiezas.getPiezas(i)->getX() == 0) && (listapiezas.getPiezas(i)->getColor() == color)) { // Si es torre derecha
+				Tor = listapiezas.getPiezas(i);
+				if ((Tor != nullptr) && (piezaSelecc->getMov() == 0) && (Tor->getMov() == 0)) { // Si nunca se han movido
+					if (comprobar_jaqueRey(color) == false) { // Si el rey no está en jaque
+						if (comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), Tor->getX(), Tor->getY()) == false) {
+							std::cout << "Se puede hacer enroque largo" << std::endl;
+							enroque_l = 1;
+							return true;
 
 bool Tablero::quitarJaque() {
 	if (piezaSelecc != nullptr && piezaSelecc->getClass() == REY) {
@@ -667,13 +671,13 @@ bool Tablero::quitarJaque() {
 							if (!jaqueRey) {
 								return true; // Movimiento válido, no hay jaque
 							}
+
 						}
 					}
 				}
 			}
 		}
 	}
-
 	return false; // No se encontró ningún movimiento que elimine el jaque
 }
 
