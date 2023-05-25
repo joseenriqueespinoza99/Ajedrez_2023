@@ -154,7 +154,7 @@ void Tablero::dibuja() {
 		}
 	}
 
-	if (total % 2 == 0) {
+	if (turno == true) {
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
@@ -239,6 +239,20 @@ bool Tablero::su_turno() {
 	}
 }
 
+void Tablero::cambio_turno() {
+	if (piezaSelecc != nullptr) {
+		if (piezaSelecc->getColor() == true) {
+			std::cout << "Ahora les toca a las negras" << std::endl;
+			turno = false;
+		}
+		else {
+			std::cout << "Ahora les toca a las blancas" << std::endl;
+			turno = true;
+		}
+	}
+}
+
+
 void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	if (piezaSelecc != nullptr) {
@@ -255,15 +269,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se está eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							piezaSelecc = nullptr;
 						}
 						else {
@@ -284,15 +290,7 @@ void Tablero::mover(int x, int y, int comer) {
 						if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) {
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/mueve.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							piezaSelecc = nullptr;
 						}
 						else {
@@ -322,15 +320,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							enroque_c = 0;
 							enroque_l = 0;
 							piezaSelecc = nullptr;
@@ -352,15 +342,7 @@ void Tablero::mover(int x, int y, int comer) {
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
-						if (piezaSelecc->getColor() == true) {
-							std::cout << "Ahora les toca a las negras" << std::endl;
-							turno = false;
-						}
-						else {
-							std::cout << "Ahora les toca a las blancas" << std::endl;
-							turno = true;
-						}
-						total++;
+						cambio_turno();
 						enroque_c = 0;
 						enroque_l = 0;
 						piezaSelecc = nullptr;
@@ -377,15 +359,7 @@ void Tablero::mover(int x, int y, int comer) {
 							piezaSelecc->mover(x, y, comer);
 							piezaDestino2->mover(x - 1, y, comer);
 							ETSIDI::play("sonidos/mueve.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							enroque_c = 0;
 							piezaSelecc = nullptr;
 						}
@@ -397,15 +371,7 @@ void Tablero::mover(int x, int y, int comer) {
 							piezaSelecc->mover(x, y, comer);
 							piezaDestino2->mover(x + 1, y, comer);
 							ETSIDI::play("sonidos/mueve.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							enroque_l = 0;
 							piezaSelecc = nullptr;
 						}
@@ -426,15 +392,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							alpaso = 0;
 							piezaSelecc = nullptr;
 						}
@@ -452,15 +410,7 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							if (piezaSelecc->getColor() == true) {
-								std::cout << "Ahora les toca a las negras" << std::endl;
-								turno = false;
-							}
-							else {
-								std::cout << "Ahora les toca a las blancas" << std::endl;
-								turno = true;
-							}
-							total++;
+							cambio_turno();
 							alpaso = 0;
 							piezaSelecc = nullptr;
 						}
@@ -625,7 +575,7 @@ void Tablero::comer_al_paso(int origen_x, int origen_y, int destino_x, int desti
 		for (int i = 0; i < listapiezas.getNumero(); i++) {
 			if (listapiezas.getPiezas(i)->getClass() == tipo) {
 				Peon = listapiezas.getPiezas(i);
-				if ((Peon->getColor() != color) && (Peon->getY() == destino_y)) {
+				if ((Peon != nullptr)&&(Peon->getColor() != color) && (Peon->getY() == destino_y)) {
 					if (Peon->getColor() == true) {
 						if (Peon->getX() == destino_x + 1) {
 							std::cout << "Se puede capturar al paso" << std::endl;

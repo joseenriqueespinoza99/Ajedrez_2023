@@ -25,7 +25,6 @@ private:
 	Pieza* p[32];
 	Pieza* piezaSelecc = nullptr;
 	bool turno = true;
-	int total = 0;
 	enum TipoPieza1 { ALFIL, TORRE, CABALLO, REINA, REY, PEON };
 	TipoPieza1 tipo;
 	int alpaso = 0; //para el comer al paso
@@ -45,6 +44,7 @@ public:
 	void mover(int x, int y, int comer);
 	bool casillaOcupada(int x, int y);
 	bool su_turno();
+	void cambio_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
 	//~Tablero();
 	bool comprobar_color(bool color);
