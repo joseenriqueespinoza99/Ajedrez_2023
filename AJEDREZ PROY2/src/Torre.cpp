@@ -13,6 +13,11 @@ bool Torre::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 			return 1;
 		}
 	}
+	else if (comer == 5) {
+		if (((x_Destino - getX()) == 3) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
+			return 1;
+		}
+	}
 	else {
 		if (((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0)) || ((fabs(getX() - x_Destino) != 0) && (fabs(getY() - y_Destino) == 0)))
 			return true;

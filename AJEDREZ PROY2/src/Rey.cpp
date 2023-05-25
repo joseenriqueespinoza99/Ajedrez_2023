@@ -21,6 +21,11 @@ bool Rey::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 			return 1;
 		}
 	}
+	else if (comer == 5) {
+		if (((x_Destino - getX()) == -2) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
+			return 1;
+		}
+	}
 	else {
 		// El rey se puede mover 1 casilla a su alrededor
 		if (abs(x_Destino - getX()) == 1 && abs(y_Destino - getY()) == 0)
