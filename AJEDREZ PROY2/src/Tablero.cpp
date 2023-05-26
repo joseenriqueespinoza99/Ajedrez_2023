@@ -260,7 +260,6 @@ void Tablero::mover(int x, int y, int comer) {
 		comprobar_enroque_largo(turno);
 		bool jaqueRey = comprobar_jaqueRey(piezaSelecc->getColor());
 		if (jaqueRey) {
-			
 			if (casillaOcupada(x, y)) {
 				if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 					comer = 1;
@@ -271,7 +270,15 @@ void Tablero::mover(int x, int y, int comer) {
 							std::cout << "Se esta eliminando la pieza" << std::endl;
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/comida.mp3");
-							cambio_turno();
+							if (piezaSelecc->getColor() == true) {
+								std::cout << "Ahora les toca a las negras" << std::endl;
+								quitarJaque();
+								turno = false;
+							}
+							else {
+								std::cout << "Ahora les toca a las blancas" << std::endl;
+								turno = true;
+							}
 							piezaSelecc = nullptr;
 						}
 						else
@@ -282,28 +289,67 @@ void Tablero::mover(int x, int y, int comer) {
 					}
 				}
 			}
-			else if  (casillaOcupada(x, y) == false) { //Solo mover
-				
-				if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true) ) {
-					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y) ) {
-						comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
-						comer = 0;
+			//	else if (casillaOcupada(x, y) == false) { //Solo mover
+
+			//		if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) {
+			//			if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) {
+			//				comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
+			//				comer = 0;
+			//				coronacion(x, y);
+			//				piezaSelecc->mover(x, y, comer);
+
+			//				ETSIDI::play("sonidos/mueve.mp3");
+			//				if (piezaSelecc->getColor() == true) {
+			//					std::cout << "Ahora les toca a las negras" << std::endl;
+			//					turno = false;
+			//				}
+			//				else {
+			//					std::cout << "Ahora les toca a las blancas" << std::endl;
+			//					turno = true;
+			//				}
+			//				total++;
+			//				piezaSelecc = nullptr;
+			//			}
+			//			else
+			//				std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+
+			//		}
+
+			//		else {
+			//			std::cout << "Movimiento no valido para la pieza" << std::endl;
+			//		}
+			//	}
+		
+			else {
+				// Verificar si la pieza seleccionada es el rey y si el movimiento es válido para el rey
+				if (piezaSelecc->getClass() == REY && piezaSelecc->esmovimientoValido(x, y, comer) == 1) {
+					// Mover al rey para salir del jaque
+					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), x, y)) {
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
-						cambio_turno();
+						if (piezaSelecc->getColor() == true) {
+							std::cout << "Ahora les toca a las negras" << std::endl;
+							quitarJaque();
+							turno = false;
+						}
+						else {
+							std::cout << "Ahora les toca a las blancas" << std::endl;
+							turno = true;
+						}
 						piezaSelecc = nullptr;
 					}
-					else
+					else {
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
-
+					}
 				}
-
 				else {
-					std::cout << "Movimiento no valido para la pieza" << std::endl;
+					std::cout << "Solo se puede mover al rey para salir del jaque" << std::endl;
 				}
 			}
+
 		}
+			
 		else {
 			// Intentar mover la pieza a la nueva posición
 			if (casillaOcupada(x, y)) {//Mover comiendo
