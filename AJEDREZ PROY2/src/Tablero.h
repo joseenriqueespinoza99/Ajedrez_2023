@@ -30,11 +30,21 @@ private:
 	int alpaso = 0; //para el comer al paso
 	bool enroque_c = 0; //para el enroque corto
 	bool enroque_l = 0; //para el enroque largo
+	bool modo = false;
 
 public:
 	int getPaso() { return alpaso; }
 	int getEnroqueC() { return enroque_c; }
 	int getEnroqueL() { return enroque_l; }
+
+	void igualarModo(ListaPiezas listap) {
+		for (int i = 0; i < listap.getNumero(); i++) {
+			listap.getPiezas(i)->setModo(modo);
+		}
+	}
+	void setModoT(bool m) { modo = m; igualarModo(listapiezas); }
+	bool getModoT() { return modo; }
+
 
 	void dibuja();
 	void inicializa();

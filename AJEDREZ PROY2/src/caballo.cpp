@@ -10,10 +10,19 @@ Caballo::Caballo(int x, int y, bool color) {
 
 
 void Caballo::dibuja() {
-	if (color == true)
-		pintar("imagenes/caballonegro.png", "imagenes/caballoblanco.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/caballonegro.png", "imagenes/caballoblanco.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/caballoblanco.png", "imagenes/caballonegro.png", "imagenes/caballonnegro.png", "imagenes/caballonblanco.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/clasicas/clascaballonegro.png", "imagenes/clasicas/clascaballoblanco.png", "imagenes/clasicas/clascaballonnegro.png", "imagenes/clasicas/clascaballonblanco.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/clasicas/clascaballoblanco.png", "imagenes/clasicas/clascaballonegro.png", "imagenes/clasicas/clascaballonnegro.png", "imagenes/clasicas/clascaballonblanco.png", getX(), getY() + 1);
+
+	}
 }
 
 bool Caballo::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
