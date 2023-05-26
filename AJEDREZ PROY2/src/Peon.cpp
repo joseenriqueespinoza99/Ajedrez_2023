@@ -1,30 +1,29 @@
 #include "Peon.h"
 
-Peon::Peon(int x, int y, bool color) {
+Peon::Peon(int x, int y, bool color) { //Constructor
 	this->setX(x);
 	this->setY(y);
 	this->color = color;
 	TipoPieza PEON;
 }
 
-void Peon::dibuja() {
-	if (getModo() == false) {
+void Peon::dibuja() { // Para dibujar los peones
+	if (getModo() == false) { // Se usan estas imagenes (tematicas) de forma general
 		if (color == true)
 			pintar("imagenes/peonnegro.png", "imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnnegro.png", getX(), getY() + 1);
 		else
 			pintar("imagenes/peonblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", "imagenes/peonnblanco.png", getX(), getY() + 1);
 	}
-	else {
-		if (color == true)
+	else { // Si se quiere utilizar el ajedrez clásico se ponen estas imágenes
+		if (color == true) 
 			pintar("imagenes/clasicas/claspeonnegro.png", "imagenes/clasicas/claspeonblanco.png", "imagenes/clasicas/claspeonnblanco.png", "imagenes/clasicas/claspeonnnegro.png", getX(), getY() + 1);
 		else
 			pintar("imagenes/clasicas/claspeonblanco.png", "imagenes/clasicas/claspeonnegro.png", "imagenes/clasicas/claspeonnnegro.png", "imagenes/clasicas/claspeonnblanco.png", getX(), getY() + 1);
 	}
 }
 
-// Método para comprobar si el movimiento del peon es válido
-bool Peon::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
-	if (comer == 0) {
+bool Peon::esmovimientoValido(int x_Destino, int y_Destino, int comer) { // Método para comprobar si el movimiento del peon es válido
+	if (comer == 0) { // Cuando no va a comer
 		if (abs(x_Destino - getX()) == 0) { // Solo se puede mover hacia delante
 			if ((color == 1) && (y_Destino - getY()) == 1) { // Solo se puede mover 1 casilla hacia delante
 				return 1;
@@ -84,15 +83,14 @@ bool Peon::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 }
 
 
-void Peon::mover(int x, int y, int comer) {
+void Peon::mover(int x, int y, int comer) { // Para actualizar la posicion del peon
 	getX();
 	getY();
-	// Comprobar si el movimiento es válido 
-	if (esmovimientoValido(x, y, comer)) {
-		// Actualizar la posición del rey a la celda de destino
+	if (esmovimientoValido(x, y, comer)) { // Comprobar si el movimiento es válido 
+		// Actualizar la posición del peon a la celda de destino
 		setX(x);
 		setY(y);
-		setMov(); // Al cambiar de posición se suma 1 a movimientos
+		setMov(); // Al cambiar de posición se suma 1 a movimientos (para controlar lo de mover 2 casillas)
 	}
 	glutPostRedisplay;
 }

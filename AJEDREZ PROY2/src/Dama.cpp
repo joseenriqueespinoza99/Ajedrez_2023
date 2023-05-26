@@ -1,6 +1,6 @@
 #include "Dama.h"
 
-Dama::Dama(int x, int y, bool color) {
+Dama::Dama(int x, int y, bool color) {  //Constructor
 	this->setX(x);
 	this->setY(y);
 	this->color = color;
@@ -8,14 +8,14 @@ Dama::Dama(int x, int y, bool color) {
 }
 
 
-void Dama::dibuja() {
-	if (getModo() == false) {
+void Dama::dibuja() { // Para dibujar las damas
+	if (getModo() == false) { // Se usan estas imagenes (tematicas) de forma general
 		if (color == true)
 			pintar("imagenes/damanegra.png", "imagenes/damablanca.png", "imagenes/damanblanca.png", "imagenes/damannegra.png", getX(), getY() + 1);
 		else
 			pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
 	}
-	else {
+	else { // Si se quiere utilizar el ajedrez clásico se ponen estas imágenes
 		if (color == true)
 			pintar("imagenes/clasicas/clasdamanegra.png", "imagenes/clasicas/clasdamablanca.png", "imagenes/clasicas/clasdamanblanca.png", "imagenes/clasicas/clasdamannegra.png", getX(), getY() + 1);
 		else
@@ -23,9 +23,8 @@ void Dama::dibuja() {
 	}
 }
 
-// Método para comprobar si el movimiento del alfil es válido
-bool Dama::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
-	// Un alfil se mueve en diagonal, por lo que el movimiento es válido si la distancia en filas y columnas es la misma
+bool Dama::esmovimientoValido(int x_Destino, int y_Destino, int comer) { // Método para comprobar si el movimiento de la dama es válido
+	// La dama se mueve en diagonal, en horizontal y en vertical
 	if (fabs(getX() - x_Destino) == fabs(getY() - y_Destino))
 		return true;
 	if ((fabs(getX() - x_Destino) == 0) && (fabs(getY() - y_Destino) != 0))
@@ -35,12 +34,11 @@ bool Dama::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	return false;
 }
 
-void Dama::mover(int x, int y, int comer) {
+void Dama::mover(int x, int y, int comer) { // Para actualizar la posicion de la dama
 	getX();
 	getY();
-	// Comprobar si el movimiento es válido para el alfil
-	if (esmovimientoValido(x, y, comer)) {
-		// Actualizar la posición del alfil a la celda de destino
+	if (esmovimientoValido(x, y, comer)) { // Comprobar si el movimiento es válido 
+		// Actualizar la posición de la dama a la celda de destino
 		setX(x);
 		setY(y);
 	}

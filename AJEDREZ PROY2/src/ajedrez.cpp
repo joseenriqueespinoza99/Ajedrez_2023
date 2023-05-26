@@ -39,7 +39,6 @@ int main(int argc,char* argv[])
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
-
 	return 0;   
 }
 
@@ -53,16 +52,16 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	
+	//poner aqui el código de dibujo
 	coordinador.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }
+
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-
 	coordinador.eleccion(key);
 
 	glutPostRedisplay();
@@ -70,18 +69,18 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 void OnTimer(int value)
 {
-//poner aqui el código de animacion
+	//poner aqui el código de animacion
 	coordinador.mueve();
 
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
 	glutPostRedisplay();
 }
+
 void MouseButton(int button, int down, int x, int y) {
 	//final cell coordinates
 	if (button == down){
 		coordinador.coord_a_celda(x, y);
 	}
 	glutPostRedisplay();
-
 }
