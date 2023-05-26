@@ -16,9 +16,9 @@ void Rey::dibuja() {
 	}
 	else {
 		if (color == true)
-			pintar("imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", getX(), getY() + 1);
+			pintar("imagenes/clasicas/clasreynegro.png", "imagenes/clasicas/clasreyblanco.png", "imagenes/clasicas/clasreynblanco.png", "imagenes/clasicas/clasreynnegro.png", getX(), getY() + 1);
 		else
-			pintar("imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", getX(), getY() + 1);
+			pintar("imagenes/clasicas/clasreyblanco.png", "imagenes/clasicas/clasreynegro.png", "imagenes/clasicas/clasreynnegro.png", "imagenes/clasicas/clasreynblanco.png", getX(), getY() + 1);
 	}
 	
 }

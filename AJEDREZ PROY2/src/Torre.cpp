@@ -7,6 +7,22 @@ Torre::Torre(int x, int y, bool color) {
 	TipoPieza TORRE;
 }
 
+
+void Torre::dibuja() {
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/torrenegra.png", "imagenes/torreblanca.png", "imagenes/torrenblanca.png", "imagenes/torrennegra.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/torreblanca.png", "imagenes/torrenegra.png", "imagenes/torrennegra.png", "imagenes/torrenblanca.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/clasicas/clastorrenegra.png", "imagenes/clasicas/clastorreblanca.png", "imagenes/clasicas/clastorrenblanca.png", "imagenes/clasicas/clastorrennegra.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/clasicas/clastorreblanca.png", "imagenes/clasicas/clastorrenegra.png", "imagenes/clasicas/clastorrennegra.png", "imagenes/clasicas/clastorrenblanca.png", getX(), getY() + 1);
+	}
+}
+
 bool Torre::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 	if (comer == 4) {
 		if (((x_Destino - getX()) == -2) && (getMov() == 0)) { // Se puede hacer enroque si estaba en la posicion inicial
@@ -23,14 +39,6 @@ bool Torre::esmovimientoValido(int x_Destino, int y_Destino, int comer) {
 			return true;
 		else return false;
 	}
-}
-
-
-void Torre::dibuja() {
-	if (color == true) 
-		pintar("imagenes/torrenegra.png", "imagenes/torreblanca.png", "imagenes/torrenblanca.png", "imagenes/torrennegra.png", getX(), getY()+1);
-	else 
-		pintar("imagenes/torreblanca.png", "imagenes/torrenegra.png", "imagenes/torrennegra.png", "imagenes/torrenblanca.png", getX(), getY()+1);
 }
 
 void Torre::mover(int x, int y, int comer)

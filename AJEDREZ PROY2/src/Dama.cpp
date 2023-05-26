@@ -9,10 +9,18 @@ Dama::Dama(int x, int y, bool color) {
 
 
 void Dama::dibuja() {
-	if (color == true)
-		pintar("imagenes/damanegra.png", "imagenes/damablanca.png", "imagenes/damanblanca.png", "imagenes/damannegra.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/damanegra.png", "imagenes/damablanca.png", "imagenes/damanblanca.png", "imagenes/damannegra.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/damablanca.png", "imagenes/damanegra.png", "imagenes/damannegra.png", "imagenes/damanblanca.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/clasicas/clasdamanegra.png", "imagenes/clasicas/clasdamablanca.png", "imagenes/clasicas/clasdamanblanca.png", "imagenes/clasicas/clasdamannegra.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/clasicas/clasdamablanca.png", "imagenes/clasicas/clasdamanegra.png", "imagenes/clasicas/clasdamannegra.png", "imagenes/clasicas/clasdamanblanca.png", getX(), getY() + 1);
+	}
 }
 
 // Método para comprobar si el movimiento del alfil es válido

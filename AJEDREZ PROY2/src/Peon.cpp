@@ -8,10 +8,18 @@ Peon::Peon(int x, int y, bool color) {
 }
 
 void Peon::dibuja() {
-	if (color == true)
-		pintar("imagenes/peonnegro.png", "imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnnegro.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/peonblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", "imagenes/peonnblanco.png", getX(), getY() + 1);
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/peonnegro.png", "imagenes/peonblanco.png", "imagenes/peonnblanco.png", "imagenes/peonnnegro.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/peonblanco.png", "imagenes/peonnegro.png", "imagenes/peonnnegro.png", "imagenes/peonnblanco.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/clasicas/claspeonnegro.png", "imagenes/clasicas/claspeonblanco.png", "imagenes/clasicas/claspeonnblanco.png", "imagenes/clasicas/claspeonnnegro.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/clasicas/claspeonblanco.png", "imagenes/clasicas/claspeonnegro.png", "imagenes/clasicas/claspeonnnegro.png", "imagenes/clasicas/claspeonnblanco.png", getX(), getY() + 1);
+	}
 }
 
 // Método para comprobar si el movimiento del peon es válido

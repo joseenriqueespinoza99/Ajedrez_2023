@@ -134,13 +134,25 @@ void Tablero::dibuja() {
 			Coordenadas p{ i + 1, j + 1 };
 			int indices = i + j;
 			if ((indices % 2) == 0) {
-				glBegin(GL_POLYGON);
-				glColor3f(0, 0.5, 0.5);
-				glVertex2i(i + 1, j + 1);
-				glVertex2i(i + 1, j);
-				glVertex2i(i, j);
-				glVertex2i(i, j + 1);
-				glEnd();
+				if (getModoT() == false) {
+					glBegin(GL_POLYGON);
+					glColor3f(0, 0.5, 0.5);
+					glVertex2i(i + 1, j + 1);
+					glVertex2i(i + 1, j);
+					glVertex2i(i, j);
+					glVertex2i(i, j + 1);
+					glEnd();
+				}
+				else {
+					glBegin(GL_POLYGON);
+					glColor3f(0, 0, 0);
+					glVertex2i(i + 1, j + 1);
+					glVertex2i(i + 1, j);
+					glVertex2i(i, j);
+					glVertex2i(i, j + 1);
+					glEnd();
+				}
+				
 			}
 			if ((indices % 2) != 0) {
 				glBegin(GL_POLYGON);

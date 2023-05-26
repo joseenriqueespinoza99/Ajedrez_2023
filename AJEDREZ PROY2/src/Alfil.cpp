@@ -8,10 +8,18 @@ Alfil :: Alfil(int x, int y, bool color) {
 }
 
 void Alfil::dibuja() {
-	if (color == true)
-		pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX(), getY() + 1);
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/alfilnegro.png", "imagenes/alfilblanco.png", "imagenes/alfilnblanco.png", "imagenes/alfilnnegro.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/alfilblanco.png", "imagenes/alfilnegro.png", "imagenes/alfilnnegro.png", "imagenes/alfilnblanco.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/clasicas/clasalfilnegro.png", "imagenes/clasicas/clasalfilblanco.png", "imagenes/clasicas/clasalfilnblanco.png", "imagenes/clasicas/clasalfilnnegro.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/clasicas/clasalfilblanco.png", "imagenes/clasicas/clasalfilnegro.png", "imagenes/clasicas/clasalfilnnegro.png", "imagenes/clasicas/clasalfilnblanco.png", getX(), getY() + 1);
+	}
 }
 
 // Método para comprobar si el movimiento del alfil es válido
