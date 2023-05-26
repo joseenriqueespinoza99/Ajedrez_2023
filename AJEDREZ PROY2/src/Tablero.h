@@ -1,7 +1,7 @@
 #pragma once
 #include "freeglut.h"
 #include "ETSIDI.h"
-
+#include <fstream>
 #include "Torre.h"
 #include "Caballo.h"
 #include "Alfil.h"
@@ -62,6 +62,9 @@ public:
 	bool comprobar_jaqueRey(bool color);
 	Pieza* coronacion(int x, int y);
 	void comer_al_paso(int origen_x, int origen_y, int destino_x, int destino_y, bool color);
+	void NombrePartidaCargar();
+	void leerpartida(std::string p_guardada);
+	void guardarPartida(std::string p_guardada);
 	bool casillaEnJaque(bool colorRey, int x, int y);
 	bool comprobar_enroque_corto(bool color);
 	bool comprobar_enroque_largo(bool color);

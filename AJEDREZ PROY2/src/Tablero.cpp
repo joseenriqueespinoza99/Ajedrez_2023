@@ -492,6 +492,108 @@ void Tablero::mover(int x, int y, int comer) {
 	}
 }
 
+void Tablero::guardarPartida(std::string p_guardada) {
+	std::ofstream guardado;
+
+	guardado.open(p_guardada);
+
+	if (guardado) {
+
+		int n_piezas = listapiezas.getNumero();
+		Pieza* p;
+		//Coordenadas c1, c2;
+		std::string nombre, coo, col, res;
+		if (turno) {
+			guardado << "b\n";
+		}
+		else {
+			guardado << "n\n";
+		}
+		for (int i = 0; i < n_piezas; i++) {
+			p = listapiezas.getPiezas(i);
+
+			nombre = std::to_string(p->getClass());
+
+			if (p->getColor()) {
+				col = "b";
+			}
+			else {
+				col = "n";
+			}
+
+			/*	c1 = p->getX();
+				c2 = p->getY();*/
+
+			coo = std::to_string(p->getX()) + "-" + std::to_string(p->getY());
+
+			res = nombre + "-" + col + "-" + coo + "\n";
+
+			guardado << res;
+		}
+	}
+
+	guardado.close();
+}
+
+void Tablero::leerpartida(std::string p_guardada) {
+	std::ifstream guardado;
+	std::string p, nombre, col, coo_x, coo_y;
+	int x, y;
+	bool c_p = true;
+
+	guardado.open(p_guardada);
+	guardado >> p;
+	if (p == "n") {
+		su_turno();
+	}
+	while (guardado) {
+		guardado >> p;
+
+		nombre = p[0];
+		col = p[2];
+		coo_x = p[4];
+		coo_y = p[6];
+		x = stoi(coo_x);
+		y = stoi(coo_y);
+		std::cout << nombre << col << coo_x << coo_y;
+		if (col == "b") {
+			c_p = true;
+		}
+		else if (col == "n") {
+			c_p = false;
+		}
+
+		if (nombre == "1") {
+			listapiezas.agregar(new Torre(x, y, this));
+		}
+		else if (nombre == "2") {
+			listapiezas.agregar(new Caballo(x, y, this));
+		}
+		else if (nombre == "3") {
+			listapiezas.agregar(new Alfil(x, y, this));
+		}
+		else if (nombre == "4") {
+			listapiezas.agregar(new Dama(x, y, this));
+		}
+		else if (nombre == "5") {
+			listapiezas.agregar(new Rey(x, y, this));
+		}
+		else if (nombre == "6") {
+			listapiezas.agregar(new Peon(x, y, this));
+		}
+	}
+
+	guardado.close();
+}
+
+void Tablero::NombrePartidaCargar() {
+	std::string nombrepartida;
+	std::cout << "introduce el nombre de la partida sin espacios" << std::endl;
+	std::cin >> nombrepartida;
+	leerpartida(nombrepartida);
+}
+
+
 void Tablero::coord_a_celda(int x, int y)
 {
 	celda.x = (((x - 163) / 59.5) + 1); // Posicion en x del raton, la separacion a la izquierda desde que empieza la ventana hasta que empieza el tablero (163) y 59.5 el ancho de celda aproximado
