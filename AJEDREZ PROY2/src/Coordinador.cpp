@@ -57,6 +57,10 @@ void Coordinador::dibuja() {
 		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
 		ETSIDI::printxy("Electronica vs. Electrica", 0.8, 8.5);
 
+		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 12);
+		ETSIDI::printxy("T. Piezas tematicas", 8, 8);
+		ETSIDI::printxy("C. Piezas clasicas", 8, 7);
+
 		if (tablerinyo.getPaso() != 0) {
 			ETSIDI::setTextColor(1, 1, 1);
 			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
@@ -135,6 +139,14 @@ void Coordinador::eleccion(unsigned char elec) {
 		case 'P':
 		case 'p':
 			estado = PAUSA;
+			break;
+		case 'T':
+		case 't':
+			tablerinyo.setModoT(false);
+			break;
+		case 'C':
+		case 'c':
+			tablerinyo.setModoT(true);
 			break;
 		}
 	}

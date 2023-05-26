@@ -10,6 +10,7 @@ private:
 protected:
     bool color;
     Coordenadas coordenadas;
+    bool modo = false;
 
 public:
     //virtual ~Pieza() {} 
@@ -24,6 +25,9 @@ public:
     void setY(int y) { this->coordenadas.y = y; }
     int getX() { return coordenadas.x; }
     int getY() { return coordenadas.y; }
+
+    void setModo(bool m) { modo = m; }
+    bool getModo() { return modo; }
 
     //para diferenciar entre las piezas en casillas blancas y negras
     void dibujar(const char foto[], int x1, int y2);

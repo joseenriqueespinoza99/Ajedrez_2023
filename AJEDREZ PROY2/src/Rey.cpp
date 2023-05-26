@@ -8,10 +8,19 @@ Rey::Rey(int x, int y, bool color) {
 }
 
 void Rey::dibuja() {
-	if (color == true)
-		pintar("imagenes/reynegro.png", "imagenes/reyblanco.png", "imagenes/reynblanco.png", "imagenes/reynnegro.png", getX(), getY() + 1);
-	else
-		pintar("imagenes/reyblanco.png", "imagenes/reynegro.png", "imagenes/reynnegro.png", "imagenes/reynblanco.png", getX(), getY() + 1);
+	if (getModo() == false) {
+		if (color == true)
+			pintar("imagenes/reynegro.png", "imagenes/reyblanco.png", "imagenes/reynblanco.png", "imagenes/reynnegro.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/reyblanco.png", "imagenes/reynegro.png", "imagenes/reynnegro.png", "imagenes/reynblanco.png", getX(), getY() + 1);
+	}
+	else {
+		if (color == true)
+			pintar("imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", getX(), getY() + 1);
+		else
+			pintar("imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", "imagenes/rey1.png", getX(), getY() + 1);
+	}
+	
 }
 
 // Método para comprobar si el movimiento del rey es válido

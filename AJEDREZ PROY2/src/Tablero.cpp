@@ -155,12 +155,12 @@ void Tablero::dibuja() {
 	}
 
 	if (turno == true) {
-		ETSIDI::setTextColor(1, 0, 0);
+		ETSIDI::setTextColor(0.9, 0.9, 0.4);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
 	}
 	else {
-		ETSIDI::setTextColor(1, 1, 0);
+		ETSIDI::setTextColor(0.4, 0.9, 0.9);
 		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las NEGRAS", 6.5, -1);
 	}
