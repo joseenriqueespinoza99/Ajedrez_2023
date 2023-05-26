@@ -31,8 +31,9 @@ private:
 	bool enroque_c = 0; //para el enroque corto
 	bool enroque_l = 0; //para el enroque largo
 	bool modo = false;
-
+	bool JaqueMate = false;
 public:
+	
 	int getPaso() { return alpaso; }
 	int getEnroqueC() { return enroque_c; }
 	int getEnroqueL() { return enroque_l; }
@@ -44,8 +45,8 @@ public:
 	}
 	void setModoT(bool m) { modo = m; igualarModo(listapiezas); }
 	bool getModoT() { return modo; }
-
-
+	bool getJaqueMate() { return JaqueMate; }
+	void setJaqueMate(bool jaqueMate) { JaqueMate = jaqueMate; }
 	void dibuja();
 	void inicializa();
 	void mueve();
@@ -56,7 +57,7 @@ public:
 	bool su_turno();
 	void cambio_turno();
 	void coord_a_celda(int x, int y); // Conversion -- coordenadas de la pantalla a celdas de nuestro tablero
-	//~Tablero();
+	~Tablero();
 	bool comprobar_color(bool color);
 	bool comprobar_camino(int origen_x, int origen_y, int destino_x, int destino_y);
 	bool comprobar_jaqueRey(bool color);
@@ -65,8 +66,7 @@ public:
 	bool casillaEnJaque(bool colorRey, int x, int y);
 	bool comprobar_enroque_corto(bool color);
 	bool comprobar_enroque_largo(bool color);
-	bool quitarJaque();
 	Pieza* PiezaAmenazaRey();
-	bool comprobarJaqueMate();
+	int getNumeroReyes();
 };
 

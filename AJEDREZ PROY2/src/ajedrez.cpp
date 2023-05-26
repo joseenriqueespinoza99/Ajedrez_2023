@@ -20,7 +20,7 @@ int main(int argc,char* argv[])
 	glutInitWindowSize(800,600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("MiJuego");
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.0, 0.4, 0.5, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	//habilitar luces y definir perspectiva

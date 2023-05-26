@@ -168,12 +168,12 @@ void Tablero::dibuja() {
 
 	if (turno == true) {
 		ETSIDI::setTextColor(0.9, 0.9, 0.4);
-		ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
+		ETSIDI::setFont("fuentes/Gameplay.ttf", 15);
 		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
 	}
 	else {
 		ETSIDI::setTextColor(0.4, 0.9, 0.9);
-		ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
+		ETSIDI::setFont("fuentes/Gameplay.ttf", 15);
 		ETSIDI::printxy("Mueven las NEGRAS", 6.5, -1);
 	}
 }
@@ -183,7 +183,6 @@ void Tablero::mueve()
 
 }
 
-
 void Tablero::seleccionar_pieza(int x, int y) {
 	Pieza* nueva_Pieza_Seleccionada = listapiezas.getPieza(x, y);
 	if (nueva_Pieza_Seleccionada != nullptr) {
@@ -192,15 +191,9 @@ void Tablero::seleccionar_pieza(int x, int y) {
 			if (listapiezas.getPieza(x, y) != nullptr) {
 				// Si la casilla seleccionada está ocupada, mueve la pieza seleccionada encima de la pieza allí 
 				//dentro de la funcion mover se elimina la esa pieza que esta debajo de la lista
-				
 				mover( x, y, 0);
 				piezaSelecc = nullptr;
 			}
-			//else {
-			//	// mueve la pieza si la casilla seleccionada esta vacia
-			//	mover( x, y, 0);
-			//	piezaSelecc = nullptr;
-			//}
 		}
 		else {
 			// No hay ninguna pieza seleccionada, selecciona la pieza en la nueva casilla
@@ -264,10 +257,17 @@ void Tablero::cambio_turno() {
 		}
 	}
 }
-
+Tablero::~Tablero()
+{
+	
+}
 void Tablero::mover(int x, int y, int comer) {
 	Pieza* piezaDestino = listapiezas.getPieza(x, y);
 	Pieza* amenaza = PiezaAmenazaRey();
+	if (getNumeroReyes() < 2) {
+		setJaqueMate(true);
+		return;
+	}
 	if (piezaSelecc != nullptr) {
 		comprobar_enroque_corto(turno);
 		comprobar_enroque_largo(turno);
@@ -738,33 +738,6 @@ bool Tablero::comprobar_enroque_largo(bool color) {
 }
 
 
-bool Tablero::quitarJaque() {
-	if (piezaSelecc != nullptr && piezaSelecc->getClass() == REY) {
-		int xAnterior = piezaSelecc->getX();
-		int yAnterior = piezaSelecc->getY();
-
-		for (int i = 0; i <= 7; i++) {
-			for (int j = 0; j <= 7; j++) {
-				if (piezaSelecc->esmovimientoValido(i, j, 0) == 1) {
-					if (!comprobar_camino(piezaSelecc->getX(), piezaSelecc->getY(), i, j)) {
-						Pieza* piezaDestino = listapiezas.getPieza(i, j);
-						if (piezaDestino == nullptr || piezaDestino->getColor() != piezaSelecc->getColor()) {
-							mover(i, j, 0);
-							bool jaqueRey = comprobar_jaqueRey(piezaSelecc->getColor());
-							mover(xAnterior, yAnterior, 0);
-							if (!jaqueRey) {
-								return true; // Movimiento válido, no hay jaque
-							}
-
-						}
-					}
-				}
-			}
-		}
-	}
-	return false; // No se encontró ningún movimiento que elimine el jaque
-}
-
 Pieza* Tablero::PiezaAmenazaRey() {
 	// Obtener la posición del rey blanco
 	int xRey = 0;
@@ -798,56 +771,13 @@ Pieza* Tablero::PiezaAmenazaRey() {
 
 	return nullptr;
 }
-
-bool Tablero::comprobarJaqueMate() {
-	int xRey=0;
-	int yRey=0;
-	Pieza* rey=0;
-	if (piezaSelecc->getClass() == REY)
-	{
-		rey = piezaSelecc;
-		xRey = rey->getX();
-		yRey = rey->getY();
-	}
-	// Verificar si el rey puede moverse a una casilla segura
-	for (int i = -1; i <= 1; i++) {
-		for (int j = -1; j <= 1; j++) {
-			int xDestino = xRey + i;
-			int yDestino = yRey + j;
-
-			if (rey->esmovimientoValido(xDestino, yDestino,0) && !casillaOcupada(xDestino, yDestino) && !casillaEnJaque(rey->getColor(), xDestino, yDestino)) {
-				return false; // El rey puede moverse a una casilla segura, no hay jaque mate
-			}
+int Tablero::getNumeroReyes() {
+	int count = 0;
+	for (int i = 0; i < listapiezas.getNumero(); i++) {
+		if (listapiezas.getPiezas(i)->getClass() == REY) {
+			count++;
 		}
 	}
-
-	// Verificar si alguna pieza puede bloquear el jaque mate
-	for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 8; j++) {
-			Pieza* pieza = listapiezas.getPieza(i, j);
-
-			if (pieza != nullptr && pieza->getColor() == piezaSelecc->getColor()) {
-				for (int x = 0; x < 8; x++) {
-					for (int y = 0; y < 8; y++) {
-						if (pieza->esmovimientoValido(x, y, 1) && !comprobar_camino(x, y, pieza->getX(), pieza->getY())) {
-							// Mover la pieza a la posición (x, y) y verificar si el rey sigue en jaque
-							Pieza* piezaDestino = listapiezas.getPieza(x, y);
-							listapiezas.eliminar(piezaDestino);
-							pieza->mover(x, y, 1);
-							bool jaqueRey = casillaEnJaque(rey->getColor(), xRey, yRey);
-							pieza->mover(pieza->getX(), pieza->getY(), 0); // Deshacer el movimiento
-							listapiezas.agregar(piezaDestino);
-
-							if (!jaqueRey) {
-								return false; // La pieza puede bloquear el jaque mate, no hay jaque mate
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	return true; // El rey está en jaque mate
+	return count;
 }
 
