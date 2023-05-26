@@ -63,12 +63,6 @@ void ListaPiezas::reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza) { //Neces
 		 }
 	 }
  }
-void ListaPiezas::destruirContenido() 
-{ 
- for(int i=0;i<numero;i++) 
- delete lista[i]; 
- numero=0; // inicializa lista 
-}
 
  
  
