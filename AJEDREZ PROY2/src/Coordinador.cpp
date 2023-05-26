@@ -84,6 +84,12 @@ void Coordinador::dibuja() {
 			ETSIDI::printxy("enroque", -2, 2);
 			ETSIDI::printxy("largo", -2, 1);
 		}
+		if (tablerinyo.getCoronar() != 0) {
+			ETSIDI::setTextColor(1, 1, 1);
+			ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
+			ETSIDI::printxy("Peon", -2, 3);
+			ETSIDI::printxy("Coronado", -2, 2);
+		}
 		
 	}
 	
