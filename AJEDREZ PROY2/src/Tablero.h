@@ -31,12 +31,12 @@ private:
 	bool enroque_c = 0; //para el enroque corto
 	bool enroque_l = 0; //para el enroque largo
 	bool modo = false;
-
+	bool coronar = false;
 public:
 	int getPaso() { return alpaso; }
 	int getEnroqueC() { return enroque_c; }
 	int getEnroqueL() { return enroque_l; }
-
+	int getCoronar() { return coronar; }
 	void igualarModo(ListaPiezas listap) {
 		for (int i = 0; i < listap.getNumero(); i++) {
 			listap.getPiezas(i)->setModo(modo);
@@ -44,7 +44,6 @@ public:
 	}
 	void setModoT(bool m) { modo = m; igualarModo(listapiezas); }
 	bool getModoT() { return modo; }
-
 
 	void dibuja();
 	void inicializa();
