@@ -13,12 +13,13 @@ class ListaPiezas{
 		int getNumero() { return numero; }
 		Pieza* getPiezas(int i) { return piezas[i]; };
 
-		bool agregar(Pieza* p); // Para aÒadir nuevas piezas
-		void eliminar(int index); // EliminaciÛn correcta ajustando el resto de piezas
-		void eliminar(Pieza* p); // EliminaciÛn de la pieza indicada
-		void destruirContenido(); // DestrucciÛn controlada de las piezas 
-		Pieza* getPieza(int fila, int columna); // Busca si en unas coordenadas hay una pieza y quÈ pieza es
-		void reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza);  //Para la coronaciÛn, intercambia una pieza por otra nueva
+		bool agregar(Pieza* p); // Para a√±adir nuevas piezas
+		void eliminar(int index); // Eliminaci√≥n correcta ajustando el resto de piezas
+		void eliminar(Pieza* p); // Eliminaci√≥n de la pieza indicada
+		void destruirContenido(); // Destrucci√≥n controlada de las piezas 
+		Pieza* getPieza(int fila, int columna); // Busca si en unas coordenadas hay una pieza y qu√© pieza es
+		void reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza);  //Para la coronaci√≥n, intercambia una pieza por otra nueva
+	        void ListaPiezas::destruirContenido();//Eliminaci√≥n o liberaci√≥n del contenido de la lista de piezas. 
 };
 
 
