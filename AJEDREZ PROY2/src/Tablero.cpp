@@ -272,9 +272,11 @@ void Tablero::mover(int x, int y, int comer) {
 				if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 					comer = 1;
 					alpaso = 0;
+					coronar =false;
 					if (piezaSelecc->getClass() == REY && (piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 
 						if (!comprobar_camino(x,y,piezaSelecc->getX(), piezaSelecc->getY())) {
+							coronar =false;
 							coronacion(x, y); // Implementación
 							if (casillaEnJaque(piezaSelecc->getColor(), x, y))
 							{
@@ -315,6 +317,7 @@ void Tablero::mover(int x, int y, int comer) {
 						// Mover al rey para salir del jaque
 						if (!comprobar_camino(x,y,piezaSelecc->getX(), piezaSelecc->getY())) {
 							comer = 0;
+							coronar = false;
 							coronacion(x, y);
 							piezaSelecc->mover(x, y, comer);
 							ETSIDI::play("sonidos/mueve.mp3");
@@ -334,6 +337,7 @@ void Tablero::mover(int x, int y, int comer) {
 							// Mover al rey para salir del jaque
 							if (!comprobar_camino(x,y,piezaSelecc->getX(), piezaSelecc->getY())) {
 								comer = 0;
+								coronar =false;
 								coronacion(x, y);
 								piezaSelecc->mover(x, y, comer);
 								ETSIDI::play("sonidos/mueve.mp3");
@@ -359,6 +363,7 @@ void Tablero::mover(int x, int y, int comer) {
 				if (piezaDestino != nullptr && (!comprobar_color(piezaDestino->getColor()))) { // La casilla seleccionada contiene una pieza del equipo contrario
 					comer = 1;
 					alpaso = 0;
+					coronar =false;
 					if ((piezaSelecc->esmovimientoValido(x, y, comer) == 1) && (su_turno() == true)) { // Mover la pieza seleccionada a esa casilla y eliminar la pieza del equipo contrario
 						if (!comprobar_camino(x, y, piezaSelecc->getX(), piezaSelecc->getY()))
 						{
@@ -381,6 +386,7 @@ void Tablero::mover(int x, int y, int comer) {
 					if (!comprobar_camino(x,y,piezaSelecc->getX(), piezaSelecc->getY())) {
 						comer_al_paso(piezaSelecc->getX(), piezaSelecc->getY(), x, y, turno);
 						comer = 0;
+						coronar =false;
 						coronacion(x, y);
 						piezaSelecc->mover(x, y, comer);
 						ETSIDI::play("sonidos/mueve.mp3");
