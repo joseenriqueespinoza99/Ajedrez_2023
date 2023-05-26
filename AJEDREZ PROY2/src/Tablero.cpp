@@ -604,6 +604,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 				Dama* nuevaDama = new Dama(x, y, piezaSelecc->getColor());
 				listapiezas.reemplazar(piezaSelecc, nuevaDama);
 				piezaSelecc = nuevaDama;
+				coronar = true;
 				return piezaSelecc;
 				break;
 			}
@@ -611,6 +612,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 				Torre* nuevaTorre = new Torre(x, y, piezaSelecc->getColor());
 				listapiezas.reemplazar(piezaSelecc, nuevaTorre);
 				piezaSelecc = nuevaTorre;
+				coronar = true;
 				return piezaSelecc;
 				break;
 			}
@@ -618,6 +620,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 				Alfil* nuevoAlfil = new Alfil(x, y, piezaSelecc->getColor());
 				listapiezas.reemplazar(piezaSelecc, nuevoAlfil);
 				piezaSelecc = nuevoAlfil;
+				coronar = true;
 				return piezaSelecc;
 				break;
 			}
@@ -625,6 +628,7 @@ Pieza * Tablero::coronacion(int x, int y) {
 				Caballo* nuevoCaballo = new Caballo(x, y, piezaSelecc->getColor());
 				listapiezas.reemplazar(piezaSelecc, nuevoCaballo);
 				piezaSelecc = nuevoCaballo;
+				coronar = true;
 				return piezaSelecc;
 				break;
 			}
