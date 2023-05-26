@@ -66,5 +66,6 @@ public:
 	bool comprobar_enroque_corto(bool color);
 	bool comprobar_enroque_largo(bool color);
 	bool quitarJaque();
+	Pieza* amenazaAlRey();
 };
 
