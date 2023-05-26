@@ -27,8 +27,8 @@ C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(172,42): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(175,37): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(177,40): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(450,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(451,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(536,9): warning C4101: 'pieza': variable local sin referencia
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(496,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(497,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(582,9): warning C4101: 'pieza': variable local sin referencia
 C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(252): warning C4715: 'Tablero::su_turno': no todas las rutas de acceso de control devuelven un valor
   Pang.vcxproj -> C:\Users\laura\Documents\mis_cosas\Universidad\Informatica\Trabajo\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe

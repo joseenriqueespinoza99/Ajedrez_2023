@@ -361,7 +361,7 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 				else {
 					std::cout << "Solo se puede mover al rey para salir del jaque" << std::endl;
-          ETSIDI::play("sonidos/error.wav");
+					ETSIDI::play("sonidos/error.wav");
 
 				}
 			}
@@ -416,7 +416,6 @@ void Tablero::mover(int x, int y, int comer) {
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
 						ETSIDI::play("sonidos/error.wav");
 					}
-
 				}
 				else if ((comprobar_enroque_corto(turno)) || (comprobar_enroque_largo(turno))) {
 					if (enroque_c == 1) {
@@ -445,8 +444,10 @@ void Tablero::mover(int x, int y, int comer) {
 					}	
 				}
 				else {
-					std::cout << "Movimiento no valido para la pieza" << std::endl;
-					ETSIDI::play("sonidos/error.wav");
+					if (alpaso == 0) {
+						std::cout << "Movimiento no valido para la pieza" << std::endl;
+						ETSIDI::play("sonidos/error.wav");
+					}
 				}
 			}
 			if (casillaOcupada(x, y - 1)) { //comer al paso para las blancas

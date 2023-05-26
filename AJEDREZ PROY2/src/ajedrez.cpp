@@ -1,9 +1,7 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
-#include "Tablero.h"
 #include "Coordinador.h"
 
-Tablero tablero;
 Coordinador coordinador;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -38,8 +36,6 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	glutMouseFunc(MouseButton);
-	
-	tablero.inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
