@@ -19,7 +19,7 @@ class ListaPiezas{
 		void destruirContenido(); // Destrucción controlada de las piezas 
 		Pieza* getPieza(int fila, int columna); // Busca si en unas coordenadas hay una pieza y qué pieza es
 		void reemplazar(Pieza* piezaExistente, Pieza* nuevaPieza);  //Para la coronación, intercambia una pieza por otra nueva
-	        void destruirContenido();//Eliminación o liberación del contenido de la lista de piezas. 
+
 };
 
 
