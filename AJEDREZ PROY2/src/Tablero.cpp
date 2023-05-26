@@ -134,7 +134,7 @@ void Tablero::dibuja() {
 			Coordenadas p{ i + 1, j + 1 };
 			int indices = i + j;
 			if ((indices % 2) == 0) {
-				if (getModoT() == false) {
+				if (modo == false) {
 					glBegin(GL_POLYGON);
 					glColor3f(0, 0.5, 0.5);
 					glVertex2i(i + 1, j + 1);
@@ -168,12 +168,12 @@ void Tablero::dibuja() {
 
 	if (turno == true) {
 		ETSIDI::setTextColor(0.9, 0.9, 0.4);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las BLANCAS", -2.5, -1);
 	}
 	else {
 		ETSIDI::setTextColor(0.4, 0.9, 0.9);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Mueven las NEGRAS", 6.5, -1);
 	}
 }
@@ -286,11 +286,14 @@ void Tablero::mover(int x, int y, int comer) {
 							cambio_turno();
 							piezaSelecc = nullptr;
 						}
-						else
+						else {
 							std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+							ETSIDI::play("sonidos/error.wav");
+						}
 					}
 					else {
 						std::cout << "Movimiento no valido para la pieza" << std::endl;
+						ETSIDI::play("sonidos/error.wav");
 					}
 				}
 			}
@@ -306,13 +309,16 @@ void Tablero::mover(int x, int y, int comer) {
 						cambio_turno();
 						piezaSelecc = nullptr;
 					}
-					else
+					else {
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+						ETSIDI::play("sonidos/error.wav");
+					}
 
 				}
 
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
+					ETSIDI::play("sonidos/error.wav");
 				}
 			}
 		}
@@ -335,12 +341,15 @@ void Tablero::mover(int x, int y, int comer) {
 							enroque_l = 0;
 							piezaSelecc = nullptr;
 						}
-						else
+						else {
 							std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+							ETSIDI::play("sonidos/error.wav");
+						}
 
 					}
 					else {
 						std::cout << "Movimiento no valido para la pieza" << std::endl;
+						ETSIDI::play("sonidos/error.wav");
 					}
 				}
 			}
@@ -357,8 +366,10 @@ void Tablero::mover(int x, int y, int comer) {
 						enroque_l = 0;
 						piezaSelecc = nullptr;
 					}
-					else
+					else {
 						std::cout << "Hay piezas en el camino. No se puede mover la pieza" << std::endl;
+						ETSIDI::play("sonidos/error.wav");
+					}
 
 				}
 				else if ((comprobar_enroque_corto(turno)) || (comprobar_enroque_largo(turno))) {
@@ -389,6 +400,7 @@ void Tablero::mover(int x, int y, int comer) {
 				}
 				else {
 					std::cout << "Movimiento no valido para la pieza" << std::endl;
+					ETSIDI::play("sonidos/error.wav");
 				}
 			}
 			if (casillaOcupada(x, y - 1)) { //comer al paso para las blancas

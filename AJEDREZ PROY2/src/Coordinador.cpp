@@ -11,11 +11,11 @@ void Coordinador::dibuja() {
 			4.0, 4.0, 0.0,
 			0.0, 1.0, 0.0); // definimos hacia arriba (eje Y) 
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 14);
+		ETSIDI::setFont("fuentes/Gameplay.ttf", 14);
 		ETSIDI::printxy("Bienvenidos al ajedrez del grupo Termas de Logrono:", -1.5, 8);
 		ETSIDI::printxy("Esperemos que disfruten de este juego", -0.5, 6);
 		ETSIDI::setTextColor(1, 0, 1);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 14);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 14);
 		ETSIDI::printxy("Pulse la letra 'A' para jugar", -0.5, 4);
 		ETSIDI::printxy("Pulse la letra 'I' para ver las instrucciones del ajedrez", -0.5, 2);
 		//ETSIDI::setTextColor(0, 255, 255);
@@ -26,10 +26,10 @@ void Coordinador::dibuja() {
 			4.0, 4.0, 0.0,
 			0.0, 1.0, 0.0);
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 		ETSIDI::printxy("Jugar al ajedrez es muy sencillo:", -0.55, 8);
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 10);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 10);
 		ETSIDI::printxy("En nuestro ajedrez se juega un jugador contra otro moviendo una serie de piezas", -1.5, 7.0);
 		ETSIDI::printxy("Cada pieza tiene sus movimientos caracteristicos", -1.5, 6.0);
 		ETSIDI::printxy("Cuando una pieza de un color se pone sobre otra de distinto color diremos que se la come", -1.5, 5.0);
@@ -54,23 +54,24 @@ void Coordinador::dibuja() {
 		tablerinyo.inicializa();
 		tablerinyo.dibuja();
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
-		ETSIDI::printxy("Electronica vs. Electrica", 0.8, 8.5);
-
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 12);
+		if (tablerinyo.getModoT() == false) {
+			ETSIDI::setFont("fuentes/Gameplay.ttf", 18);
+			ETSIDI::printxy("Electronica vs. Electrica", 0.8, 8.5);
+		}
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 12);
 		ETSIDI::printxy("T. Piezas tematicas", 8, 8);
 		ETSIDI::printxy("C. Piezas clasicas", 8, 7);
 
 		if (tablerinyo.getPaso() != 0) {
 			ETSIDI::setTextColor(1, 1, 1);
-			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 			ETSIDI::printxy("Puedes", -2, 3);
 			ETSIDI::printxy("comer", -2, 2);
 			ETSIDI::printxy("al paso", -2, 1);
 		}
 		if (tablerinyo.getEnroqueC() == 1) {
 			ETSIDI::setTextColor(1, 1, 1);
-			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 			ETSIDI::printxy("Puedes", -2, 4);
 			ETSIDI::printxy("hacer", -2, 3);
 			ETSIDI::printxy("enroque", -2, 2);
@@ -78,7 +79,7 @@ void Coordinador::dibuja() {
 		}
 		if (tablerinyo.getEnroqueL() == 1) {
 			ETSIDI::setTextColor(1, 1, 1);
-			ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 15);
+			ETSIDI::setFont("fuentes/Bitwise.ttf", 15);
 			ETSIDI::printxy("Puedes", -2, 4);
 			ETSIDI::printxy("hacer", -2, 3);
 			ETSIDI::printxy("enroque", -2, 2);
@@ -91,14 +92,14 @@ void Coordinador::dibuja() {
 			4.0, 4.0, 0.0,
 			0.0, 1.0, 0.0);
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 18);
+		ETSIDI::setFont("fuentes/Gameplay.ttf", 18);
 		ETSIDI::printxy("Has parado el juego", -0.5, 5.0);
-		ETSIDI::setFont("bin/fuentes/Bitwise.ttf", 18);
+		ETSIDI::setFont("fuentes/Bitwise.ttf", 18);
 		ETSIDI::printxy("Pulse 'A' para volver a reiniciar el juego", -0.5, 4.0);
 	}
 	else if (estado = FIN) {
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("bin/fuentes/Gameplay.ttf", 20);
+		ETSIDI::setFont("fuentes/Gameplay.ttf", 20);
 		ETSIDI::printxy("DERROTA HUMILLANTE", -0.5, 5.0);
 	}
 }
