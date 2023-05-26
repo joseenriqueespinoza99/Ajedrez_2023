@@ -27,8 +27,8 @@ D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(17
 D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(172,42): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
 D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(175,37): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(177,40): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(730,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(731,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(816,9): warning C4101: 'pieza': variable local sin referencia
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(502,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(503,15): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(588,9): warning C4101: 'pieza': variable local sin referencia
 D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\src\Tablero.cpp(253): warning C4715: 'Tablero::su_turno': no todas las rutas de acceso de control devuelven un valor
   Pang.vcxproj -> D:\informatica 1\fundamentos\tema2\Ajedrez_2023\AJEDREZ PROY2\bin\AJEDREZ.exe
